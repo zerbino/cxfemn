@@ -1,0 +1,21 @@
+#+Title: rapport de la réunion du 17 Octobre 2013
+participants : Hervé Grall, Kevin Llopart, Raphaël Martignoni, Hao Zhang
+Objet :réponses à des questions techniques et planification des tâches pour les prochains jours
+
+* A réaliser dans les 10 jours à venir
+
+- Vérifier expérimentalement les « core requirements » avec JAXB
+- Réaliser un cahier des charges 
+
+** Cahier des charges
+C'est une version intermédiaire. Y faire figurer :
+- L'objectif final
+- Les étapes intermédiaires définissant les différents sprints.
+- Les découper en 4 sprints ?
+- Développer une partie sur comment coder un intercepteur
+- Définir des rôles à chacun, pour permettre de mener des tâches en parallèle
+- Décrire l'algorithme permettant de convertir des schémas :
+
+* Informations diverses :
+- Une version améliorée du document de référence en anglais a été rédigée. Hervé Grall nous la transmettra sous peu.
+- Toujours rédiger un compte rendu des réunions et de l'avancement du projet.
