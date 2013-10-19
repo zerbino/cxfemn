@@ -2,7 +2,7 @@
 participants : Hervé Grall, Kevin Llopart, Raphaël Martignoni, Hao Zhang
 Objet :réponses à des questions techniques et planification des tâches pour les prochains jours
 
-* A réaliser dans les 10 jours à venir
+* TODO
 
 - Vérifier expérimentalement les « core requirements » avec JAXB
 - Réaliser un cahier des charges 
@@ -14,8 +14,9 @@ C'est une version intermédiaire. Y faire figurer :
 - Les découper en 4 sprints ?
 - Développer une partie sur comment coder un intercepteur
 - Définir des rôles à chacun, pour permettre de mener des tâches en parallèle
-- Décrire l'algorithme permettant de convertir des schémas :
+- Décrire l'algorithme permettant de convertir des schémas : algorithme de lifting. Permet de passer d'un sous type à un surtype. 
+
 
 * Informations diverses :
 - Une version améliorée du document de référence en anglais a été rédigée. Hervé Grall nous la transmettra sous peu.
-- Toujours rédiger un compte rendu des réunions et de l'avancement du projet.
+- Toujours rédiger un compte rendu des réunions  où figurent les TODO, et de l'avancement du projet.
