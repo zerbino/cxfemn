@@ -1,22 +1,22 @@
-#+Title: rapport de la réunion du 17 Octobre 2013
-participants : Hervé Grall, Kevin Llopart, Raphaël Martignoni, Hao Zhang
-Objet :réponses à des questions techniques et planification des tâches pour les prochains jours
+#+Title: rapport de la rï¿½union du 17 Octobre 2013
+participantsï¿½: Hervï¿½ Grall, Kevin Llopart, Raphaï¿½l Martignoni, Hao Zhang
+Objetï¿½:rï¿½ponses ï¿½ des questions techniques et planification des tï¿½ches pour les prochains jours
 
 * TODO
 
-- Vérifier expérimentalement les « core requirements » avec JAXB
-- Réaliser un cahier des charges 
+- Pour la semaine du 21/10/13 : vÃ©rifier  expÃ©rimentalement les ï¿½ï¿½core requirementsï¿½ï¿½ avec JAXB
+- Au plus tard pour la semaine du 28/10/13: Rï¿½aliser un cahier des charges 
 
 ** Cahier des charges
-C'est une version intermédiaire. Y faire figurer :
+C'est une version intermï¿½diaire. Y faire figurerï¿½:
 - L'objectif final
-- Les étapes intermédiaires définissant les différents sprints.
-- Les découper en 4 sprints ?
-- Développer une partie sur comment coder un intercepteur
-- Définir des rôles à chacun, pour permettre de mener des tâches en parallèle
-- Décrire l'algorithme permettant de convertir des schémas : algorithme de lifting. Permet de passer d'un sous type à un surtype. 
+- Les ï¿½tapes intermï¿½diaires dï¿½finissant les diffï¿½rents sprints.
+- Les dï¿½couper en 4 sprintsï¿½?
+- Dï¿½velopper une partie sur comment coder un intercepteur
+- Dï¿½finir des rï¿½les ï¿½ chacun, pour permettre de mener des tï¿½ches en parallï¿½le
+- Dï¿½crire l'algorithme permettant de convertir des schï¿½masï¿½: algorithme de lifting. Permet de passer d'un sous type ï¿½ un surtype. 
 
 
-* Informations diverses :
-- Une version améliorée du document de référence en anglais a été rédigée. Hervé Grall nous la transmettra sous peu.
-- Toujours rédiger un compte rendu des réunions  où figurent les TODO, et de l'avancement du projet.
+* Informations diversesï¿½:
+- Une version amï¿½liorï¿½e du document de rï¿½fï¿½rence en anglais a ï¿½tï¿½ rï¿½digï¿½e. Hervï¿½ Grall nous la transmettra sous peu.
+- Toujours rï¿½diger un compte rendu des rï¿½unions  oï¿½ figurent les TODO, et de l'avancement du projet.
