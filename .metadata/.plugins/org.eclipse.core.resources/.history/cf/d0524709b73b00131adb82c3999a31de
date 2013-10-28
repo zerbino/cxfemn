@@ -1,0 +1,11 @@
+package model;
+
+public class ServiceImpl implements Service {
+
+	@Override
+	public String op(Personne p) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
