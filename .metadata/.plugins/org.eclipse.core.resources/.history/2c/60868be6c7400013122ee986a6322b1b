@@ -1,0 +1,7 @@
+package model;
+
+public interface Service2 extends Service{
+	
+	public String op(Etudiant p);
+
+}

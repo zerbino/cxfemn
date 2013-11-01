@@ -1,0 +1,86 @@
+import java.util.*;
+
+import javax.xml.bind.*;
+import javax.xml.bind.util.*;
+import javax.xml.validation.*;
+
+import model.ObjectFactory;
+import model.Personne;
+
+import java.io.*;
+
+public class CoreRequirementTest {
+
+	protected static String SCHEMA = "personne";
+	protected static String REP = "documents";
+	protected static String FICHIER1 = "foo1.xml";
+	protected static String FICHIER2 = "foo2.xml";
+
+	public static Personne message(ObjectFactory fabrique, String texte,
+			int num, String langue) {
+		Message msg = fabrique.createMessage();
+		msg.setContenu(texte);
+		msg.setLangage(langue);
+		msg.setNumero(num);
+		return msg;
+	}
+
+	public static void traduireObjetDoc(
+			JAXBElement<ListeMessages> enveloppeMsgs, OutputStream out) {
+		try {
+			SchemaFactory factory = SchemaFactory
+					.newInstance("http://www.w3.org/2001/XMLSchema");
+			Schema schema = factory.newSchema(new File(REP + "/" + SCHEMA
+					+ ".xsd"));
+			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
+			Marshaller m = jc.createMarshaller();
+			m.setSchema(schema);
+			m.marshal(enveloppeMsgs, out);
+		} catch (Exception e) {
+			System.out
+					.println("*** problème de traduction objet vers document : "
+							+ e);
+		}
+	}
+
+	public static JAXBElement<ListeMessages> traduireDocObjet(InputStream in) {
+		JAXBElement<ListeMessages> doc = null;
+		try {
+			SchemaFactory factory = SchemaFactory
+					.newInstance("http://www.w3.org/2001/XMLSchema");
+			Schema schema = factory.newSchema(new File(REP + "/" + SCHEMA
+					+ ".xsd"));
+			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
+			Unmarshaller u = jc.createUnmarshaller();
+			u.setSchema(schema);
+			doc = (JAXBElement<ListeMessages>) (u.unmarshal(in));
+		} catch (Exception e) {
+			System.out.println("*** problème de traduction document vers objet : "
+					+ e);
+		}
+		return doc;
+	}
+
+	public static void main(String[] args) {
+		ObjectFactory fabrique = new ObjectFactory();
+		Personne p=new Person();
+		p.setNom("name");
+		p.setPrenom("surname");
+		ListeMessages msgs = fabrique.createPersonne();
+		msgs.getMessage().add(message(fabrique, "Bonjour, madame", 3, "fr"));
+		msgs.getMessage().add(message(fabrique, "Hey, you", 30, "en"));
+		System.out.println(msgs);
+		JAXBElement<ListeMessages> enveloppe = fabrique.createMessages(msgs);
+		try {
+			FileOutputStream out = new FileOutputStream(REP + "/" + FICHIER1);
+			traduireObjetDoc(enveloppe, out);
+			FileInputStream in = new FileInputStream(REP + "/" + FICHIER1);
+			enveloppe = traduireDocObjet(in);
+			System.out.println(enveloppe.getValue());
+			out = new FileOutputStream(REP + "/" + FICHIER2);
+			traduireObjetDoc(enveloppe, out);
+		} catch (FileNotFoundException e) {
+		}
+
+	}
+}

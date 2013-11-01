@@ -1,0 +1,7 @@
+package model;
+
+public interface Service2 {
+	
+	public String op(Etudiant p);
+
+}

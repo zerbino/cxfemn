@@ -1,0 +1,12 @@
+package model;
+
+public class Etudiant extends Personne {
+	protected String promo;
+	public Etudiant() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+}
