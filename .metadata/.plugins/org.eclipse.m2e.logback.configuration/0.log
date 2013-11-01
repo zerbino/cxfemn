@@ -1,4 +1,0 @@
-2013-10-29 18:46:53,128 [main] INFO  org.eclipse.jetty.server.Server - jetty-8.1.10.v20130312
-2013-10-29 18:46:53,568 [main] INFO  o.e.jetty.server.AbstractConnector - Started SelectChannelConnector@0.0.0.0:64375
-2013-10-30 10:10:02,993 [main] INFO  o.e.j.server.handler.ContextHandler - stopped o.e.j.s.ServletContextHandler{/wse,null}
-2013-10-30 10:10:03,344 [main] WARN  o.e.j.util.thread.QueuedThreadPool - 5 threads could not be stopped

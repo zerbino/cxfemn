@@ -1,3 +1,0 @@
-INDEX VERSION 1.126
-E:\Marti\cours\workspace\cxfemn\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3427516542.index
-\WebServiceProjectClient\src
