@@ -1,0 +1,18 @@
+#generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+#eclipse files 
+.metadata/
+RemoteSystemsTempFiles/
+README.md
+*.project
+.settings/
+*.classpath
+build/
+
+#java files
+*.class
