@@ -9,9 +9,9 @@ Please refer to the core requirement 4,  in "Substitution Principle in an Object
 Here we want to illustrate the fact that "The command generation and the composition of the schema compilation and generation commutes". 
 
 It means that
-EITHER generating a SOAP command from an object,then  generating a schema from it and getting the compilation of it back to an object instance;
-OR making the generation & compilation and then generating a SOAP command of this object
-WILL LEAD to the same result.
+- EITHER generating a SOAP command from an object,then  generating a schema from it and getting the compilation of it back to an object instance;
+- OR making the generation & compilation and then generating a SOAP command of this object
+- WILL LEAD to the same result.
 
 You can see an example of it in SOAPCoreRequirement4\src\CoreRequirementTest.java .
 
