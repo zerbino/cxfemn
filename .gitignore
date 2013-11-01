@@ -13,6 +13,7 @@ README.md
 .settings/
 *.classpath
 build/
+*.settings
 
 #java files
 *.class
