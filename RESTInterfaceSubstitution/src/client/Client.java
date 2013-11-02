@@ -15,6 +15,7 @@ public class Client {
 		substituedInterface.setPrenom("Alex");
 		substituedInterface.setPrenom("A3");
 		String _op__return = serv.op(substituedInterface);
+		
 		System.out.println("op.result=" + _op__return);
 		
 	}
