@@ -5,15 +5,11 @@ import model.Personne;
 import utile.UniformementRepresentable;
 
 
-public class CoreRequirementTest6 extends Test{
-
-	protected static String SCHEMA = "model";
-	protected static String REP = "documents";
-	protected static String FICHIER1 = "CoreRequirement6.xml";
-	
+public class CoreRequirementTest6{
 	public static void main(String[] args) {
+		Test t=new Test("model","documents","CoreRequirement6.xml",null);
 		ObjectFactory fabrique = new ObjectFactory();
-		Personne A=personne("Carl", "Johnson");
+		Personne A=t.personne("Carl", "Johnson");
 		
 		//createPersonne is our embedding function
 		JAXBElement<Personne> Fa = fabrique.createPersonne(A);

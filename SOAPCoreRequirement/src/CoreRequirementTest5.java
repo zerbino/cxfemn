@@ -8,17 +8,14 @@ import model.ObjectFactory;
 import model.Personne;
 import utile.UniformementRepresentable;
 
-public class CoreRequirementTest5 extends Test{
+public class CoreRequirementTest5{
 
-	protected static String SCHEMA = "model";
-	protected static String REP = "documents";
-	protected static String FICHIER1 = "CoreRequirement5-1.xml";
-	protected static String FICHIER2 = "CoreRequirement5-2.xml";
-	
 	public static void main(String[] args) {
+		Test t=new Test("model","documents","CoreRequirement5-1.xml","CoreRequirement5-2.xml");
+	
 		ObjectFactory fabrique = new ObjectFactory();
-		Personne A=personne("Carl", "Johnson");
-		Personne B=personne("Carl", "Test");
+		Personne A=t.personne("Carl", "Johnson");
+		Personne B=t.personne("Carl", "Test");
 		
 		JAXBElement<Personne> Fa = fabrique.createPersonne(A);
 		JAXBElement<Personne> Fb = fabrique.createPersonne(B);
