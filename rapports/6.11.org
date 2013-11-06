@@ -2,5 +2,13 @@
 
 * Rencontre du groupe pendant la séance de projet d'option, autour de :
 - La finalisation de l'implémentation pour illustrer les core requirements
-- La finalisation du cahier des charges
 - La finalisation des comptes rendus de bugs (core requirements) 
+- Avancement du cahier des charges : partie "améliorations à apporter"
+- Recherche de documentation sur le "tree inclusion problem"
+
+* TODO
+- Lire la documentation sur le tree inclusion problem
+- Définir des sprints après le rendez vous avec Hervé Grall (le
+  travail à faire reste à définir)+ les ajouter au cahier des charges
+- Ecrire la partie 2.2.2 pour rendre compte des tests faits sur CXF
+  2.7.2 en RESTful (Grégoire)
