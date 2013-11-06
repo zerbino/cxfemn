@@ -1,0 +1,6 @@
+#+title:Rapport d'activités du 6 novembre 2011
+
+* Rencontre du groupe pendant la séance de projet d'option, autour de :
+- La finalisation de l'implémentation pour illustrer les core requirements
+- La finalisation du cahier des charges
+- La finalisation des comptes rendus de bugs (core requirements) 
