@@ -32,29 +32,24 @@ public class CoreRequirementTest4 extends Test{
 	**/
 	public static void main(String[] args) {
 		ObjectFactory fabrique = new ObjectFactory();
-		Personne p = personne("Carl", "Johnson");
-		try {
-
+		Personne p=personne("Carl", "Johnson");
+		try{
+			
 			JAXBElement<Personne> enveloppe1 = fabrique.createPersonne(p);
 			FileOutputStream out = new FileOutputStream(REP + "/" + FICHIER1);
 			marshall(enveloppe1, out);
 			FileInputStream in = new FileInputStream(REP + "/" + FICHIER1);
 			Object CGFp = unmarshall(in);
-
+			
 			out = new FileOutputStream(REP + "/" + FICHIER2);
 			marshall(p, out);
 			in = new FileInputStream(REP + "/" + FICHIER2);
 			Object FCGp = unmarshall(in);
-
-			System.out.println("CGFp: "
-					+ UniformementRepresentable.toString(new StringBuilder(),
-							((JAXBElement<?>) (CGFp)).getValue()));
-			System.out.println("FCGp: "
-					+ UniformementRepresentable.toString(new StringBuilder(),
-							((JAXBElement<?>) (FCGp)).getValue()));
-			System.out.println("Are these objects equal? "
-					+ UniformementRepresentable.equals(CGFp, FCGp));
-
+			
+			System.out.println("CGFp: "+UniformementRepresentable.toString(new StringBuilder(), ((JAXBElement<?>) (CGFp)).getValue()));
+			System.out.println("FCGp: "+UniformementRepresentable.toString(new StringBuilder(),((JAXBElement<?>) (FCGp)).getValue()));
+			System.out.println("Are these objects equal? "+UniformementRepresentable.equals(CGFp,FCGp));
+			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

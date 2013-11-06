@@ -16,6 +16,7 @@ public class CoreRequirementTest4 extends Test{
 	protected static String REP = "documents";
 	protected static String FICHIER1 = "CGFp.xml";
 	protected static String FICHIER2 = "FCGp.xml";
+<<<<<<< HEAD:SOAPCoreRequirement4-5/src/CoreRequirementTest4.java
 	
 	/** We want to illustrate here the fact that "The command
 	generation and the composition of the schema compilation
@@ -30,6 +31,70 @@ public class CoreRequirementTest4 extends Test{
 	
 	
 	**/
+=======
+
+	public static Personne personne(String firstname, String lastname) {
+		Personne p = new Personne();
+		p.setNom(lastname);
+		p.setPrenom(firstname);
+		return p;
+	}
+
+	public static void marshall(Object o, OutputStream out) {
+		try {
+			SchemaFactory factory = SchemaFactory
+					.newInstance("http://www.w3.org/2001/XMLSchema");
+			Schema schema = null;
+			try {
+				schema = factory
+						.newSchema(new File(REP + "/" + SCHEMA + ".xsd"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				return;
+			}
+			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
+			Marshaller m = jc.createMarshaller();
+			m.setSchema(schema);
+			m.marshal(o, out);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static Object unmarshall(InputStream in) {
+		Object doc = null;
+		try {
+			SchemaFactory factory = SchemaFactory
+					.newInstance("http://www.w3.org/2001/XMLSchema");
+			Schema schema = null;
+			try {
+				schema = factory
+						.newSchema(new File(REP + "/" + SCHEMA + ".xsd"));
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			}
+			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
+			Unmarshaller u = jc.createUnmarshaller();
+			u.setSchema(schema);
+			doc = u.unmarshal(in);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return doc;
+	}
+
+	/**
+	 * We want to illustrate here the fact that "The command generation and the
+	 * composition of the schema compilation and generation commutes". It means
+	 * EITHER generating a SOAP command from an object, then generating a schema
+	 * from it and getting the compilation of it back to an object instance; OR
+	 * making the generation & compilation and then generating a SOAP command of
+	 * this object WILL LEAD to the same result. (core requirement 4, in The
+	 * Substitution Principle in an Object-Oriented Framework for Web Services:
+	 * From Failure to Success, p8)
+	 **/
+>>>>>>> 0051db15446307ade7aa1f33f25a9e54a9edab34:SOAPCoreRequirement4/src/CoreRequirementTest.java
 	public static void main(String[] args) {
 		ObjectFactory fabrique = new ObjectFactory();
 		Personne p = personne("Carl", "Johnson");
