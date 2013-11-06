@@ -10,8 +10,8 @@ public class Client {
 		Service serv = JAXRSClientFactory.create(
 				"http://localhost:8080/RESTValueSubstitution", Service.class);
 		
-		Personne substituedValue = new Personne();
-		//Personne substituedValue = new Etudiant();
+		//Personne substituedValue = new Personne();
+		Personne substituedValue = new Etudiant();
 		substituedValue.setNom("Terieur");
 		substituedValue.setPrenom("Alex");
 		String _op__return = serv.op(substituedValue);
