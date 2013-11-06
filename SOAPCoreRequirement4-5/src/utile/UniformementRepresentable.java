@@ -14,7 +14,7 @@ public class UniformementRepresentable {
 				f[i].setAccessible(true);
 				String sep = ((i+1) < f.length)? "; " : ""; 
 				if(f[i].get(obj)!=obj){
-					if(!f[i].get(obj).getClass().isPrimitive()&&!isWrapperType(f[i].get(obj).getClass())){
+					if(f[i].get(obj)!=null&&!f[i].get(obj).getClass().isPrimitive()&&!isWrapperType(f[i].get(obj).getClass())){
 						sb=new StringBuilder("[ "+f[i].getType().getSimpleName()+" " +f[i].getName()+toString(sb,f[i].get(obj))+" ]");
 					}
 					else{
@@ -45,7 +45,7 @@ public class UniformementRepresentable {
 			for (int j = 0; j < f2.length; j++) {
 				f2[j].setAccessible(true);
 				try {
-					if(f1[i].get(obj1)!=obj1&&f2[j].get(obj2)!=obj2){
+					if(f1[i].get(obj1)!=null&&f2[j].get(obj2)!=null&&f1[i].get(obj1)!=obj1&&f2[j].get(obj2)!=obj2){
 						if(f1[i].getName().equals(f2[j].getName())){
 							if(!f1[i].get(obj1).getClass().isPrimitive()&&!isWrapperType(f1[i].get(obj1).getClass())||!f2[j].get(obj2).getClass().isPrimitive()&&!isWrapperType(f2[j].get(obj2).getClass())){
 								if(equals(f1[i].get(obj1),f2[j].get(obj2))){

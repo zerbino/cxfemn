@@ -10,67 +10,13 @@ import model.Personne;
 
 import java.io.*;
 
-public class CoreRequirementTest {
+public class CoreRequirementTest4 extends Test{
 
 	protected static String SCHEMA = "model";
 	protected static String REP = "documents";
 	protected static String FICHIER1 = "CGFp.xml";
 	protected static String FICHIER2 = "FCGp.xml";
-
-	public static Personne personne(String firstname,
-			 String lastname) {
-		Personne p = new Personne();
-		p.setNom(lastname);
-		p.setPrenom(firstname);
-		return p;
-	}
-
-	public static void marshall(
-			Object o, OutputStream out) {
-		try {
-			SchemaFactory factory = SchemaFactory
-					.newInstance("http://www.w3.org/2001/XMLSchema");
-			Schema schema =null;
-			try {
-				schema = factory.newSchema(new File(REP + "/" + SCHEMA
-						+ ".xsd"));
-			}
-			catch(Exception e){
-				e.printStackTrace();
-				return;
-			}
-			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
-			Marshaller m = jc.createMarshaller();
-			m.setSchema(schema);
-			m.marshal(o, out);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public static Object unmarshall(InputStream in) {
-		Object doc = null;
-		try {
-			SchemaFactory factory = SchemaFactory
-					.newInstance("http://www.w3.org/2001/XMLSchema");
-			Schema schema =null;
-			try {
-				schema = factory.newSchema(new File(REP + "/" + SCHEMA
-						+ ".xsd"));
-			}
-			catch(Exception e){
-				e.printStackTrace();
-				return null;
-			}
-			JAXBContext jc = JAXBContext.newInstance(SCHEMA);
-			Unmarshaller u = jc.createUnmarshaller();
-			u.setSchema(schema);
-			doc =  u.unmarshal(in);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return doc;
-	}
+	
 	/** We want to illustrate here the fact that "The command
 	generation and the composition of the schema compilation
 	and generation commutes". 
