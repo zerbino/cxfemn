@@ -10,13 +10,8 @@ import model.Personne;
 
 import java.io.*;
 
-public class CoreRequirementTest4 extends Test{
+public class CoreRequirementTest4{
 
-	protected static String SCHEMA = "model";
-	protected static String REP = "documents";
-	protected static String FICHIER1 = "CGFp.xml";
-	protected static String FICHIER2 = "FCGp.xml";
-	
 	/** We want to illustrate here the fact that "The command
 	generation and the composition of the schema compilation
 	and generation commutes". 
@@ -31,20 +26,21 @@ public class CoreRequirementTest4 extends Test{
 	
 	**/
 	public static void main(String[] args) {
+		Test t=new Test("model","documents","CGFp.xml","FCGp.xml");
 		ObjectFactory fabrique = new ObjectFactory();
-		Personne p = personne("Carl", "Johnson");
+		Personne p = t.personne("Carl", "Johnson");
 		try {
-
+			System.out.println(UniformementRepresentable.toString(new StringBuilder(), p));
 			JAXBElement<Personne> enveloppe1 = fabrique.createPersonne(p);
-			FileOutputStream out = new FileOutputStream(REP + "/" + FICHIER1);
-			marshall(enveloppe1, out);
-			FileInputStream in = new FileInputStream(REP + "/" + FICHIER1);
-			Object CGFp = unmarshall(in);
+			FileOutputStream out = new FileOutputStream(t.REP + "/" + t.FICHIER1);
+			t.marshall(enveloppe1, out);
+			FileInputStream in = new FileInputStream(t.REP + "/" + t.FICHIER1);
+			Object CGFp = t.unmarshall(in);
 
-			out = new FileOutputStream(REP + "/" + FICHIER2);
-			marshall(p, out);
-			in = new FileInputStream(REP + "/" + FICHIER2);
-			Object FCGp = unmarshall(in);
+			out = new FileOutputStream(t.REP + "/" + t.FICHIER2);
+			t.marshall(p, out);
+			in = new FileInputStream(t.REP + "/" + t.FICHIER2);
+			Object FCGp = t.unmarshall(in);
 
 			System.out.println("CGFp: "
 					+ UniformementRepresentable.toString(new StringBuilder(),

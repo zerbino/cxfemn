@@ -12,12 +12,21 @@ import java.io.*;
 
 public class Test {
 
-	protected static String SCHEMA;
-	protected static String REP;
-	protected static String FICHIER1;
-	protected static String FICHIER2;
+	protected String SCHEMA;
+	protected String REP;
+	protected String FICHIER1;
+	protected String FICHIER2;
+	
+	public Test(String sCHEMA, String rEP, String fICHIER1,
+			String fICHIER2) {
+		super();
+		SCHEMA = sCHEMA;
+		REP = rEP;
+		FICHIER1 = fICHIER1;
+		FICHIER2 = fICHIER2;
+	}
 
-	public static Personne personne(String firstname,
+	public Personne personne(String firstname,
 			 String lastname) {
 		Personne p = new Personne();
 		p.setNom(lastname);
@@ -25,7 +34,7 @@ public class Test {
 		return p;
 	}
 
-	public static void marshall(
+	public void marshall(
 			Object o, OutputStream out) {
 		try {
 			SchemaFactory factory = SchemaFactory
@@ -48,7 +57,7 @@ public class Test {
 		}
 	}
 
-	public static Object unmarshall(InputStream in) {
+	public Object unmarshall(InputStream in) {
 		Object doc = null;
 		try {
 			SchemaFactory factory = SchemaFactory

@@ -20,6 +20,9 @@ public class UniformementRepresentable {
 					if(f[i].get(obj)!=null&&!f[i].get(obj).getClass().isPrimitive()&&!isWrapperType(f[i].get(obj).getClass())){
 						sb=new StringBuilder("[ "+f[i].getType().getSimpleName()+" " +f[i].getName()+toString(sb,f[i].get(obj))+" ]");
 					}
+					else {
+						sb.append(f[i].getName() + " = " + f[i].get(obj) + " ");
+					}
 				} else {
 					sb.append(f[i].getName() + " = this ");
 				}
