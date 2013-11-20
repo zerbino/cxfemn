@@ -15,6 +15,7 @@ README.md
 *.classpath
 build/
 *.settings
+Servers/
 
 #java files
 *.class

@@ -5,9 +5,9 @@ import javax.ws.rs.core.MediaType;
 
 @Path("/rest")
 public interface Service {
-	@GET
+	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(@QueryParam("") Personne p);
+	public String op(Personne p);
 
 }

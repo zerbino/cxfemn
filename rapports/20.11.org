@@ -1,0 +1,36 @@
+* Cahier des charges :
+- division entre REST et SOAP
+- Deux sprints de deux semaines démarrant lundi 25 :
+- Premier sprint : 
+Résolution du problème avec un lifting simple. Fonctionnant avec des
+exemples
+simples, dont on connait la solution.
+- Second sprint :
+Soit une amélioration, soit une solution pour le cas SOAP
+
+
+* Division du travail dans l'équipe :
+- Une équipe qui fait l'infrastructure service, utilisant les filtres
+  ou les intercepteurs.
+- L'autre qui réfléchit à l'algorithme pour avoir l'implémentation
+
+
+* Elements sur la résolution 
+2 possibilités : 
+- avec intercepteur
+- avec filtre :
+intervient dans la couche HTTP. Permet de s'abstraire de CXF. 
+Car le filtre fonctionne avec tout standard JAX-RS.Possibilité de
+rajouter
+les filtres programmatiquement ou par le web.xml
+
+Utiliser le cookbook du cours de REST. Il y a un chapitre là dessus. 
+
+* TODO :
+- Mettre le cahier des charges en ligne (PDF)
+- Mise à jour du cahier des charges pour lundi avec les sprints
+
+
+* Prochaine réunion :
+
+13h30 mercredi 27
