@@ -22,7 +22,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-import sun.tools.tree.ThisExpression;
+
 
 public class XSDLifter {
 
@@ -49,10 +49,10 @@ public class XSDLifter {
 	}
 	public static Document getDOMTree(String xmlFile){
 		try {
-			// création d'une fabrique de documents
+			// crï¿½ation d'une fabrique de documents
 			DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
 
-			// création d'un constructeur de documents
+			// crï¿½ation d'un constructeur de documents
 			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
 
 			// lecture du contenu d'un fichier XML avec DOM
@@ -95,7 +95,7 @@ public class XSDLifter {
 		return i;
 	}
 	protected void treeInclusion(Document received){
-		//ajouter un algo de recherche de la classe adéquate
+		//ajouter un algo de recherche de la classe adï¿½quate
 		Document expected=getDOMTree("documents/personne");
 		if(treeSize(expected,0)!=treeSize(expected,0)){
 			
