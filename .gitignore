@@ -8,12 +8,15 @@
 #eclipse files 
 .metadata/
 RemoteSystemsTempFiles/
+Servers/
 README.md
 *.project
 .settings/
 *.classpath
 build/
 *.settings
+Servers/
 
 #java files
 *.class
+

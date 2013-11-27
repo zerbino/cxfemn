@@ -2,9 +2,6 @@ package client;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-import rest.Personne;
-import rest.Service;
-
 public class Client {
 	public static void main(String args[]) {
 		ServiceE serv = JAXRSClientFactory.create(
