@@ -8,6 +8,6 @@ public interface ServiceE {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(@QueryParam("") Etudiant e);
+	public String op(Etudiant e);
 
 }

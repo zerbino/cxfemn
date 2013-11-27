@@ -11,9 +11,11 @@ public class Client {
 				"http://localhost:8080/RESTValueSubstitution", Service.class);
 		
 		//Personne substituedValue = new Personne();
-		Personne substituedValue = new Etudiant();
+		Etudiant substituedValue = new Etudiant();
 		substituedValue.setNom("Terieur");
 		substituedValue.setPrenom("Alex");
+
+		substituedValue.setPromo("test");
 		String _op__return = serv.op(substituedValue);
 		System.out.println("op.result=" + _op__return);
 		
