@@ -1,0 +1,7 @@
+cxfRuntimeLocations=/opt/apache-cxf-2.7.7
+cxfRuntimeTypes=Apache CXF
+cxfRuntimeVersions=2.7.7
+defaultRuntimeLocation=/opt/apache-cxf-2.7.7
+defaultRuntimeType=Apache CXF
+defaultRuntimeVersion=2.7.7
+eclipse.preferences.version=1
