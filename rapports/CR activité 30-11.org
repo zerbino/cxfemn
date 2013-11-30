@@ -1,0 +1,8 @@
+Compte rendu des activités de la journée du 28-11
+
+Groupe séparé en deux équipes :
+
+- Hao et Kévin sur l'algorithme de lifting :
+ * début d'implémentation de l'algorithme
+- Raphaël et Grégoire sur les filtres :
+ * lecture de la documentation sur les filtres JAX-RS

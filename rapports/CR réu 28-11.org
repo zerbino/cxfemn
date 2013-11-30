@@ -1,0 +1,25 @@
+* Réunion avec Hervé Grall
+Participants : Hervé Grall, Hao Zhang, Kévin Llopart, Grégoire
+Séguin-Henry, Raphaël Martignoni
+
+** Division du travail 
+En groupes de 2 : 
+- Un groupe travaillant sur la partie algorithmique
+- Un autre sur les filtres
+
+** La technologie des filtres
+Les filtres sont un standard JAX-RS, contrairement aux intercepteurs
+qui sont eux un outil de CXF. Utiliser les filtres permet donc de
+construire une solution générale pouvant être utilisée dans d'autres
+frameworks implémentant JAX-RS. Les filtres interceptent les requêtes
+HTTP lors de requêtes du client ou de réponses du serveur. 
+
+** Partie algorithmique
+Utilisation de l'algorithme de lifting. Deux possibilités :
+- Utilisation de la librairie SAX ou DOM de java. Parcours du XML puis reformation
+- Utilisation du WADL (dans le cas REST). Création d'un schéma permettant d'accepter des formats d'objets plus généraux.
+
+** Prochaine réunion le lundi 2 décembre à 16h
+
+** TODO : 
+-  lecture du cookbook et pull du code de Hervé Grall sur l'implémentation des filtres
