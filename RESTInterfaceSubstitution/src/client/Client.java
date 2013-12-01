@@ -12,7 +12,7 @@ public class Client {
 		Etudiant substituedInterface = new Etudiant();
 		substituedInterface.setNom("Terieur");
 		substituedInterface.setPrenom("Alex");
-		substituedInterface.setPrenom("A3");
+		substituedInterface.setPromo("A3");
 		String _op__return = serv.op(substituedInterface);
 		
 		System.out.println("op.result=" + _op__return);

@@ -10,6 +10,7 @@ package models;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
 
@@ -42,6 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlSeeAlso({
     Etudiant.class
 })
+@XmlRootElement (name = "personne")
 public class Personne {
 
     protected String nom;
