@@ -1,5 +1,7 @@
 package client;
 
+import models.Etudiant;
+
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
 public class Client {
