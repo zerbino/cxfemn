@@ -1,5 +1,7 @@
 package rest;
 
+import models.Personne;
+
 public class ServiceImpl implements Service {
 
 	@Override

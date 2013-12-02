@@ -3,6 +3,8 @@ package rest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import models.Personne;
+
 @Path("/rest")
 public interface Service {
 	@POST

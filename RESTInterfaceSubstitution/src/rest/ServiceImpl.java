@@ -1,5 +1,9 @@
 package rest;
 
+import org.apache.cxf.interceptor.InInterceptors;
+
+import models.Personne;
+@InInterceptors(interceptors = {"interceptors.ServerInterceptor"})
 public class ServiceImpl implements Service {
 
 	@Override
