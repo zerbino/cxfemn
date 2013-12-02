@@ -3,6 +3,8 @@ package rest;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.cxf.interceptor.InInterceptors;
+
 import models.Personne;
 
 @Path("/rest")
