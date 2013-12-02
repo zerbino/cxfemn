@@ -19,7 +19,7 @@ http://cxf.apache.org/core
 	<import resource="classpath:META-INF/cxf/cxf.xml" />
 	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
 
-	<jaxrs:server id="RestValueSubstitution" address="/">
+	<jaxrs:server id="RestInterfaceSubstitution" address="/">
 		<jaxrs:serviceBeans>
 			<ref bean="service" />
 		</jaxrs:serviceBeans>
