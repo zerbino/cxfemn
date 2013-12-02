@@ -1,8 +1,26 @@
-Compte rendu des activités de la journée du 28-11
+Compte rendu des activitÃ©s de la journÃ©e du 28-11
 
-Groupe séparé en deux équipes :
+Groupe sÃ©parÃ© en deux Ã©quipes :
 
-- Hao et Kévin sur l'algorithme de lifting :
- * début d'implémentation de l'algorithme
-- Raphaël et Grégoire sur les filtres :
+- Hao et KÃ©vin sur l'algorithme de lifting :
+ * dÃ©but d'implÃ©mentation de l'algorithme
+- RaphaÃ«l et GrÃ©goire sur les filtres :
  * lecture de la documentation sur les filtres JAX-RS
+
+Liens sur les filtres :
+
+Un exemple dâ€™utilisation sur stackoverflow :
+http://stackoverflow.com/questions/9179375/servlet-filter-vs-cxf-interceptor-for-modifying-request-response-content
+
+api CXF sur les filtres :
+http://cxf.apache.org/javadoc/latest/index.html?org/apache/cxf/jaxrs/ext/RequestHandler.html
+
+doc CXF sur les filtres :
+http://cxf.apache.org/docs/jax-rs-filters.html
+
+doc JAXRS sur les filtres :
+https://java.net/projects/jax-rs-spec/pages/InterceptorsAndFilters
+
+Doc IBM sur les filtres :
+http://pic.dhe.ibm.com/infocenter/wasinfo/v8r0/index.jsp?topic=%2Fcom.ibm.websphere.nd.doc%2Finfo%2Fae%2Fae%2Ftwbs_jaxrs_configwebxml_jrsfilters.html
+
