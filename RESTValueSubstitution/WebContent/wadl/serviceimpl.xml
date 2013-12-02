@@ -3,11 +3,18 @@
 	<grammars>
 		<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
 			attributeFormDefault="unqualified" elementFormDefault="unqualified">
+			<xs:element name="animal" type="animal" />
 			<xs:element name="personne" type="personne" />
 			<xs:complexType name="personne">
 				<xs:sequence>
 					<xs:element minOccurs="0" name="nom" type="xs:string" />
 					<xs:element minOccurs="0" name="prenom" type="xs:string" />
+				</xs:sequence>
+			</xs:complexType>
+			<xs:complexType name="animal">
+				<xs:sequence>
+					<xs:element minOccurs="0" name="pseudo" type="xs:string" />
+					<xs:element minOccurs="0" name="sex" type="xs:string" />
 				</xs:sequence>
 			</xs:complexType>
 		</xs:schema>
@@ -26,7 +33,18 @@
 					</response>
 				</method>
 			</resource>
+			<resource path="/pseudo">
+				<method name="POST">
+					<request>
+						<representation mediaType="application/octet-stream" />
+					</request>
+					<response>
+						<representation mediaType="application/xml">
+							<param name="result" style="plain" type="xs:string" />
+						</representation>
+					</response>
+				</method>
+			</resource>
 		</resource>
 	</resources>
 </application>
-
