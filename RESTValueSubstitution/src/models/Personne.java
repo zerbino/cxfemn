@@ -40,9 +40,6 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "prenom"
 })
-@XmlSeeAlso({
-    Etudiant.class
-})
 @XmlRootElement (name = "personne")
 public class Personne {
 
