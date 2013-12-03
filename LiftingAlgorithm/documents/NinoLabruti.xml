@@ -1,1 +1,6 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><personne><nom>Labruti</nom><prenom>Nino</prenom><promo>Alien</promo></personne>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<etudiant>
+	<nom>Labruti</nom>
+	<prenom>Nino</prenom>
+	<promo>Alien</promo>
+</etudiant>

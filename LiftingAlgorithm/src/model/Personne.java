@@ -40,10 +40,10 @@ import javax.xml.bind.annotation.XmlType;
     "nom",
     "prenom"
 })
-@XmlSeeAlso({
+/*@XmlSeeAlso({
     Etudiant.class
-})
-@XmlRootElement()
+})*/
+@XmlRootElement
 public class Personne {
 
     protected String nom;
