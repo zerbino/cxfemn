@@ -29,7 +29,6 @@ public class ServiceImpl implements Service {
 			writer.println(UniformementRepresentable.toString(new StringBuilder(), p));
 			writer.close();
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
