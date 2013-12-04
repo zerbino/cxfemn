@@ -23,12 +23,18 @@ http://cxf.apache.org/core
 		<jaxrs:serviceBeans>
 			<ref bean="servicePersonne" />
 		</jaxrs:serviceBeans>
+		 <jaxrs:providers>
+	      <ref bean="filtreTest" />
+	    </jaxrs:providers>
 		<jaxrs:features>
 			<cxf:logging />
 		</jaxrs:features>
 
 	</jaxrs:server>
+	
 
 	<bean id="servicePersonne" class="serveur.ServiceImp" />
+	<bean id="filtreTest" class="filter.NameFilter" />
+	
 </beans>
 

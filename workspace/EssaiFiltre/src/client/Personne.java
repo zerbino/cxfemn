@@ -31,6 +31,8 @@ public class Personne {
 		this.prenom = prenom;
 	}
 	
-	
+	public String toString(){
+		return this.getNom()+" "+this.getPrenom();
+	}
 
 }

@@ -11,7 +11,7 @@ public class Client {
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/EssaiFiltre",
 				Service.class);
-		System.out.println(service.getPersonne());
+		System.out.println(service.getPersonne().getEntity().getClass());
 	}
 
 }
