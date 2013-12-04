@@ -24,7 +24,12 @@ http://cxf.apache.org/core
 			<cxf:logging />
 		</jaxrs:features>
 
+		<jaxrs:providers>
+			<ref bean="ClientRequestFilter" />
+		</jaxrs:providers>
 	</jaxrs:server>
 	<bean id="Service" class="model.ServiceImpl" />
-
+	<bean id="ClientRequestFilter" class="filter.ClientRequestFilter">
+		<!-- authorization bean properties -->
+	</bean>
 </beans>

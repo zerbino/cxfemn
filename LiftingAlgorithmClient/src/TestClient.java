@@ -8,6 +8,10 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 
 
+
+
+import utile.UniformementRepresentable;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -81,7 +85,8 @@ public class TestClient {
 		HttpResponse response = client.execute(post);
 		System.out.println("Response Code : " 
 	                + response.getStatusLine().getStatusCode());
-	 
+		System.out.println("Headers: " 
+                + response.getHeaders("Kevin modified this f****** header!")[0]);
 		BufferedReader rd = new BufferedReader(
 		        new InputStreamReader(response.getEntity().getContent()));
 	 
