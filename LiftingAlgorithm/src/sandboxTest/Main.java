@@ -5,7 +5,7 @@ import javax.xml.bind.*;
 import javax.xml.bind.util.*;
 import javax.xml.validation.*;
 
-import ServerLifter.Lifter;
+import serverLifter.Lifter;
 import utile.UniformementRepresentable;
 import model.Etudiant;
 import model.ObjectFactory;

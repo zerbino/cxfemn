@@ -19,7 +19,8 @@ public class ServiceImpl implements Service {
 	public String op(Personne p) {
 		PrintWriter writer;
 		try {
-			String path = getClass().getClassLoader().getResource(".").getPath()+"/documents/database.txt";
+			//path correspond au répertoire d'installation de tomcat
+			String path = getClass().getClassLoader().getResource(".").getPath()+"FAKEdatabase.txt";
 			File f = new File(path);
 			if(!f.exists()) {
 				f.getParentFile().mkdirs();
@@ -28,6 +29,8 @@ public class ServiceImpl implements Service {
 			writer.println("Incoming request for: ");
 			writer.println(UniformementRepresentable.toString(new StringBuilder(), p));
 			writer.close();
+			System.out.println(path);
+			System.out.println(UniformementRepresentable.toString(new StringBuilder(), p));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

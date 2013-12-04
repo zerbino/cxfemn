@@ -1,4 +1,4 @@
-package ServerLifter;
+package serverLifter;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -133,29 +133,29 @@ public class Lifter {
 					//unless we manage to get every class within the current project.
 					//Class.forName(received.getChildNodes().item(i).getNodeName()).asSubclass(service.getParameterTypes()[i]);
 					received.renameNode(received.getChildNodes().item(i), "", service.getParameterTypes()[i].getSimpleName());
-					received=(Document) eraseExtraFields(received.getChildNodes().item(i),service.getParameterTypes()[i]);
+					eraseExtraFields(received.getChildNodes().item(i),service.getParameterTypes()[i]);
 					
 				}
 				catch(Exception e){
-
+					System.out.println(e.toString());
 					return;
 				}
 			}
 		}
-		System.out.println(convertDocumentToString(received));
 	}
 	protected Node eraseExtraFields(Node received, Class<?> class1) {
 		Field[] f = class1.getDeclaredFields();
+		System.out.println("noeuds pere: "+convertDocumentToString(received));
 		boolean b;
-		for(int i=0;i<received.getChildNodes().getLength();i++){
+		for(int i=received.getChildNodes().getLength()-1;i>=0;i--){
 			b=true;
-			for(int j=0;j<f.length;j++){
+			for(int j=f.length-1;j>=0;j--){
 				if(f[j].getName().equals(received.getChildNodes().item(i).getNodeName())){
 					b=false;
 				}
 			}
 			if(b){
-				received.removeChild(received.getChildNodes().item(i));
+				System.out.println("noeud effacé"+convertDocumentToString(received.getChildNodes().item(i).getParentNode().removeChild(received.getChildNodes().item(i))));
 			}
 		}
 		return received;
