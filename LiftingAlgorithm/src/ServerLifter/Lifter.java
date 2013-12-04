@@ -1,7 +1,10 @@
 package ServerLifter;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -20,9 +23,11 @@ import javax.xml.validation.SchemaFactory;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+import org.xml.sax.InputSource;
+
 import utile.UniformementRepresentable;
 
-public class XSDLifter {
+public class Lifter {
 	/** Utilities**/
 	public static String metaSchema;
 
@@ -46,16 +51,30 @@ public class XSDLifter {
 	}
 	public static Document getDOMTree(String xmlFile){
 		try {
-			// création d'une fabrique de documents
+			// crï¿½ation d'une fabrique de documents
 			DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
 
-			// création d'un constructeur de documents
+			// crï¿½ation d'un constructeur de documents
 			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
 
 			// lecture du contenu d'un fichier XML avec DOM
 			File xml = new File(xmlFile);
 
 			return constructeur.parse(xml);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}public static Document getDOMTree(InputStream in){
+		try {
+			// crï¿½ation d'une fabrique de documents
+			DocumentBuilderFactory fabrique = DocumentBuilderFactory.newInstance();
+
+			// crï¿½ation d'un constructeur de documents
+			DocumentBuilder constructeur = fabrique.newDocumentBuilder();
+
+
+			return constructeur.parse(new InputSource(in));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -162,7 +181,7 @@ public class XSDLifter {
 	}
 	
 	//normally lift should directly receive an xml file
-	protected Document Lift(Document doc){
+	public Document Lift(Document doc){
 		//TODO
 		System.out.println("Before: "+convertDocumentToString(doc));
 		//we should get the method name in webinf
@@ -171,8 +190,20 @@ public class XSDLifter {
 		return doc;
 	}
 	//Add the HTTP request content as parameter
-	public Document HTTPAdapter(){
-		return Lift(getDOMTree("documents/NinoLabruti.xml"));
+	public InputStream HTTPAdapter(InputStream i){
+		Document d=Lift(getDOMTree(i));
+		
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+		Source xmlSource = new DOMSource(d);
+		Result outputTarget = new StreamResult(outputStream);
+		try {
+			TransformerFactory.newInstance().newTransformer().transform(xmlSource, outputTarget);
+		} catch (TransformerException
+				| TransformerFactoryConfigurationError e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return new ByteArrayInputStream(outputStream.toByteArray());
 	}
 	/** Lifting **/
 }

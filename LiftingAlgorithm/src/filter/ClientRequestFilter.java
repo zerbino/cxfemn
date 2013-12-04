@@ -25,6 +25,6 @@ public class ClientRequestFilter implements ContainerRequestFilter,ContainerResp
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
 			throws IOException {
 
-		responseContext.getHeaders().add("Kevin modified this f****** header!","Hell yeah!");
+		responseContext.getHeaders().add("Kevin modified this f****** header!","Thanks to the ContainerResponseFilter, of course.");
 	}
 }

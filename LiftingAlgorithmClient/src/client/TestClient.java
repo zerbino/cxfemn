@@ -1,8 +1,10 @@
+package client;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+
 
 
 
@@ -24,6 +26,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
+import model.Etudiant;
 import model.Personne;
 
 
@@ -66,9 +69,10 @@ public class TestClient {
 	
 	public static void main(String[] args) throws Exception {
 
-		Personne p= new Personne();
-		p.setNom("Il est tard");
+		Etudiant p= new Etudiant();
+		p.setNom("J'ai pu acceder au service tout en etant un etudiant grace a ReaderInterceptor");
 		p.setPrenom("Kevin en a marre...");
+		p.setPromo("gsi");
 		String xml=marshall(p);
 		
 		String url = "http://localhost:8080/LiftingAlgorithm/rest/op";
