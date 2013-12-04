@@ -10,10 +10,10 @@
 RemoteSystemsTempFiles/
 Servers/
 README.md
-*.project
-#we should let the 2 following ones because they are useful
-#.settings/
-#*.classpath
+*.classpath
+.settings/
+#we should let the following one because it is useful
+#*.project
 build/
 
 #java files
