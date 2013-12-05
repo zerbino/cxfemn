@@ -5,6 +5,7 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
@@ -56,6 +57,27 @@ public class Lifter {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public InputStream HTTPAdapter(InputStream in){
+		try {
+			return HTTPAdapterExcept(in);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return in;
+	}
+
+	private InputStream HTTPAdapterExcept(InputStream in) throws IOException{
+		String toRet="";
+		BufferedReader buff = new BufferedReader(new InputStreamReader(in));
+		String tmp = buff.readLine();
+		
+		while(tmp!=null){
+			toRet+=tmp;
+			tmp=buff.readLine();
+		}
+		return this.HTTPAdapter(tmp);
 	}
 	//Add the HTTP request content as parameter
 	public InputStream HTTPAdapter(String s){

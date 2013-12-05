@@ -1,13 +1,14 @@
 package filter;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.container.PreMatching;
+
+import serverLifter.Lifter;
 
 @PreMatching
 public class ClientRequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
@@ -20,12 +21,17 @@ public class ClientRequestFilter implements ContainerRequestFilter,ContainerResp
 				.entity(
 				utile.UniformementRepresentable.toString(new StringBuilder(),"A filter has intercepted this request"))
 				.build());*/
+		InputStream input = requestContext.getEntityStream();
+		Lifter lifter = new Lifter();
+		
+		requestContext.setEntityStream(lifter.HTTPAdapter(input));
 	}
 
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
 			throws IOException {
 
 		responseContext.getHeaders().add("Header modified","with ContainerResponseFilter");
+		
 		
 	}
 }
