@@ -90,7 +90,7 @@ public class TestClient {
 		System.out.println("Response Code : " 
 	                + response.getStatusLine().getStatusCode());
 		System.out.println("Headers: " 
-                + response.getHeaders("Kevin modified this f****** header!")[0]);
+                + response.getHeaders("Header modified")[0]);
 		BufferedReader rd = new BufferedReader(
 		        new InputStreamReader(response.getEntity().getContent()));
 	 
