@@ -17,7 +17,7 @@ import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
 
 import serverLifter.Lifter;
-
+@Provider
 public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 
 	public ClientRequestInterceptor() {
@@ -25,6 +25,8 @@ public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 	}
 
 	public void handleMessage(Message message) throws Fault {
+		
+		/*
 
 		boolean isOutbound = false;
 		isOutbound = message == message.getExchange().getOutMessage()
@@ -49,5 +51,6 @@ public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 			}
 
 		}
+		*/
 	}
 }

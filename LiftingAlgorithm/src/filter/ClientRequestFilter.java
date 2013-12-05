@@ -21,10 +21,7 @@ public class ClientRequestFilter implements ContainerRequestFilter,ContainerResp
 				.entity(
 				utile.UniformementRepresentable.toString(new StringBuilder(),"A filter has intercepted this request"))
 				.build());*/
-		InputStream input = requestContext.getEntityStream();
-		Lifter lifter = new Lifter();
 		
-		requestContext.setEntityStream(lifter.HTTPAdapter(input));
 	}
 
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)

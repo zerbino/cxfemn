@@ -1,4 +1,4 @@
-Utilisation du projet avec import : si le projet ne peut se lancer après 
+1) Utilisation du projet avec import : si le projet ne peut se lancer après 
 import, lire cette section :
 
 Lorsque vous essayez de lancer le projet sur un serveur tomcat, vous avez peut être
@@ -18,3 +18,5 @@ Ces informations peuvent être retrouvées ici :
 http://www.mkyong.com/java/how-to-convert-java-project-to-web-project-in-eclipse/
 
 
+2) Import de la bibliothèque org.jdom2 au lien suivant :
+http://www.jdom.org/downloads/
