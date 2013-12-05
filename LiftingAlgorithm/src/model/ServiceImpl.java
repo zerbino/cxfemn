@@ -21,11 +21,12 @@ public class ServiceImpl implements Service {
 				f.getParentFile().mkdirs();
 			}
 			writer = new PrintWriter(path, "UTF-8");
-			writer.println("Incoming request for: ");
-			writer.println(UniformementRepresentable.toString(new StringBuilder(), p));
+			writer.append("Incoming request for: ");
+			writer.append(UniformementRepresentable.toString(new StringBuilder(), p));
 			writer.close();
+			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
+			System.out.println("Chemin vers la base de donnée: ");
 			System.out.println(path);
-			System.out.println(UniformementRepresentable.toString(new StringBuilder(), p));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

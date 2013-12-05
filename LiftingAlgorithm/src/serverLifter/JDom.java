@@ -58,7 +58,7 @@ public class JDom
 		//then we simply check the expected parameters match the received ones
 		//TODO
 		//implementation for a service with a single parameter
-		rename(racine,service.getParameterTypes()[0].getSimpleName());
+		rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
 		removeExtraFields(racine,service.getParameterTypes()[0]);
 	}
 
@@ -86,14 +86,15 @@ public class JDom
 		List<Element> l =
 				e.getChildren();
 		Iterator<Element> i = l.iterator();
+		System.out.println(racine.getName());
 		while(i.hasNext())
 		{
 			Element courant = (Element)i.next();
-			System.out.println(courant.getName());
+			System.out.print("	"+courant.getName());
 			if(courant.getChildren().size()!=0) print(courant);
 			else {if(courant.getValue()!=null){
 
-				System.out.println("	"+courant.getValue());
+				System.out.println(": "+courant.getValue());
 			}}
 		}
 	}
