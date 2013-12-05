@@ -71,7 +71,7 @@ public class TestClient {
 
 		Etudiant p= new Etudiant();
 		p.setNom("J'ai pu acceder au service tout en etant un etudiant grace a ReaderInterceptor");
-		p.setPrenom("Kevin en a marre...");
+		p.setPrenom("Kevin");
 		p.setPromo("gsi");
 		String xml=marshall(p);
 		

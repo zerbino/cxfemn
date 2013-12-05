@@ -32,7 +32,6 @@ public class ServiceImpl implements Service {
 			System.out.println(path);
 			System.out.println(UniformementRepresentable.toString(new StringBuilder(), p));
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
