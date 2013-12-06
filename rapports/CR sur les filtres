@@ -1,0 +1,43 @@
+* Filtres et intercepteurs (Grégoire et Raphaël)
+
+1) Avant propos
+
+L'utilisation des filtres plutôt que des intercepteurs a été choisi pour favoriser le recours à des standards JAX-RS,
+qui sont donc réutilisables dans d'autres frameworks implémentant ce standard. Les intercepteurs ne possèdent pas
+cette propriété puisqu'ils sont propres à CXF.
+
+2) Documentation
+
+Afin de comprendre comment fonctionnent les filtres, nous avons principalement utilisés les documents suivants :
+
+La documentation CXF sur les filtres :
+http://cxf.apache.org/docs/jax-rs-filters.html
+
+La documentation JAXRS sur les filtres :
+https://java.net/projects/jax-rs-spec/pages/InterceptorsAndFilters
+
+Nous avons également utilisé les API JAX-RS et CXF :
+
+api CXF sur les filtres :
+http://cxf.apache.org/javadoc/latest/index.html
+
+api JAXRS :
+https://jax-rs-spec.java.net/nonav/2.0/apidocs/index.html
+
+3) Difficultés
+
+Une première observation sur cette documentation concerne le manque de précision dans les informations données.
+Les noms des interfaces données pour les filtres (RequestFilter, ResponseFilter), n'existent pas (plus?). Ils sont
+dans notre cas à remplacer par ClientRequestFilter. 
+
+Nous avons également rencontré des difficultés pour faire fonctionner les filtres, dues à la configuration du fichier
+web.xml. Ce dernier sert à référencer le filtre (balises <providers>).
+
+La documentation CXF n'est pas toujours claire sur ce qui relève de CXF et du standard JAX-RS. Ainsi dans la documentation
+CXF traitant des filtres, l'accent est mis sur les handlers, qui sont un type particulier de filtres (d'après la documentation).
+Le nom du package cxf sous-entend qu'il s'agit d'un standard JAX-RS :
+org.apache.cxf.jaxrs.ext.RequestHandle
+Or, un rapide tour dans la documentation JAX-RS nous indique le contraire.
+
+
+

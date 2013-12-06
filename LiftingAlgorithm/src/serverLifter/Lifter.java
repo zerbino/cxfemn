@@ -34,6 +34,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import filter.Tools;
 import utile.UniformementRepresentable;
 
 public class Lifter {
@@ -69,14 +70,7 @@ public class Lifter {
 	}
 
 	private InputStream HTTPAdapterExcept(InputStream in) throws IOException{
-		String toRet="";
-		BufferedReader buff = new BufferedReader(new InputStreamReader(in));
-		String tmp = buff.readLine();
-		
-		while(tmp!=null){
-			toRet+=tmp;
-			tmp=buff.readLine();
-		}
+		String tmp = Tools.inputStreamToString(in);
 		return this.HTTPAdapter(tmp);
 	}
 	//Add the HTTP request content as parameter

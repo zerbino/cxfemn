@@ -1,4 +1,5 @@
 package filter;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -7,31 +8,41 @@ import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.container.PreMatching;
+import javax.ws.rs.ext.Provider;
 
 import serverLifter.Lifter;
 
-@PreMatching
-public class ClientRequestFilter implements ContainerRequestFilter,ContainerResponseFilter {
+//@PreMatching
+@Provider
+public class ClientRequestFilter implements ContainerRequestFilter,
+		ContainerResponseFilter {
 
 	public void filter(ContainerRequestContext requestContext)
 			throws IOException {
-		/*Cette partie là permet d'intercepter à l'entrée de la requête
-		//just for testing purposes
-		requestContext.abortWith(Response.status(Response.Status.OK)
-				.entity(
-				utile.UniformementRepresentable.toString(new StringBuilder(),"A filter has intercepted this request"))
-				.build());*/
+		/*
+		 * Cette partie là permet d'intercepter à l'entrée de la requête //just
+		 * for testing purposes
+		 * requestContext.abortWith(Response.status(Response.Status.OK) .entity(
+		 * utile.UniformementRepresentable.toString(new
+		 * StringBuilder(),"A filter has intercepted this request")) .build());
+		 */
+
+		System.out.println("Corps du message :");
+		//String truc = Tools.inputStreamToString(requestContext
+			//	.getEntityStream());
+		//System.out.println(truc);
+		Lifter lifter = new Lifter();
+		InputStream input = lifter.HTTPAdapter(requestContext.getEntityStream());
 		
-		
-		System.out.println(Tools.inputStreamToString(requestContext.getEntityStream()));
-		
+		requestContext.setEntityStream(input);
+
 	}
 
-	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
-			throws IOException {
+	public void filter(ContainerRequestContext requestContext,
+			ContainerResponseContext responseContext) throws IOException {
 
-		responseContext.getHeaders().add("Header modified","with ContainerResponseFilter");
-		
-		
+		responseContext.getHeaders().add("Header modified",
+				"with ContainerResponseFilter");
+
 	}
 }
