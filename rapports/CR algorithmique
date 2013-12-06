@@ -1,0 +1,18 @@
+6/12/13
+
+* Sprint 1 : partie algorithmique
+
+La partie algorithmique (algorithme de lifting) est géré par les deux classes
+JDom et Lifter. 
+
+JDom renomme le fichier xml avec le nom de la classe parente. (JDom#rename() )
+Elle retire les champs additionnels (ceux qui ne sont pas présents dans la classe
+parente) avec JDom#removeExtraFields()
+
+La classe Lifter permet de créer un InputStream, qui pourra ensuite être ajouté dans
+le filtre. 
+
+Pour ce premier sprint, l'algorithme fonctionne pour un exemple connu. C'est à dire que
+le nom du service (nom de la classe java et de la méthode) est donné en argument (voir JDom#lift() )
+
+
