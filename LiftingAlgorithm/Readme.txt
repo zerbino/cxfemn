@@ -18,5 +18,11 @@ Ces informations peuvent être retrouvées ici :
 http://www.mkyong.com/java/how-to-convert-java-project-to-web-project-in-eclipse/
 
 
-2) Import de la bibliothèque org.jdom2 au lien suivant :
+2) L'import de la bibliothèque org.jdom2 au lien suivant sera peut être nécessaire :
 http://www.jdom.org/downloads/
+
+3) Structure : Il y a un client (LiftingAlgorithmClient), et un serveur (LiftingAlgorithm)
+
+4) Lancer le projet :
+- Serveur : Dans LiftingAlgorithm, clic droit sur model.ServiceImpl > run as > run on server
+- Client : Dans LiftingAlgorithmClient, clic droit sur client.TestClient > run as > java application
