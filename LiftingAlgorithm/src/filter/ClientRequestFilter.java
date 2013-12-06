@@ -22,6 +22,9 @@ public class ClientRequestFilter implements ContainerRequestFilter,ContainerResp
 				utile.UniformementRepresentable.toString(new StringBuilder(),"A filter has intercepted this request"))
 				.build());*/
 		
+		
+		System.out.println(Tools.inputStreamToString(requestContext.getEntityStream()));
+		
 	}
 
 	public void filter(ContainerRequestContext requestContext, ContainerResponseContext responseContext)
