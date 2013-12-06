@@ -1,8 +1,9 @@
 6/12/13
+Hao Zhang et Kévin Llopart
 
 * Sprint 1 : partie algorithmique
 
-La partie algorithmique (algorithme de lifting) est géré par les deux classes
+La partie algorithmique (algorithme de lifting) est gérée par les deux classes
 JDom et Lifter. 
 
 JDom renomme le fichier xml avec le nom de la classe parente. (JDom#rename() )
@@ -15,4 +16,4 @@ le filtre.
 Pour ce premier sprint, l'algorithme fonctionne pour un exemple connu. C'est à dire que
 le nom du service (nom de la classe java et de la méthode) est donné en argument (voir JDom#lift() )
 
-
+Le client envoie un Etudiant au service "op", qui attend une Personne. Aucun bug ne survient. 
