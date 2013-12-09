@@ -1,9 +1,18 @@
 package client;
+import org.apache.cxf.binding.BindingFactoryManager;
+import org.apache.cxf.jaxrs.JAXRSBindingFactory;
+import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
+import org.apache.cxf.jaxrs.client.JAXRSClientFactoryBean;
+import org.apache.cxf.jaxrs.client.WebClient;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
+
+import model.Service;
+
+
 
 
 
@@ -25,6 +34,7 @@ import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
+import javax.ws.rs.core.Response;
 
 import model.Etudiant;
 import model.Personne;
@@ -70,13 +80,16 @@ public class TestClient {
 	public static void main(String[] args) throws Exception {
 
 		Etudiant p= new Etudiant();
-		p.setNom("J'ai pu acceder au service tout en etant un etudiant grace a ReaderInterceptor");
+		p.setNom("Op-AFaitSonJob");
 		p.setPrenom("Kevin");
 		p.setPromo("gsi");
 		String xml=marshall(p);
 		
 		String url = "http://localhost:8080/LiftingAlgorithm/rest/op";
-		 
+		//doesn't work
+		 /*Service op=JAXRSClientFactory.create( url, Service.class);
+		 System.out.println(op.op(p));*/
+		
 		HttpClient client = new DefaultHttpClient();
 		HttpPost post = new HttpPost(url);
 	 
@@ -89,8 +102,6 @@ public class TestClient {
 		HttpResponse response = client.execute(post);
 		System.out.println("Response Code : " 
 	                + response.getStatusLine().getStatusCode());
-		System.out.println("Headers: " 
-                + response.getHeaders("Header modified")[0]);
 		BufferedReader rd = new BufferedReader(
 		        new InputStreamReader(response.getEntity().getContent()));
 	 

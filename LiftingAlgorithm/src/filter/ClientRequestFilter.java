@@ -13,8 +13,7 @@ import serverLifter.Lifter;
 
 //@PreMatching
 @Provider
-public class ClientRequestFilter implements ContainerRequestFilter,
-		ContainerResponseFilter {
+public class ClientRequestFilter implements ContainerRequestFilter{
 
 	public void filter(ContainerRequestContext requestContext)
 			throws IOException {
@@ -34,14 +33,6 @@ public class ClientRequestFilter implements ContainerRequestFilter,
 		InputStream input = lifter.HTTPAdapter(requestContext.getEntityStream());
 		
 		requestContext.setEntityStream(input);
-
-	}
-
-	public void filter(ContainerRequestContext requestContext,
-			ContainerResponseContext responseContext) throws IOException {
-
-		responseContext.getHeaders().add("Header modified",
-				"with ContainerResponseFilter");
 
 	}
 }
