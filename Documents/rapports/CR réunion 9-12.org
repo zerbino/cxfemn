@@ -1,0 +1,44 @@
+Réunion d'avancement
+
+Objectif : faire le point sur le premier rendu. Définir les objectifs du second sprint.
+
+Participants : Hao Zhang, Kévin Llopart, Grégoire Séguin-Henry, Raphaël Martignoni, Hervé Grall
+
+* Nouveaux objectifs pour le prochain sprint :
+
+** Objectif (1) :
+
+Créer un filtre du côté du résultat. A préciser.
+
+** Objectif (2) :
+
+Améliorer la partie de l'algorithme qui permet d'identifier le service appelé par la requête. Il y a
+possibilité avec les filtres de se placer avant ou après le matching (la phase qui fait le lien entre
+la requête et le service appelé). 
+Il est donc sans doute possible de récupérer cette information dans le contexte de la requête (grâce à l'objet
+ClientRequestContext en argument dans la méthode filter(...) du filtre). 
+
+Pour plus d'informations sur la succession des filtres et les annotations @PreMatching @PostMatching, la documentation
+jersey peut servir de support :
+
+https://jersey.java.net/documentation/latest/filters-and-interceptors.html
+
+** Tâche supplémentaire (3) :
+Amélioration de la première solution
+
+Faire un exemple exhaustif avec la première solution. Appeler un service en passant un Etudiant via les méthodes 
+PUT et GET, en plus de la méthode POST. 
+
+Gérer le cas où il y a plus d'un argument dans le service appelé. 
+
+** Tâche supplémentaire (4) : 
+
+Vérifier qu'il est possible, avec JAXB, de passer simplement un nouveau xsd qui soit pris en compte pour le marshalling. 
+
+** Bonus (5) :
+
+Faire implémenter des interfaces à nos ressources. Améliorer l'implémentation de notre solution en conséquence. Il est possible
+avec JAXB de faire correspondre une classe à une interface. Pour des exemples de cette manipulation, voir la présentation de Hervé Grall
+des chapitres 11 et 12 du cookbook.
+
+
