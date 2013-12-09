@@ -1,9 +1,0 @@
-* Value Substitution example with SOAP
-
-Thursday October 31st, 2013
-
-Please refer to the article "The Substitution Principle in an Object-Oriented Framework for Web Services: From Failure to Success", 3.1, pp 4-5.
-
-** Added project SOAPValueSubstitution and SOAPValueSubstitutionClient
-
-It consists in using a webservice (for instance op(Personne p) ) through CXF with a refined type B as argument. After generating the client's side of the code programmatically with SOAP under Eclipse, the test client (SOAPValueSubstitutionClient\src\model\ServiceImpl_ServiceImplPort_Client.java) is modified to call an operation (op in SOAPValueSubstitutionClient\src\model\ServiceImpl.java)with a refined type (Eleve) of the expected argument (Personne p). As expected, no error is thrown. 
