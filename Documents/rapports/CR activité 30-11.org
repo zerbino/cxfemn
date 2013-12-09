@@ -1,0 +1,42 @@
+Compte rendu des activit√©s de la journ√©e du 28-11
+
+Groupe s√©par√© en deux √©quipes :
+
+- Hao et K√©vin sur l'algorithme de lifting :
+ * d√©but d'impl√©mentation de l'algorithme
+- Rapha√´l et Gr√©goire sur les filtres :
+ * lecture de la documentation sur les filtres JAX-RS
+
+<<<<<<< HEAD
+Liens sur les filtres :
+
+Un exemple d‚Äôutilisation sur stackoverflow :
+http://stackoverflow.com/questions/9179375/servlet-filter-vs-cxf-interceptor-for-modifying-request-response-content
+
+api CXF sur les filtres :
+http://cxf.apache.org/javadoc/latest/index.html?org/apache/cxf/jaxrs/ext/RequestHandler.html
+
+doc CXF sur les filtres :
+http://cxf.apache.org/docs/jax-rs-filters.html
+
+doc JAXRS sur les filtres :
+https://java.net/projects/jax-rs-spec/pages/InterceptorsAndFilters
+
+Doc IBM sur les filtres :
+http://pic.dhe.ibm.com/infocenter/wasinfo/v8r0/index.jsp?topic=%2Fcom.ibm.websphere.nd.doc%2Finfo%2Fae%2Fae%2Ftwbs_jaxrs_configwebxml_jrsfilters.html
+=======
+ActivitÈs du weekend :
+ * rÈcupÈration du projet d'HervÈ Grall utilisant les filtres
+ * recherche de documentation sur les filtres
+
+http://pic.dhe.ibm.com/infocenter/wasinfo/v8r0/index.jsp?topic=%2Fcom.ibm.websphere.nd.doc%2Finfo%2Fae%2Fae%2Ftwbs_jaxrs_configwebxml_jrsfilters.html
+
+Documentation de jersey (autre framework implÈmentant JAX-RS mais
+peut Ítre utile, tant la documentation des filtres de CXF est
+laconique) :
+
+https://jersey.java.net/documentation/latest/filters-and-interceptors.html
+
+
+>>>>>>> 7e435753d28ab768a8f1a37a94943fb9abd6cbc6
+

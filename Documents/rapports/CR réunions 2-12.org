@@ -1,0 +1,53 @@
+* Réunion 1
+Participants : Kevin Llopart, Grégoire Séguin-Henry, Hao Zhang, Raphaël Martignoni, Olivier Blanc
+
+** 1. problème évoqué 1 : 
+On se place dans le cas de la substitution de valeur. 
+C'est à dire que : 
+-On a un serveur qui possède une classe A. Le service demande un objet de type A.
+-Le client a une classe B qui étend A. 
+
+A terme, il faudra être capable de vérifier grâce à un filtre que la classe B n'est pas 
+de type A, pour, si c'est possible, la transformer en A. Le problème soulevé est : 
+Comment vérifier que la classe B peut être castée en A ? (donc que B étend A). En effet, 
+comme on souhaite faire appel à nos filtres côté serveur, on a pas l'information que B
+étend A. De même, dans le fichier XML représentant B, cette information n'est pas présente.
+Pistes proposées : 
+- implémenter le filtre côté client, où B est connu. 
+- ajouter l'information de l'héritage dans le 
+
+** 2. Une proposition :
+Celle d'utiliser les feuilles de style XSL. Ces dernière permettent de traduire un document
+vers un autre. Dans notre cas d'un fichier XML à un autre.
+
+* Réunion 2
+Participants : Kevin Llopart, Grégoire Séguin-Henry, Hao Zhang, Raphaël Martignoni, Hervé Grall
+
+** 1. Deux solutions pour vérifier le type attendu par un service
+
+Solution 1 : utilisation du wadl. Le problème du wadl est qu'il n'est pas standardisé. Il dépend d'une
+grammaire. CXF a sa propre grammaire de wadl. Un exemple de WADL :
+
+https://github.com/zerbino/cxfemn/blob/master/RESTValueSubstitution/WebContent/wadl/serviceimpl.xml
+
+Solution 2 : utiliser la réflexion sur le service pour générer notre propre XML. 
+
+TODO : réflechir à une troisième solution qui permettrait de récupérer plus directement le type attendu
+(en récupérant la réponse attendue par le service dans le filtre)
+
+** 2. Réponses aux questions d'Oliver Blanc :
+
+- Concernant le problème évoqué, vérifier qu'un objet est un sous-type d'un autre consistera juste
+à vérifier les types et noms des attributs. 
+- Concernant le XSL, ce dernier ne peut être utilisé dans le cas d'une solution générique. 
+
+** Détails de l'organisation :
+prochain rendez vous : lundi 9 à 13h30
+fin du sprint 1 : vendredi 6 à 19h (envoi par email)
+Livrable : 
+- un client
+- un serveur
+Le client envoie un Etudiant, le serveur reçoit une Personne grâce au filtre.
+- un fichier README.txt
+
+
