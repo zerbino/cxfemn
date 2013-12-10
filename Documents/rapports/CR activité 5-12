@@ -30,14 +30,17 @@ Une première observation sur cette documentation concerne le manque de précisi
 Les noms des interfaces données pour les filtres (RequestFilter, ResponseFilter), n'existent pas (plus?). Ils sont
 dans notre cas à remplacer par ClientRequestFilter. 
 
-Nous avons également rencontré des difficultés pour faire fonctionner les filtres, dues à la configuration du fichier
-web.xml. Ce dernier sert à référencer le filtre (balises <providers>).
+Nous avons également rencontré des difficultés pour faire fonctionner l'intercepteur, dues à la configuration du fichier
+web.xml, servant à référencer le filtre (balises <providers>).
 
-La documentation CXF n'est pas toujours claire sur ce qui relève de CXF et du standard JAX-RS. Ainsi dans la documentation
-CXF traitant des filtres, l'accent est mis sur les handlers, qui sont un type particulier de filtres (d'après la documentation).
-Le nom du package cxf sous-entend qu'il s'agit d'un standard JAX-RS :
-org.apache.cxf.jaxrs.ext.RequestHandle
-Or, un rapide tour dans la documentation JAX-RS nous indique le contraire.
+4) Impossibilité d'utiliser les filtres
+
+Il semblerait que les filtres, tels que spécifiés par JAX-RS, ne permettent pas de modifier le corps des requêtes, comme
+l'indique la documentation Jersey sur les filtres :
+
+"filters are primarily intended to manipulate request and response parameters like HTTP headers, URIs and/or HTTP methods, interceptors are intended to manipulate entities, via manipulating entity input/output streams. "
+
+A terminer : parler des handlers. 
 
 
 

@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?><etudiant><nom>Op-AFaitSonJob</nom><prenom>Kevin</prenom><promo>gsi</promo></etudiant>
+=======
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><etudiant><nom>J'ai pu acceder au service tout en etant un etudiant grace a ReaderInterceptor</nom><prenom>Kevin</prenom><promo>gsi</promo></etudiant>
+>>>>>>> c8e456753057c0c2c271decc4481d16781d211db

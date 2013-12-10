@@ -20,6 +20,3 @@ Utilisation de l'algorithme de lifting. Deux possibilités :
 - Utilisation du WADL (dans le cas REST). Création d'un schéma permettant d'accepter des formats d'objets plus généraux.
 
 ** Prochaine réunion le lundi 2 décembre à 16h
-
-** TODO : 
--  lecture du cookbook et pull du code de Hervé Grall sur l'implémentation des filtres

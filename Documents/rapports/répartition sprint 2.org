@@ -1,0 +1,8 @@
+1) Création du filtre côté résultat :
+Raphaël
+2) Utilisation du matching requête-service de CXF
+Kévin
+3) Exemple complet (PUT, GET) + cas d'un service avec plusieurs arguments
+Gergoire
+4) Spécifier un xsd à JAXB
+Hao

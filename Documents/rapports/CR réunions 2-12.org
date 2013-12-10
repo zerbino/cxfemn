@@ -23,7 +23,7 @@ vers un autre. Dans notre cas d'un fichier XML à un autre.
 * Réunion 2
 Participants : Kevin Llopart, Grégoire Séguin-Henry, Hao Zhang, Raphaël Martignoni, Hervé Grall
 
-** 1. Deux/trois solutions pour vérifier le type attendu par un service
+** 1. Deux solutions pour vérifier le type attendu par un service
 
 Solution 1 : utilisation du wadl. Le problème du wadl est qu'il n'est pas standardisé. Il dépend d'une
 grammaire. CXF a sa propre grammaire de wadl. Un exemple de WADL :
@@ -32,7 +32,7 @@ https://github.com/zerbino/cxfemn/blob/master/RESTValueSubstitution/WebContent/w
 
 Solution 2 : utiliser la réflexion sur le service pour générer notre propre XML. 
 
-Solution 3 : réflechir à une troisième solution qui permettrait de récupérer plus directement le type attendu
+TODO : réflechir à une troisième solution qui permettrait de récupérer plus directement le type attendu
 (en récupérant la réponse attendue par le service dans le filtre)
 
 ** 2. Réponses aux questions d'Oliver Blanc :
