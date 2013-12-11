@@ -11,10 +11,14 @@ import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
+import model.Personne;
+
 import org.apache.cxf.interceptor.Fault;
 import org.apache.cxf.message.Message;
 import org.apache.cxf.phase.AbstractPhaseInterceptor;
 import org.apache.cxf.phase.Phase;
+
+import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
 import serverLifter.Lifter;
 //@Provider
@@ -44,9 +48,15 @@ public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 				while ((inputLine = in.readLine()) != null)
 				    s+=inputLine;
 				in.close();
-				message.setContent(InputStream.class,l.HTTPAdapter(s));
+				message.setContent(InputStream.class,l.HTTPAdapter(s,Service.class.getMethod("op", Personne.class)));
 			}
 			catch(IOException e){
+				e.printStackTrace();
+			} catch (NoSuchMethodException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SecurityException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
