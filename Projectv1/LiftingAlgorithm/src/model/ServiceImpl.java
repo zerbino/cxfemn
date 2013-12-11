@@ -7,7 +7,7 @@ import org.apache.cxf.interceptor.InInterceptors;
 
 import utile.UniformementRepresentable;
 
-@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
+//@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
 public class ServiceImpl implements Service {
 
 	@Override

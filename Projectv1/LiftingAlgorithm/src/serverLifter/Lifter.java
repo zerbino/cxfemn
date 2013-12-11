@@ -81,6 +81,7 @@ public class Lifter {
 			//this is dirty. We should count the number of files in the folder and
 			//name the file accordingly
 			int randHash=r.nextInt()*100;
+			if(randHash<0) randHash=-randHash;
 
 			String path=getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/"+randHash+"Parameter.xml";
 			String pathModified=getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/"+randHash+"ParameterMODIFIED.xml";

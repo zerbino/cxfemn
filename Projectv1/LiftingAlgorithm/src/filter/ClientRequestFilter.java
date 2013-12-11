@@ -14,6 +14,7 @@ import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.container.DynamicFeature;
 import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Configurable;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
 
@@ -23,7 +24,8 @@ import serverLifter.Lifter;
 //binding priority doesnt change the postmatching
 //@BindingPriority(value = 999)
 public class ClientRequestFilter implements ContainerRequestFilter,DynamicFeature {
-	
+	@Context
+	ResourceInfo info;
 	@Override
 	//see http://www.snip2code.com/Embed/4747/A-DynamicFeature-implementation-for-bind
 	//http://download.oracle.com/otn-pub/jcp/jaxrs-2_0-edr3-spec/jaxrs-2_0-edr3-spec.pdf?AuthParam=1386670885_0e6bc532650f88658f5fd71ba16c2284
@@ -77,15 +79,18 @@ public class ClientRequestFilter implements ContainerRequestFilter,DynamicFeatur
 	}
 	public void filter(ContainerRequestContext requestContext)
 			throws IOException {
-		UriInfo routingContext = requestContext.getUriInfo();
+		System.out.println("CONTEXTE"+info.getResourceClass().getName());
+		System.out.println("CONTEXTE"+info.getResourceMethod().getName());
+		/*UriInfo routingContext = requestContext.getUriInfo();
 		System.out.println("CA NE MARCHE PAS: "+routingContext.getMatchedResources().toString());
 		System.out.println(routingContext.getMatchedURIs().toString());
 		System.out.println(routingContext.getRequestUriBuilder().toTemplate());
 		System.out.println(routingContext.getPathSegments().toString());
-		
+		*/
 		
 		System.out.println("Corps du message :");
 		Lifter lifter = new Lifter();
 		InputStream input = lifter.HTTPAdapter(requestContext.getEntityStream());
+		requestContext.setEntityStream(input);
 	}
 }
