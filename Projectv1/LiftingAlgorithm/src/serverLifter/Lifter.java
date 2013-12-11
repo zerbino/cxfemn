@@ -1,39 +1,25 @@
 package serverLifter;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.StringWriter;
 import java.io.Writer;
-import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.nio.charset.Charset;
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.Random;
 
-import javax.xml.parsers.*;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
 import javax.xml.transform.*;
-import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 
 import org.jdom2.transform.JDOMSource;
-import org.w3c.dom.Document;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-
 import filter.Tools;
 import utile.UniformementRepresentable;
 
@@ -60,21 +46,21 @@ public class Lifter {
 		}
 	}
 	
-	public InputStream HTTPAdapter(InputStream in){
+	public InputStream HTTPAdapter(InputStream in, Method method){
 		try {
-			return HTTPAdapterExcept(in);
+			return HTTPAdapterExcept(in,method);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return in;
 	}
 
-	private InputStream HTTPAdapterExcept(InputStream in) throws IOException{
+	private InputStream HTTPAdapterExcept(InputStream in, Method method) throws IOException{
 		String tmp = Tools.inputStreamToString(in);
-		return this.HTTPAdapter(tmp);
+		return this.HTTPAdapter(tmp,method);
 	}
 	//Add the HTTP request content as parameter
-	public InputStream HTTPAdapter(String s){
+	public InputStream HTTPAdapter(String s,Method m){
 		try {
 			Random r=new Random();
 			//FIXME
@@ -97,7 +83,7 @@ public class Lifter {
 				writer.close();
 			}
 
-			JDom j = new JDom(path,pathModified);
+			JDom j = new JDom(path,pathModified,m);
 
 			ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
 			Source xmlSource = new JDOMSource(j.Lift());
