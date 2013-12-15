@@ -34,4 +34,15 @@ public class ServiceImpl implements Service {
 		return p.getNom();
 	}
 
+	@Override
+	public Etudiant op() {
+		Etudiant etudiant = new Etudiant();
+		etudiant.setNom("Bon");
+		etudiant.setPrenom("Jean");
+		etudiant.setPromo("gsi");
+		return etudiant;
+	}
+	
+	
+
 }

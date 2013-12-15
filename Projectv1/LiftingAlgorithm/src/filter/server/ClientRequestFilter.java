@@ -1,4 +1,4 @@
-package filter;
+package filter.server;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -11,7 +11,7 @@ import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
-import serverLifter.Lifter;
+import serverLifter.server.Lifter;
 
 @Provider
 public class ClientRequestFilter implements ContainerRequestFilter{

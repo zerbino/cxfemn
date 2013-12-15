@@ -20,7 +20,7 @@ import org.apache.cxf.phase.Phase;
 
 import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
-import serverLifter.Lifter;
+import serverLifter.server.Lifter;
 //@Provider
 public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 
