@@ -26,14 +26,10 @@ public class JDom
 		this.outputPath=outputPath;
 		SAXBuilder sxb = new SAXBuilder();
 		document = sxb.build(new File(filePath));
-		
-		
 		racine = document.getRootElement();
 		service=m;
 	}
-	
-	
-	
+
 	public Document Lift(){
 		try {
 			System.out.println("Before: ");
@@ -50,10 +46,10 @@ public class JDom
 	}
 
 	protected void treeInclusion(){
-		rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
-		removeExtraFields(racine,service.getParameterTypes()[0]);
+		if(removeExtraFields(racine,service.getParameterTypes()[0]))
+			rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
 	}
-	
+
 	public void print(Element e) {
 		List<Element> l =
 				e.getChildren();
@@ -70,12 +66,14 @@ public class JDom
 			}}
 		}
 	}
-
-	public void removeExtraFields(Element e, Class<?> class1){
+//remove fields that doesn't match any of those in the super class
+// and check that mandatory fields are present
+	public boolean removeExtraFields(Element e, Class<?> class1){
 		Field[] f = class1.getDeclaredFields();
 		boolean b;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
+		int mandatoryFields=0;
 		while(i.hasNext())
 		{
 			Element courant=i.next();
@@ -83,16 +81,25 @@ public class JDom
 			for(int j=f.length-1;j>=0;j--){
 				if(f[j].getName().equals(courant.getName())){
 					b=false;
+					mandatoryFields++;
+					break;
 				}
 			}
 			if(b){
 				e.removeContent(courant);
 			}
 		}
-		try {
-			enregistrefichier();
-		} catch (Exception e1) {
-			e1.printStackTrace();
+		if(f.length==mandatoryFields){
+
+			try {
+				enregistrefichier();
+			} catch (Exception e1) {
+				e1.printStackTrace();
+			}
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 
