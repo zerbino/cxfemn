@@ -19,6 +19,7 @@ public class TestClient2 {
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class);
 		Personne etudiant = service.op();
+		System.out.println(etudiant.getClass().getSimpleName());
 		System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), etudiant));
 	}
