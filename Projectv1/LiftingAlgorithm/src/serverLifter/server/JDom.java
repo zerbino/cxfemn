@@ -46,8 +46,9 @@ public class JDom
 	}
 
 	protected void treeInclusion(){
-		if(removeExtraFields(racine,service.getParameterTypes()[0]))
+		if(removeExtraFields(racine,service.getParameterTypes()[0])){
 			rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
+		}
 	}
 
 	public void print(Element e) {
@@ -66,8 +67,8 @@ public class JDom
 			}}
 		}
 	}
-//remove fields that doesn't match any of those in the super class
-// and check that mandatory fields are present
+	//remove fields that doesn't match any of those in the super class
+	// and check that mandatory fields are present
 	public boolean removeExtraFields(Element e, Class<?> class1){
 		Field[] f = class1.getDeclaredFields();
 		boolean b;
