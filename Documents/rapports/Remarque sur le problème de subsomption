@@ -1,0 +1,29 @@
+Auteur: Kevin
+
+Dans les projectv0 et v1:
+
+-Raphaël a constaté qu'il n'y avait pas d'erreur du côté du client si l'on rend la classe Etudiant alors que la classe Personne est attendue lors de l'appel à op.
+
+-D'autre part, il n'y a pas d'erreur non plus côté serveur si l'on envoie un Etudiant en paramètre de op alors qu'une Personne est attendue.
+
+J'en conclus plusieurs choses:
+1/ Les erreurs liées au databinding rapportées dans l'article de Mrs Grall et Royer apparaissent si on implémente soi-même les méthodes de marshalling/unmarshalling, comme je l'ai fait pour les core requirements.
+
+2/Elles n'apparaissent pas si on n'implémente pas ces méthodes, moyennant quelques conditions développées ensuite.
+
+3/Si je remplace le tag "Etudiant" ou "Personne" par "Ingenieur" dans le fichier xml passé dans la requête HTTP côté client, j'obtiens l'erreur suivante:
+
+Response-Code: 400
+Content-Type: text/plain
+Headers: {Content-Type=[text/plain], Date=[Sun, 15 Dec 2013 15:56:01 GMT]}
+Payload: JAXBException occurred : unexpected element (uri:"", local:"ingenieur"). Expected elements are <{}etudiant>,<{}personne>. unexpected element (uri:"", local:"ingenieur"). Expected elements are <{}etudiant>,<{}personne>.
+
+Je formule donc l'hypothèse que si la sous-classe n'est connue que du client (resp. serveur) (cas le plus vraisemblable, notamment dans l'hypothèse de value substitution) alors une erreur est levée côté serveur (resp. client)  par le databinding automatique. Ce mécanisme semble donc malgré tout s'appuyer sur les classes présentes sur le serveur, ce qui explique notamment que même le fait de ne pas renommer le rootelement (s'il correspond à une classe connue) ne pose aucun problème. Il ne s'agit donc pas uniquement d'une implémentation paresseuse ignorant les champs supplémentaire, il y a également une vérification du type.
+
+En d'autres termes, la solution que nous développons est utile dans les cas où:
+
+-les utilisateurs du framework implémentent eux-mêmes leurs méthodes de marshalling/unmarshalling (à ce propos peut-être même qu'il s'agirait simplement de faire des versions plus générales des .xsd comme le proposait Mr Grall pour les .wadl). Alors dans ce cas toutes les types d'erreurs (value ou interface substitution) peuvent se produire,
+
+-peut-être dans le cas où une clause est ajoutée dans le fichier de configuration web.xml (et assimilés) forçant le databinding selon un schéma particulier. Ca c'est à Hao de le vérifier pour ce sprint mais apriori c'est du même acabit que le point précédent,
+
+-la sous-classe reçue n'est pas connue. Normalement si le déploiement et le maintien de l'application sont bien faits, cela n'apparait que côté serveur lorsque le client étend les classes du serveur (value substitution). 
