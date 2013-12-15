@@ -17,6 +17,9 @@ http://cxf.apache.org/core
 
 	<!-- JAX-RS -->
 	<jaxrs:server id="LiftingAlgorithm" address="/">
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>classpath:/documents/model.xsd</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
 		<jaxrs:serviceBeans>
 			<ref bean="Service" />
 		</jaxrs:serviceBeans>
