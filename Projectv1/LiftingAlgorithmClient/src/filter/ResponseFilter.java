@@ -36,7 +36,6 @@ public class ResponseFilter implements ClientResponseFilter, ClientRequestFilter
 	public void filter(ClientRequestContext arg0) throws IOException {
 		System.out.println(uriInfo.getAbsolutePath());
 		System.out.println(uriInfo.getMatchedURIs());
-		System.out.println(uriInfo.getRequestUriBuilder().);
 	}
 
 }
