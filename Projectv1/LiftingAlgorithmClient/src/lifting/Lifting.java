@@ -1,4 +1,4 @@
-package serverLifter.client;
+package lifting;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -42,10 +42,14 @@ public abstract class Lifting {
 	protected String outputPath;
 	protected Method service;
 
-	public Lifting(InputStream ressource, Method m) throws Exception {
+	public Lifting(InputStream ressource, Method m) {
 		this.initializeOutPutPath();
 		SAXBuilder sxb = new SAXBuilder();
-		document = sxb.build(ressource);
+		try {
+			document = sxb.build(ressource);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		racine = document.getRootElement();
 		service = m;
