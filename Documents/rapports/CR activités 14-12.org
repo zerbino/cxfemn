@@ -9,7 +9,7 @@ En attendant j'ai désactivé le filtre dans restful-beans.
 Problème avec la version de JAX-RS. Pas de possibilité de créer un client avec ClientBuilder car ClientBuilder n'est pas 
 trouvé. 
 
-ClientBuilder a été ajouté dans les versions récents de JAX-RS pour fournir une implémentation d'un client qui ne dépende pas
+ClientBuilder a été ajouté dans les versions récentes de JAX-RS pour fournir une implémentation d'un client qui ne dépende pas
 des frameworks d'implémentations (CXF, Jersey...). Cette classe n'est pas présente dans le jar de jaxrs utilisé dans CXF 2.7.7.
 
 J'ai essayé de réimporter le jar de JAX-RS, mais il n'est pas pris en compte. Dans le jar, le binaire porte le nom Client$Builder. A propos du dollar j'ai trouvé cette doc oracle : 

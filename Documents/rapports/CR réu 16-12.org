@@ -1,0 +1,4 @@
+- Point sprint 2
+- RDV 11h15 demain
+- Identifier les cas qui marchent et qui ne marchent pas
+- Envoyer un email  à H.G. avec ma question
