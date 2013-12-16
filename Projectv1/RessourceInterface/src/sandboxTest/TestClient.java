@@ -45,7 +45,9 @@ public class TestClient {
 	public static void main(String[] args) throws Exception {
 		Service serv = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class);
-		Etudiant e = serv.op();
-		System.out.println(e.getPrenom());
+		//Etudiant e = serv.op();
+		//System.out.println(e.getPrenom());
+		Personne p = serv.op2();
+		System.out.println(p.getPrenom());
 	}
 }

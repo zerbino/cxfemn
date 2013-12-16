@@ -11,6 +11,13 @@ package model;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.sun.xml.bind.AnyTypeAdapter;
 
 
 /**
@@ -33,7 +40,8 @@ import javax.ws.rs.Path;
  * 
  * 
  */
-
+@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlSeeAlso({PersonneImpl.class})
 public interface Personne {
 
     /**
@@ -83,5 +91,10 @@ public interface Personne {
 	@PUT
 	@Path("prenom")
     public void setPrenom(String value);
+	
+	@GET
+	@Path("")
+	@Produces(MediaType.APPLICATION_XML)
+	public Personne getRepresentation();
 
 }

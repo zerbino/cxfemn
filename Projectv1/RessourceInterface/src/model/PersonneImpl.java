@@ -35,12 +35,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "personne", propOrder = {
-    "nom",
-    "prenom"
-})
-
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "personne", propOrder = {
+//    "nom",
+//    "prenom"
+//})
 @XmlRootElement(name="personne")
 public class PersonneImpl implements Personne {
 
@@ -94,5 +93,10 @@ public class PersonneImpl implements Personne {
     public void setPrenom(String value) {
         this.prenom = value;
     }
+
+	@Override
+	public Personne getRepresentation() {
+		return this;
+	}
 
 }

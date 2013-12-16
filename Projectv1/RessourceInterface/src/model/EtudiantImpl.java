@@ -33,10 +33,10 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "etudiant", propOrder = {
-    "promo"
-})
+//@XmlAccessorType(XmlAccessType.FIELD)
+//@XmlType(name = "etudiant", propOrder = {
+//    "promo"
+//})
 @XmlRootElement(name="etudiant")
 public class EtudiantImpl extends PersonneImpl implements Etudiant
 {
@@ -65,6 +65,10 @@ public class EtudiantImpl extends PersonneImpl implements Etudiant
      */
     public void setPromo(String value) {
         this.promo = value;
+    }
+    
+    public Etudiant getRepresentation(){
+    	return this;
     }
 
 }

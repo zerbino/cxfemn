@@ -35,12 +35,20 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public Etudiant op() {
+	public Etudiant op1() {
 		Etudiant etudiant = new EtudiantImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
 		return etudiant;
+	}
+
+	@Override
+	public Personne op2() {
+		Personne p = new PersonneImpl();
+		p.setNom("ZHANG");
+		p.setPrenom("Hao");
+		return p;
 	}
 	
 	

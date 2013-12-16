@@ -15,8 +15,13 @@ public interface Service {
 	public String op(Personne p);
 	
 	@GET
-	@Path("/get")
+	@Path("/op1")
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant op();
+	public Etudiant op1();
+	
+	@GET
+	@Path("/op2")
+	@Produces(MediaType.APPLICATION_XML)
+	public Personne op2();
 
 }
