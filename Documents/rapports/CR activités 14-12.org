@@ -1,7 +1,11 @@
+Partie Raphaël
+
+* Avant de lancer le test :
 Le filtre côté serveur de Kévin et Hao provoque un bug dans le cas d'un appel get. Il faut sans doute faire
 une vérification pour appeler l'algorithme de tree inclusion dans le cas d'un post. 
 En attendant j'ai désactivé le filtre dans restful-beans.
 
+* Création d'un client JAX-RS
 Problème avec la version de JAX-RS. Pas de possibilité de créer un client avec ClientBuilder car ClientBuilder n'est pas 
 trouvé. 
 
@@ -12,3 +16,32 @@ J'ai essayé de réimporter le jar de JAX-RS, mais il n'est pas pris en compte. 
 http://docs.oracle.com/javase/specs/jls/se5.0/html/binaryComp.html
 qui dit que :
 The binary name of a member type consists of the binary name of its immediately enclosing type, followed by $, followed by the simple name of the member. 
+
+* Absence du bug attendu
+Dans le cas suivant :
+
+"Prendre l'exemple d'une méthode GET :
+
+Personne get(String id)
+
+connues du serveur et du client.
+Puis le serveur substitue à cette méthode une nouvelle :
+
+Etudiant get(String id)
+
+avec Etudiant sous-type de Personne.
+
+Le principe de substitution devrait s'appliquer.
+Côté client, on attend une Personne et on reçoit un Etudiant.
+
+--
+Hervé Grall"
+
+Ici, on n'a pas le bug attendu. 
+
+* Difficulté à comparer la ressource appelée et le proxy
+Dans le cas de figure précédent, on place un filtre coté client pour effectuer l'algorithme de lifting. Dans un premier temps, il faudrait
+vérifier que le proxy renvoie le même type de méthode que la ressource effectivement appelée. Cependant il n'est pas possible, comme
+du côté serveur, de récupérer la ressource appelée. Il faut donc faire le vérification dans le xml. 
+
+
