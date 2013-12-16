@@ -1,35 +1,61 @@
-package serverLifter.server;
+package serverLifter.client;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-
-import org.jdom2.*;
-import org.jdom2.input.*;
-import org.jdom2.output.*;
-
-import utile.UniformementRepresentable;
-
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
-public class JDom
-{
+import org.jdom2.Document;
+import org.jdom2.Element;
+import org.jdom2.JDOMException;
+import org.jdom2.input.SAXBuilder;
+import org.jdom2.output.Format;
+import org.jdom2.output.XMLOutputter;
+
+/**
+ * This class is used to make sure that an entity (an InputStream), corresponds
+ * to the entity which is expected. It can be extended when the client requests on the
+ * server. In this case, the resource must be compared to the the arguments of the service.
+ * Or when the server responds to the client. In this case, the resource is compared to
+ * what the client is expecting, and to what the server is sending. 
+ * 
+ *
+ */
+public abstract class Lifting {
+	
 	protected Document document;
 	protected Element racine;
 	protected String outputPath;
 	protected Method service;
 
-	public JDom(String filePath, String outputPath, Method m) throws Exception
+	public Lifting(InputStream ressource, Method m) throws Exception
 	{
-		this.outputPath=outputPath;
+		this.initializeOutPutPath();
 		SAXBuilder sxb = new SAXBuilder();
-		document = sxb.build(new File(filePath));
+		document = sxb.build(ressource);
+		
+		
 		racine = document.getRootElement();
 		service=m;
 	}
-
+	
+	private void initializeOutPutPath(){
+		Random r = new Random();
+		int randHash = r.nextInt() * 100;
+		if (randHash < 0)
+			randHash = -randHash;
+		this.outputPath= getClass().getClassLoader().getResource(".")
+				.getPath()
+				+ "FAKEDocuments/" + randHash + "ParameterMODIFIED.xml";
+	}
+	
+	
+	
 	public Document Lift(){
 		try {
 			System.out.println("Before: ");
@@ -44,13 +70,13 @@ public class JDom
 		}
 		return null;
 	}
-
-	protected void treeInclusion(){
-		if(removeExtraFields(racine,service.getParameterTypes()[0])){
-			rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
-		}
-	}
-
+	
+	/**
+	 * Is specified for the case of a request to the server, or a response to the client. 
+	 * The element to compare are different in both cases. 
+	 */
+	protected abstract void treeInclusion();
+	
 	public void print(Element e) {
 		List<Element> l =
 				e.getChildren();
@@ -67,14 +93,12 @@ public class JDom
 			}}
 		}
 	}
-	//remove fields that doesn't match any of those in the super class
-	// and check that mandatory fields are present
-	public boolean removeExtraFields(Element e, Class<?> class1){
+
+	public void removeExtraFields(Element e, Class<?> class1){
 		Field[] f = class1.getDeclaredFields();
 		boolean b;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
-		int mandatoryFields=0;
 		while(i.hasNext())
 		{
 			Element courant=i.next();
@@ -82,29 +106,20 @@ public class JDom
 			for(int j=f.length-1;j>=0;j--){
 				if(f[j].getName().equals(courant.getName())){
 					b=false;
-					mandatoryFields++;
-					break;
 				}
 			}
 			if(b){
 				e.removeContent(courant);
 			}
 		}
-		if(f.length==mandatoryFields){
-
-			try {
-				enregistrefichier();
-			} catch (Exception e1) {
-				e1.printStackTrace();
-			}
-			return true;
-		}
-		else{
-			return false;
+		try {
+			enregistrefichier();
+		} catch (Exception e1) {
+			e1.printStackTrace();
 		}
 	}
 
-	private void rename(Element e,String name) {
+	protected void rename(Element e,String name) {
 		e.setName(name);
 	}
 
@@ -127,4 +142,5 @@ public class JDom
 		}
 		sortie.output(document, new FileOutputStream(outputPath));
 	}
+
 }
