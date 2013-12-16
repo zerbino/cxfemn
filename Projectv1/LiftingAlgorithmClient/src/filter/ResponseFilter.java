@@ -1,6 +1,7 @@
 package filter;
 
 import java.io.IOException;
+import java.net.URI;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
@@ -11,7 +12,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
 
-import org.fusesource.hawtbuf.ByteArrayInputStream;
+import lifting.ClientLifterCaller;
 
 /**
  * 
@@ -30,12 +31,15 @@ public class ResponseFilter implements ClientResponseFilter, ClientRequestFilter
 	@Override
 	public void filter(ClientRequestContext arg0, ClientResponseContext response)
 			throws IOException {
+		URI ressourceURI=uriInfo.getAbsolutePath();
+		ClientLifterCaller lifterCaller = new ClientLifterCaller(ressourceURI.toString(), response.getEntityStream());
+		response.setEntityStream(lifterCaller.call());
 	}
 
 	@Override
-	public void filter(ClientRequestContext arg0) throws IOException {
-		System.out.println(uriInfo.getAbsolutePath());
-		System.out.println(uriInfo.getMatchedURIs());
+	public void filter(ClientRequestContext context) throws IOException {
+		
+		
 	}
 
 }

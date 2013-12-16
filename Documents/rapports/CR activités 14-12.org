@@ -42,6 +42,19 @@ Ici, on n'a pas le bug attendu.
 * Difficulté à comparer la ressource appelée et le proxy
 Dans le cas de figure précédent, on place un filtre coté client pour effectuer l'algorithme de lifting. Dans un premier temps, il faudrait
 vérifier que le proxy renvoie le même type de méthode que la ressource effectivement appelée. Cependant il n'est pas possible, comme
-du côté serveur, de récupérer la ressource appelée. Il faut donc faire le vérification dans le xml. 
+du côté serveur, de récupérer la ressource appelée. Il faut donc faire la vérification dans le xml. 
+Update : apparemment il est possible de récupérer un objet ClassLoader en spécifiant un hôte et un port. Il est donc peut être possible de récupérer la ressource.
+
+* Difficulté à récupérer la méthode appelée
+Afin de procéder à l'algorithme de lifting, il faut avoir l'information de la méthode appelée, afin de comparer l'entité xml reçue avec
+l'objet attendu par le proxy de la ressource côté client. Pour l'instant, je n'ai pas trouvé de méthode simple pour récupérer cette méthode
+de façon automatique. Côté serveur, il suffit d'injecter un objet de type ResourceInfo et de récupérer la méthode après matching. Ici, ResourceInfo est nul. 
+Pour récupérer la méthode a la main, deux problèmes se posent donc :
+- Récupérer la classe de la ressource
+- Récupérer la méthode correspondant à l'appel
+Pour résoudre le deuxième problème, il est possible d'utiliser l'uri appelé, et d'aller le comparer aux uri dans la méthode. Cette méthode
+peut vite être fastidieuse (les PATH dans la classe du service peuvent être fractionnés pour permettre des factorisations, donc il y aurait 
+des cas à traiter ou des astuces à trouver).
+
 
 
