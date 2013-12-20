@@ -31,14 +31,12 @@ public class ResponseFilter implements ClientResponseFilter, ClientRequestFilter
 	@Override
 	public void filter(ClientRequestContext arg0, ClientResponseContext response)
 			throws IOException {
-		URI ressourceURI=uriInfo.getAbsolutePath();
-		ClientLifterCaller lifterCaller = new ClientLifterCaller(ressourceURI.toString(), response.getEntityStream());
-		response.setEntityStream(lifterCaller.call());
+	
+
 	}
 
 	@Override
 	public void filter(ClientRequestContext context) throws IOException {
-		
 		
 	}
 

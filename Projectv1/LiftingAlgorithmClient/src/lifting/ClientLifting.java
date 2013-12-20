@@ -15,17 +15,20 @@ import java.lang.reflect.Method;
  * 
  */
 public class ClientLifting extends Lifting {
+	
+	private Class<?> proxyExpectedResource;
 
-	public ClientLifting(InputStream ressource, Method m) {
-		super(ressource, m);
+	public ClientLifting(InputStream ressource, Class<?> proxyExpectedResource) {
+		super(ressource, null);
+		this.proxyExpectedResource=proxyExpectedResource;
 	}
 
 	@Override
 	protected void treeInclusion() {
 
-		this.rename(racine, service.getReturnType().getSimpleName()
+		this.rename(racine, proxyExpectedResource.getSimpleName()
 				.toLowerCase());
-		this.removeExtraFields(racine, service.getReturnType());
+		this.removeExtraFields(racine, this.proxyExpectedResource);
 	}
 
 }

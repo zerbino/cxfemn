@@ -9,16 +9,14 @@ import model.Personne;
 import org.reflections.Reflections;
 
 public class ClientLifterCaller {
-	/**
-	 * The path called by the client. Is used to find the corresponding method in the 
-	 * proxy
-	 */
+
 	
 	/**
 	 * The InputStream containing the entity of the response 
 	 */
 	protected InputStream entity;
-	protected String pathCalled;
+	
+	protected Class<?> returnType;
 	
 /**
  * 
@@ -26,11 +24,11 @@ public class ClientLifterCaller {
  * @param entity
  */
 
-	public ClientLifterCaller(String pathCalled,
-			InputStream entity) {
+	public ClientLifterCaller(
+			InputStream entity, Class<?> returnType) {
 		super();
 		this.entity = entity;
-		this.pathCalled=pathCalled;
+		this.returnType=returnType;
 	}
 	
 	/**
@@ -41,36 +39,12 @@ public class ClientLifterCaller {
 	 */
 	public InputStream call(){
 		
-		Method proxyMethod = this.getCalledMethod();
-		InputStream modifiedResource = new ClientLifting(entity, proxyMethod).lifting();
+		InputStream modifiedResource = new ClientLifting(entity, returnType).lifting();
 		
 		return modifiedResource;
 	}
 	
-	/**
-	 * Returns the method called in the proxy.
-	 * @return
-	 */
-	public Method getCalledMethod(){
-		try {
-			return this.getCalledMethodExc();
-		} catch (ClassNotFoundException e) {
-			System.err.print("no such class");
-		} 
-		return null;
-		
-		
-	}
-	
-	private Method getCalledMethodExc() throws ClassNotFoundException{
-		Class<?> ressource = Class.forName("model.Service");
-		Method method=null;
-		for(Method methode :ressource.getMethods()){
-			if(methode.getName().equals("op")&&methode.getReturnType().equals(Personne.class)){
-				method = methode;
-			}
-		}
-		return method;
-	}
+
+
 
 }
