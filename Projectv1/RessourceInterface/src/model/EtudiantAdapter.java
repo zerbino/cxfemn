@@ -6,7 +6,7 @@ public class EtudiantAdapter extends XmlAdapter<EtudiantImpl, Etudiant>{
 
 	@Override
 	public EtudiantImpl marshal(Etudiant v) throws Exception {
-		return null;
+		return (EtudiantImpl)v;
 	}
 
 	@Override

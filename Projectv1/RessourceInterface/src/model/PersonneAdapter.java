@@ -6,7 +6,7 @@ public class PersonneAdapter extends XmlAdapter<PersonneImpl, Personne>{
 
 	@Override
 	public PersonneImpl marshal(Personne arg0) throws Exception {
-		return null;
+		return (PersonneImpl)arg0;
 	}
 
 	@Override

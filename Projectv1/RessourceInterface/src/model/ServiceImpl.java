@@ -51,6 +51,4 @@ public class ServiceImpl implements Service {
 		return p;
 	}
 	
-	
-
 }

@@ -42,7 +42,7 @@ import com.sun.xml.bind.AnyTypeAdapter;
  * 
  * 
  */
-@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
 //@XmlSeeAlso({EtudiantImpl.class})
 public interface Etudiant
     extends Personne

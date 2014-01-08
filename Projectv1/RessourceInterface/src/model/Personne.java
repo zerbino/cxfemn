@@ -40,8 +40,9 @@ import com.sun.xml.bind.AnyTypeAdapter;
  * 
  * 
  */
-@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
 //@XmlSeeAlso({PersonneImpl.class})
+//@XmlJavaTypeAdapter(PersonneAdapter.class)
 public interface Personne {
 
     /**

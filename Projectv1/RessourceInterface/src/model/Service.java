@@ -13,19 +13,19 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	@XmlJavaTypeAdapter(PersonneAdapter.class)
-	public String op(Personne p);
+	//@XmlJavaTypeAdapter(PersonneAdapter.class)
+	public String op(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 	
 	@GET
 	@Path("/op1")
-	@XmlJavaTypeAdapter(EtudiantAdapter.class)
+	//@XmlJavaTypeAdapter(EtudiantAdapter.class)
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant op1();
+	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant op1();
 	
 	@GET
 	@Path("/op2")
 	@Produces(MediaType.APPLICATION_XML)
-	@XmlJavaTypeAdapter(PersonneAdapter.class)
-	public Personne op2();
+	//@XmlJavaTypeAdapter(PersonneAdapter.class)
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne op2();
 
 }
