@@ -3,8 +3,9 @@ Sprint 3
 Début : Lundi 13 janvier
 Fin : 3 février (un livrable le 28 janvier)
 
-Objectif non rempli précédemment - AU PLUS TÔT :
+Objectif(s) non rempli(s) précédemment - AU PLUS TÔT :
 - Permettre l'utilisation de plusieurs arguments (Grégoire). 
+- Généraliser l'algorithme pour les opérations PUT et GET (à tester aussi je crois ?)
 
 Objectif principal : Finalisation de la solution avant contribution - 28 JANVIER
 - Application des principes de qualité logicielle : utilisation d'interfaces, définition d'une architecture
