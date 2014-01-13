@@ -1,0 +1,14 @@
+Participants :
+Olivier Blanc, Hervé Grall
+Grégoire Séguin-Henry, Raphaël Martignoni, Hao Zhang, Kévin 
+
+Point sur le sprint 2 :
+- Les parties de Grégoire et Hao n'étaient pas rendues dans les temps
+- Les deux objectifs principaux ont été remplis
+
+Définition du sprint 3 :
+
+voir document "sprint 3.org" dans le dossier "rapports" de github.
+
+Divers :
+Rédiger la documentation développeur et utilisateur (incluant la javadoc) en anglais.

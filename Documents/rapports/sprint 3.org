@@ -1,0 +1,29 @@
+Sprint 3
+
+Début : Lundi 13 janvier
+Fin : 3 février (un livrable le 28 janvier)
+
+Objectif non rempli précédemment - AU PLUS TÔT :
+- Permettre l'utilisation de plusieurs arguments (Grégoire). 
+
+Objectif principal : Finalisation de la solution avant contribution - 28 JANVIER
+- Application des principes de qualité logicielle : utilisation d'interfaces, définition d'une architecture
+claire et bien segmentée pour permettre une meilleure factorisation
+- Ecriture de la javadoc
+- Ecrire une documentation expliquant au développeur les difficultés rencontrées, les éléments JAX-RS/CXF utilisés,
+la documentation utilisée et les apports au projet
+- Ecrire une documentation utilisateur expliquant comment utiliser le projet. Permettre l'utilisation du projet
+grâce à l'ajout d'une annotation
+- Se renseigner sur la contribution
+
+Objectif secondaire : réécriture en groovy - 3 FEVRIER
+- Groovy est un langage dédié (DSL) java qui a l'avantage de simplifier considérablement le code servant à traiter
+le xml. Il s'agit de réécrire les algorithmes manipulant du xml en groovy et d'intégrer ces fonctions à l'architecture
+java existante. 
+
+Un très bon tutoriel :
+http://www.torrefacteurjava.fr/book/export/html/3
+
+Remarques : toute la documentation (javadoc et documentations destinées au développeur et utilisateur) doit être rédigée
+en anglais.
+
