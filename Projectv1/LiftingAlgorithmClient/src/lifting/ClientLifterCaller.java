@@ -6,7 +6,7 @@ import java.util.Set;
 
 import model.Personne;
 
-import org.reflections.Reflections;
+
 
 /**
  * ClientLifterCaller calls the ClientLifting class, which implements the lifting
@@ -15,6 +15,7 @@ import org.reflections.Reflections;
  *
  *
  */
+
 public class ClientLifterCaller {
 
 	
