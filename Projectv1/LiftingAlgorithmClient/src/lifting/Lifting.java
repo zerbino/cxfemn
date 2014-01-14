@@ -103,28 +103,41 @@ public abstract class Lifting {
 			}
 		}
 	}
-
-	public void removeExtraFields(Element e, Class<?> class1) {
+	//remove fields that doesn't match any of those in the super class
+	// and check that mandatory fields are present
+	public boolean removeExtraFields(Element e, Class<?> class1) {
 		Field[] f = class1.getDeclaredFields();
 		boolean b;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
+		int mandatoryFields=0;
 		while (i.hasNext()) {
 			Element courant = i.next();
 			b = true;
 			for (int j = f.length - 1; j >= 0; j--) {
 				if (f[j].getName().equals(courant.getName())) {
 					b = false;
+					mandatoryFields++;
+					break;
 				}
 			}
 			if (b) {
 				e.removeContent(courant);
 			}
 		}
+		
+		if(f.length==mandatoryFields){
+
 		try {
 			enregistrefichier();
 		} catch (Exception e1) {
 			e1.printStackTrace();
+
+		}
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 
