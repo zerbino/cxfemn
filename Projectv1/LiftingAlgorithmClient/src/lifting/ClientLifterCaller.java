@@ -8,6 +8,13 @@ import model.Personne;
 
 import org.reflections.Reflections;
 
+/**
+ * ClientLifterCaller calls the ClientLifting class, which implements the lifting
+ * algorithm used client side. The method call() returns the result of this algorithm
+ * @author Raphaël Martignoni
+ *
+ *
+ */
 public class ClientLifterCaller {
 
 	

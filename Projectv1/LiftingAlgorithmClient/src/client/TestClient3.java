@@ -3,14 +3,11 @@ package client;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Etudiant;
 import model.Personne;
 import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-import utile.UniformementRepresentable;
-import filter.ResponseFilter;
 
 /**
  * Client utilisé pour tester les services descriptionPersonne, modificationPersonne, et ajouterPersonne. 
@@ -21,7 +18,6 @@ public class TestClient3 {
 	
 	public static void main(String[] args) {
 			List<Object> filtres = new LinkedList<>();
-			filtres.add(new ResponseFilter());
 			Service service = JAXRSClientFactory.create(
 					"http://localhost:8080/LiftingAlgorithm", Service.class, filtres);
 			Personne pa=new Personne();

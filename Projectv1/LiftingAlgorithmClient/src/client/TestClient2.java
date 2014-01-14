@@ -12,11 +12,17 @@ import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
 import com.sun.org.apache.bcel.internal.generic.NEW;
 
-import filter.ResponseFilter;
 import utile.UniformementRepresentable;
 
 /**
- * Client utilisé pour faire le cas d'un filtre côté client. 
+ * Test client to check the behavior of the solution client-side, i.e. when the
+ * server is sending a response back to the client. 
+ * 
+ * In this test : 
+ * a service is called (class Service). The method op() is called from that service,
+ * corresponding to a GET request. This method, on the server, sends a Student, subtype
+ * of Person, while client-side a Person is excepted. 
+ * 
  * @author raphael
  *
  */
@@ -24,7 +30,6 @@ public class TestClient2 {
 
 	public static void main(String[] args) {
 		List<Object> filtres = new LinkedList<>();
-		filtres.add(new ResponseFilter());
 		filtres.add(new LiftingInterceptor());
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class, filtres);
