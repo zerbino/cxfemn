@@ -33,12 +33,12 @@ public interface Service {
 	public String listePersonne();
 		
 	@PUT
-	@Path("/modificationPersonne/{id}")
+	@Path("/modificationNomPersonne/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public String modificationNomPersonne(@PathParam("id") int id, String nom);
 		
 	@PUT
-	@Path("/modificationPersonne/{id}")
+	@Path("/modificationPrenomPersonne/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public String modificationPrenomPersonne(@PathParam("id") int id, String nom);
 		
@@ -48,7 +48,7 @@ public interface Service {
 	public String ajouterPersonne(Personne p);
 
 	@DELETE
-	@Path("/ajouterPersonne/{id}")
+	@Path("/effacerPersonne/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public String effacerPersonne(@PathParam("id") int id);
 }
