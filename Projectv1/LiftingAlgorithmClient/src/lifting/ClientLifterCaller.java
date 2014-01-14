@@ -6,8 +6,6 @@ import java.util.Set;
 
 import model.Personne;
 
-import org.reflections.Reflections;
-
 public class ClientLifterCaller {
 
 	
