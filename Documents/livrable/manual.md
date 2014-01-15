@@ -4,6 +4,7 @@ Substitution is a project raised by Mr. GRALL in the Nantes Engineer School to s
 ## The purpose of the project Substitution
 The Substitution project is raised to solve the problem of the contravention of the Liskov substitution principle in the framework cxf.
 The framework cxf is contrary to the Liskov substitution principle in two aspects:
+
 1. The coupling between the service layer and the object layer.
 - The problem of the inter-operation of inheritance between the client and the server.
 
