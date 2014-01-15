@@ -1,4 +1,4 @@
-1) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@)
+1) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@) - AbstractLifting.java
 
 Avec la méthode removeExtraFields : on aura des problèmes si on a la hierarchie de classe suivante :
 
@@ -12,6 +12,11 @@ Il balaie l'ensemble des éléments du xml, et les compare aux champs extraits d
 
 GetDeclaredFields ne récupère que les champs qui ont été déclarés dans Etudiant (problème qui a avait été soulevé pendant un cours de H.Grall avec la méthode toString()). Il ne liste pas ceux déclarés dans Personne. Donc les éléments du xml qui correspondent aux champs déclarés dans Personne, seront traités comme s'il s'agissait de champs déclarés dans GSI. Autrement dit ils seront supprimés !
 
-2) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@) (2) 
+2) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@) (2) - AbstractLifting.java
 
-A rédiger.
+removeExtraFields(@@) vérifie que tous les attributs de la super classe sont bien présents dans le schéma. Dans le cas contraire, il ne devrait pas appliquer les changements au xml. Or depuis que les méthodes enregistrerFichier(@@@) ont été supprimées, les changements sont toujours appliqués. Voir le TODO dans la classe AbstractLifting.
+
+
+3) Factory
+
+Les objets sont encore souvent instanciés à partir de new dans le code. Il faudrait faire appel à la factory systématiquement.

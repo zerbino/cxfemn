@@ -59,14 +59,11 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 			}
 		}
 
+		
+		// TODO : to be completed !
+
 		if (fields.length == mandatoryFields) {
 
-			try {
-				
-			} catch (Exception e1) {
-				e1.printStackTrace();
-
-			}
 			return true;
 		} else {
 			return false;
