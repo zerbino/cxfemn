@@ -9,6 +9,7 @@ The framework cxf is contrary to the Liskov substitution principle in two aspect
 - The problem of the inter-operation of inheritance between the client and the server.
 
 ## How does it work?
+It works with the support of interceptor and filter in cxf framework. We compare the structure of the body supplied by the sender and the structure needed by the receiver, prune away the redundant elements and modify the name of the body. After, the receiver may unmarshall the body smoothly.
 
 ## How to use it?
 
@@ -16,4 +17,7 @@ The framework cxf is contrary to the Liskov substitution principle in two aspect
 log:
 - first version: Hao, 15 jan, 2014
 without the principle and the usage.
+
+- second version: Hao, 15 jan, 2014
+add the principle.
 
