@@ -1,0 +1,17 @@
+1) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@)
+
+Avec la méthode removeExtraFields : on aura des problèmes si on a la hierarchie de classe suivante :
+
+GSI extends Etudiant extends Personne
+
+Hypothèses :
+-Chaque sous classe possède au moins un attribut que sa super classe ne possède pas.
+-Côté serveur, on attend un Etudiant.
+-L'algorithme removeExtraFields fait la chose suivante :
+Il balaie l'ensemble des éléments du xml, et les compare aux champs extraits de Etudiant grâce à la méthode Class#getDeclaredFields().
+
+GetDeclaredFields ne récupère que les champs qui ont été déclarés dans Etudiant (problème qui a avait été soulevé pendant un cours de H.Grall avec la méthode toString()). Il ne liste pas ceux déclarés dans Personne. Donc les éléments du xml qui correspondent aux champs déclarés dans Personne, seront traités comme s'il s'agissait de champs déclarés dans GSI. Autrement dit ils seront supprimés !
+
+2) PROBLEME DANS L'ALGORITHME DE removeExtraFields(@@) (2) 
+
+A rédiger.

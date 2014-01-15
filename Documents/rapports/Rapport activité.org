@@ -1,0 +1,20 @@
+Rapport d'activité : sprint 3
+
+Raphaël : 
+
+- Redéfinition de l'architecture : 
+	-- Création d'un convertisseur Document <> InputStream pour éviter de créer des fichiers inutiles (méthodes enregistreFichier(@@@)...)
+	-- Création d'interfaces, classes abstraites, génériques pour généraliser l'architecture des classes liées à l'algorithme de lifting
+	-- Création de classes test simples pour : 
+		# Le convertisseur Document <> InputStream
+		# La nouvelle architecture
+		# Lancement des tests et succès
+- Fix d'un bug dans la méthode removeExtraFields(@@@) : La modification d'un élément du schéma XML lors de son parcours
+par un Iterator entrainait une erreur de type ConcurrentModificationException. Résolution en utilisant des méthodes propres
+à l'objet Iterator. 
+- Rédaction de la javadoc associée à la nouvelle architecture
+- Merge à la main de la classe Lifting : lors du sprint 2, la qualité du code interdisait de réutiliser la même classe (celle contenant
+l'algorithme de lifting), du côté du client et du serveur. Deux classes différentes existaient avec certains algorithmes en commun. Utilisation
+de meld pour merger les deux classes. 
+
+
