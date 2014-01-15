@@ -8,6 +8,7 @@ import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
 import lifting.ClientLifterCaller;
+
 /**
  * This interceptor implements the JAX-RS ReaderInterceptor. It is added client-side and
  * is called when the client receives a response from the server. 
@@ -30,7 +31,7 @@ public class LiftingInterceptor implements ReaderInterceptor{
 			throws IOException, WebApplicationException {
 		Class<?> expectedClass = (Class<?>)context.getGenericType();
 		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedClass);
-		context.setInputStream(lifterCaller.call());
+		context.setInputStream(lifterCaller.callStream());
 		return context.proceed();
 	}
 

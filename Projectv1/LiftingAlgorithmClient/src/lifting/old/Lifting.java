@@ -1,4 +1,4 @@
-package serverLifter.client;
+package lifting.old;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -42,10 +42,14 @@ public abstract class Lifting {
 	protected String outputPath;
 	protected Method service;
 
-	public Lifting(InputStream ressource, Method m) throws Exception {
+	public Lifting(InputStream ressource, Method m) {
 		this.initializeOutPutPath();
 		SAXBuilder sxb = new SAXBuilder();
-		document = sxb.build(ressource);
+		try {
+			document = sxb.build(ressource);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 
 		racine = document.getRootElement();
 		service = m;
@@ -99,28 +103,41 @@ public abstract class Lifting {
 			}
 		}
 	}
-
-	public void removeExtraFields(Element e, Class<?> class1) {
-		Field[] f = class1.getDeclaredFields();
-		boolean b;
+	//remove fields that doesn't match any of those in the super class
+	// and check that mandatory fields are present
+	public boolean removeExtraFields(Element e, Class<?> class1) {
+		Field[] fields = class1.getDeclaredFields();
+		boolean isNotInSuperClass;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
+		int mandatoryFields=0;
 		while (i.hasNext()) {
 			Element courant = i.next();
-			b = true;
-			for (int j = f.length - 1; j >= 0; j--) {
-				if (f[j].getName().equals(courant.getName())) {
-					b = false;
+			isNotInSuperClass = true;
+			for (int j = fields.length - 1; j >= 0; j--) {
+				if (fields[j].getName().equals(courant.getName())) {
+					isNotInSuperClass = false;
+					mandatoryFields++;
+					break;
 				}
 			}
-			if (b) {
+			if (isNotInSuperClass) {
 				e.removeContent(courant);
 			}
 		}
+		
+		if(fields.length==mandatoryFields){
+
 		try {
 			enregistrefichier();
 		} catch (Exception e1) {
 			e1.printStackTrace();
+
+		}
+			return true;
+		}
+		else{
+			return false;
 		}
 	}
 

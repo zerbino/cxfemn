@@ -1,34 +1,25 @@
 package lifting;
 
-import java.io.InputStream;
-import java.lang.reflect.Method;
+import org.jdom2.Document;
 
 /**
- * Class to use when the tree inclusion algorithm is used for a response to the
- * client. The class is only used for the lifting algorithm itself. The
- * conditions to call it must be coded elsewhere.
- * 
- * The treeInclusion method corresponds to what must be done depending on where
- * the entity is being sent (to the client or to the server).
+ * Subclass of AbstractLifting<E>. E is specified by Class<?>. 
  * 
  * @author raphael
- * 
+ *
+ * @ see AbstractLifting<E> for more details
  */
-public class ClientLifting extends Lifting {
-	
-	private Class<?> proxyExpectedResource;
+public class ClientLifting extends AbstractLifting<Class<?>> {
 
-	public ClientLifting(InputStream ressource, Class<?> proxyExpectedResource) {
-		super(ressource, null);
-		this.proxyExpectedResource=proxyExpectedResource;
+	public ClientLifting(Document doc, Class<?> clazz) {
+		super(doc, clazz);
+
 	}
 
 	@Override
-	protected void treeInclusion() {
-
-		this.rename(racine, proxyExpectedResource.getSimpleName()
-				.toLowerCase());
-		this.removeExtraFields(racine, this.proxyExpectedResource);
+	public Document lifting() {
+		this.indivLifting(doc.getRootElement(), clazz);
+		return doc;
 	}
 
 }
