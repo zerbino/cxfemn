@@ -35,22 +35,28 @@ public class TestClient3 {
 			Personne pd=new Personne();
 			pd.setNom("Zhang");
 			pd.setPrenom("Hao");
-			pd.setId(56);
+			pd.setId(56);						
 			System.out.println(service.listePersonne());
 			System.out.println(service.ajouterPersonne(pa));
 			System.out.println(service.ajouterPersonne(pb));
 			System.out.println(service.ajouterPersonne(pc));
 			System.out.println(service.ajouterPersonne(pd));
-			System.out.println(service.getPersonne(0));
-			System.out.println(service.getPersonne(1));
-			System.out.println(service.getPersonne(2));
-			System.out.println(service.getPersonne(3));
+			System.out.println(service.getPersonne(45));
+			System.out.println(service.getPersonne(8));
+			System.out.println(service.getPersonne(77));
+			System.out.println(service.getPersonne(56));
+			System.out.println(service.getPersonne(5));
 			System.out.println(service.modificationNomPersonne(0, "Abracadabra"));
+			System.out.println(service.modificationNomPersonne(77, "Abracadabra"));
 			System.out.println(service.modificationPrenomPersonne(1, "Badaboum!"));
-			System.out.println(service.getPersonne(0));
-			System.out.println(service.getPersonne(1));
+			System.out.println(service.modificationPrenomPersonne(56, "Badaboum!"));
+			System.out.println(service.getPersonne(77));
+			System.out.println(service.getPersonne(56));
 			System.out.println(service.effacerPersonne(0));			
+			System.out.println(service.effacerPersonne(8));		
 			System.out.println(service.listePersonne());
+			
+
 			
 			
 	}

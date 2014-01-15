@@ -50,18 +50,18 @@ public class ServiceImpl implements Service {
 		if(i==-1){
 			return "aucune personne ne possède cet identifiant:"+id;
 		}
-		return "\n Personne n°"+id+UniformementRepresentable.toString(new StringBuilder(), listePersonne.get(i));
+		return ""+UniformementRepresentable.toString(new StringBuilder(), listePersonne.get(i));
 	}
 	
 	@Override
 	public String listePersonne() {
-		if(listePersonne!=null){
-			String s="";
-			int size=listePersonne.size();
+		int size=listePersonne.size();
+		if(size>0){
+			String s="DEBUT LISTE:";
 			for(int i=0;i<size;i++){
-				s+="\n Personne n°"+i+UniformementRepresentable.toString(new StringBuilder(), listePersonne.get(i));
+				s+="\n"+UniformementRepresentable.toString(new StringBuilder(), listePersonne.get(i));
 			}
-			s+="\n END LIST";
+			s+="\nEND LIST";
 			return s;
 		}
 		else{
@@ -99,6 +99,7 @@ public class ServiceImpl implements Service {
 		return "La personne suivante à été ajouté à la liste: \n"+UniformementRepresentable.toString(new StringBuilder(), p);
 	}
 	
+	@Override
 	public String effacerPersonne(int id) {
 		int i=trouverPersonne(id);
 		if(i==-1){
@@ -109,6 +110,8 @@ public class ServiceImpl implements Service {
 	}
 	
 	private int trouverPersonne(int id){
+		int size=listePersonne.size();
+		if(size==0) return -1;
 		int i=0;
 		boolean a=true;
 		do{
@@ -119,8 +122,8 @@ public class ServiceImpl implements Service {
 				i++;
 			}
 		}
-		while(a && i<listePersonne.size());
-		if(i!=id){
+		while(a && i<size);
+		if(i>=size){
 			return -1;
 		}
 		return i;
