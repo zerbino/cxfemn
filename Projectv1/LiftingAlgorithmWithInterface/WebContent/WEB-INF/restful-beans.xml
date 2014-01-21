@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:jaxws="http://cxf.apache.org/jaxws" xmlns:cxf="http://cxf.apache.org/core"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://cxf.apache.org/jaxrs
+http://cxf.apache.org/schemas/jaxrs.xsd
+http://cxf.apache.org/jaxws
+http://cxf.apache.org/schemas/jaxws.xsd
+http://cxf.apache.org/core 
+      http://cxf.apache.org/schemas/core.xsd">
+
+	<import resource="classpath:META-INF/cxf/cxf.xml" />
+	<import resource="classpath:META-INF/cxf/cxf-servlet.xml" />
+
+	<!-- JAX-RS -->
+	<jaxrs:server id="LiftingAlgorithm" address="/">
+		<jaxrs:schemaLocations>
+			<jaxrs:schemaLocation>classpath:/documents/model.xsd</jaxrs:schemaLocation>
+		</jaxrs:schemaLocations>
+		<jaxrs:serviceBeans>
+			<ref bean="Service" />
+		</jaxrs:serviceBeans>
+		<jaxrs:features>
+			<cxf:logging />
+		</jaxrs:features>
+
+		<jaxrs:providers>
+<!-- 			<ref bean="ClientRequestFilter" /> -->
+		</jaxrs:providers>
+	</jaxrs:server>
+	<bean id="Service" class="model.ServiceImpl" />
+	<bean id="ClientRequestFilter" class="filter.server.ClientRequestFilter">
+<!--  		authorization bean properties  -->
+	</bean>
+</beans>
