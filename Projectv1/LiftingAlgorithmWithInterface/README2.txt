@@ -1,13 +1,35 @@
-Avant de lancer le projet :
+Hao ZHANG:
+21/01/2014
 
-1) Pour vérifier l'objectif 1, lié à l'amélioration de l'algorithme dans le cas
-de la requête POST grâce à l'utilisation du contexte, vérifier que dans restful-beans.xml,
-la référence vers le filtre utilisé (filter.server.ClientRequestFilter) est bien présente
-et décommentée. Le client correspondant est la classe model.TestClient dans le projet 
-LiftingAlgorithmClient.
+Ce projet est pour implementer les interfaces pour personne et etudiant.
 
-2) Pour vérifier l'objectif 2, qui était d'implémenter le filtre du côté du résultat, dans 
-le cas d'une requête GET où le service a été modifié, il faut au contraire commenter le filtre
-utilisé pour l'objectif 1 dans restful-beans.xml pour ne pas avoir de bug (l'algorithme utilisé
-normalement au moment du POST est appelé lors d'un GET, ce qui provoque un bug. Il reste une 
-vérification simple à ajouter sur le type de requête pour éviter ce bug. 
+L'interface marche maintenant. Cependant, il y a des problemes:
+1. On doit ajouter l'annotation sur la methode de ServiceImpl aussi.
+2. Le resultat est ce qu'on attend, mais il y a aussi erreur de unmarshalling, je sais pas pourquoi.
+
+Http-Method: POST
+Content-Type: application/xml
+Headers: {Accept=[application/xml], cache-control=[no-cache], connection=[keep-alive], Content-Length=[140], content-type=[application/xml], host=[localhost:8080], pragma=[no-cache], user-agent=[Apache CXF 2.7.7]}
+Payload: <?xml version="1.0" encoding="UTF-8" standalone="yes"?><etudiant><id>1</id><nom>ZHANG</nom><prenom>Hao</prenom><promo>GSI</promo></etudiant>
+--------------------------------------
+Corps du message :
+Before: 
+etudiant
+	id: 1
+	nom: ZHANG
+	prenom: Hao
+	promo: GSI
+op
+Annotations:1
+Annotation: interface javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter
+XmlJavaTypeAdapter
+model.PersonneImpl
+After: 
+personne
+	id: 1
+	nom: ZHANG
+	prenom: Hao
+Jan 21, 2014 6:23:53 PM org.apache.cxf.jaxrs.provider.AbstractJAXBProvider handleExceptionStart
+WARNING: javax.xml.bind.UnmarshalException
+ - with linked exception:
+[com.sun.istack.SAXParseException2; lineNumber: 1; columnNumber: 39; unexpected element (uri:"", local:"etudiant"). Expected elements are <{}personne>]

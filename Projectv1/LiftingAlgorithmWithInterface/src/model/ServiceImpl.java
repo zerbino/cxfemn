@@ -4,6 +4,12 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import utile.UniformementRepresentable;
 
 //@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
@@ -12,7 +18,10 @@ public class ServiceImpl implements Service {
 	private ArrayList<Personne> listePersonne=new ArrayList<Personne>();
 	
 	@Override
-	public String op(Personne p) {
+	@POST
+	@Path("/op")
+	@Produces(MediaType.APPLICATION_XML)
+	public String op(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p) {
 		PrintWriter writer;
 		try {
 			//path correspond au répertoire d'installation de tomcat

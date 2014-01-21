@@ -4,6 +4,8 @@ import java.io.*;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 
 import org.jdom2.*;
 import org.jdom2.input.*;
@@ -14,6 +16,9 @@ import utile.UniformementRepresentable;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Iterator;
+
+import javax.xml.bind.annotation.adapters.XmlAdapter;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 public class JDom
 {
@@ -47,16 +52,34 @@ public class JDom
 	}
 
 	protected void treeInclusion(){
+		Class<?> classDest = service.getParameterTypes()[0];
 //-check annotation
 		Annotation[][] anns = service.getParameterAnnotations();
-		System.out.println("Annotations:");
+		System.out.println(service.getName());
+		System.out.println("Annotations:" + anns.length);
 		for (int i = 0; i < anns.length; i++){
 			for (int j = 0; j < anns[i].length; j++){
-				System.out.println("Annotation: "+anns[i][j].toString());
+				System.out.println("Annotation: "+anns[i][j].annotationType());
+				if (anns[i][j] instanceof XmlJavaTypeAdapter){
+					System.out.println("XmlJavaTypeAdapter");
+					XmlJavaTypeAdapter ann = (XmlJavaTypeAdapter)anns[i][j];
+					Class<? extends XmlAdapter> cAdapter = ann.value();
+					Type[] types = ((ParameterizedType)(cAdapter.getGenericSuperclass())).getActualTypeArguments();
+					Class c = null;
+					try {
+						String typeAndname = types[0].toString();
+						c = Class.forName(typeAndname.split(" ")[1]);
+					} catch (ClassNotFoundException e){
+						e.printStackTrace();
+					}
+					System.out.println(c.getName());
+					
+					classDest = c;
+				}
 			}
 		}
-//------------------
-		if(removeExtraFields(racine,service.getParameterTypes()[0])){
+//-----------------
+		if(removeExtraFields(racine, classDest)){
 			rename(racine,service.getParameterTypes()[0].getSimpleName().toLowerCase());
 		}
 	}
