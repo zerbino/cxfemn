@@ -1,5 +1,7 @@
 package model;
 
+import java.util.List;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -16,6 +18,11 @@ public interface Service {
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
 	public String op(Personne p);
+	
+	@POST
+	@Path("/ops")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Personne> op(Personne p1, Personne p2);
 	
 	@GET
 	@Path("/get")

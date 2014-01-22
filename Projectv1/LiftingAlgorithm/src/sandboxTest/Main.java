@@ -5,7 +5,7 @@ import model.Personne;
 
 import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
-import serverLifter.server.JDom;
+import serverLifter.old.JDom;
 
 public class Main{
 

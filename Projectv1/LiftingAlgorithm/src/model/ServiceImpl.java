@@ -3,6 +3,7 @@ package model;
 import java.io.File;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import utile.UniformementRepresentable;
 
@@ -28,11 +29,13 @@ public class ServiceImpl implements Service {
 			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
 			System.out.println("Chemin vers la base de donnée: ");
 			System.out.println(path);
+			
+			listePersonne.add(p);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return p.getNom();
+		return p.getPrenom();
 	}
 
 	@Override
@@ -42,6 +45,13 @@ public class ServiceImpl implements Service {
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
 		return etudiant;
+	}
+	
+	@Override
+	public List<Personne> op(Personne p1, Personne p2) {
+		listePersonne.add(p2);
+		listePersonne.add(p1);
+		return listePersonne;
 	}
 	
 	@Override
@@ -128,5 +138,12 @@ public class ServiceImpl implements Service {
 		}
 		return i;
 	}
+
+	@Override
+	public List<Personne> getPersonnes() {
+		return this.listePersonne;
+	}
+
+
 }
 

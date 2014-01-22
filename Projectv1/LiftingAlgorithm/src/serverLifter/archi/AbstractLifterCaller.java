@@ -1,11 +1,11 @@
-package lifting;
+package serverLifter.archi;
 
 import java.io.InputStream;
 
 import org.jdom2.Document;
 
-import factory.Factory;
-import factory.FactoryImp;
+import factories.Factory;
+import factories.FactoryImp;
 
 /**
  * This class is extended by two other classes. It contains an abstract method : call(), which

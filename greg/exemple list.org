@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<personnes>
+<personne><id>0</id><nom>Séguin-Henry</nom><prenom>Grégoire</prenom></personne>
+<personne><id>0</id><nom>Martignoni</nom><prenom>Raphaël</prenom></personne>
+</personnes>
+

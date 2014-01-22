@@ -1,15 +1,10 @@
 package interceptor;
 
-import java.awt.print.Printable;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import javax.ws.rs.WebApplicationException;
-import javax.ws.rs.ext.Provider;
-import javax.ws.rs.ext.ReaderInterceptor;
-import javax.ws.rs.ext.ReaderInterceptorContext;
 
 import model.Personne;
 
@@ -20,8 +15,13 @@ import org.apache.cxf.phase.Phase;
 
 import com.sun.xml.internal.ws.wsdl.writer.document.Service;
 
-import serverLifter.server.Lifter;
+import serverLifter.old.Lifter;
 //@Provider
+/**
+ * Unused
+ * @author raphael
+ *
+ */
 public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 
 	public ClientRequestInterceptor() {
@@ -53,10 +53,8 @@ public class ClientRequestInterceptor extends AbstractPhaseInterceptor<Message>{
 			catch(IOException e){
 				e.printStackTrace();
 			} catch (NoSuchMethodException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (SecurityException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 

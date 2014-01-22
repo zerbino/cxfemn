@@ -1,0 +1,20 @@
+Grégoire :
+
+- Permettre l'utilisation de plusieurs arguments (Grégoire). 
+- Généraliser l'algorithme pour les opérations PUT et GET (à tester aussi je crois ?)
+- Documentation utilisateur
+
+Hao :
+- Documentation utilisateur
+- Terminer les objectifs du sprint 2 : permettre l'utilisation des interfaces
+
+Kévin :
+- Documentation développeur : documentation expliquant au développeur les difficultés rencontrées, les éléments JAX-RS/CXF utilisés,
+la documentation utilisée et les apports au projet
+
+Raphaël : 
+- applications de principes de qualité logicielle au code existant
+
+
+Tous : 
+écriture de la javadoc
