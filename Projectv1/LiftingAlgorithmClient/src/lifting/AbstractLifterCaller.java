@@ -30,6 +30,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	 */
 	protected Document doc;
 	protected E clazz;
+	protected Lifting<E> lifting;
 	
 	protected Factory factory = new FactoryImp();
 	
@@ -39,7 +40,9 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	}
 
 	@Override
-	public abstract Document call();
+	public Document call() {
+		return lifting.lifting();
+	}
 	
 	@Override
 	public InputStream callStream(){

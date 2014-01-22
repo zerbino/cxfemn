@@ -28,3 +28,5 @@ http://www.torrefacteurjava.fr/book/export/html/3
 Remarques : toute la documentation (javadoc et documentations destinées au développeur et utilisateur) doit être rédigée
 en anglais.
 
+utilisateur : comment utiliser. Les annotations
+développeur : fonctionnement interne. Qu'est ce qui est utilisé. 

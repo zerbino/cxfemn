@@ -16,11 +16,9 @@ public class ClientLifterCaller extends AbstractLifterCaller<Class<?>> {
 
 	public ClientLifterCaller(InputStream entity, Class<?> clazz) {
 		super(entity, clazz);
+		this.lifting = new ClientLifting(doc, clazz);
 	}
 
-	@Override
-	public Document call() {
-		return new ClientLifting(doc, clazz).lifting();
-	}
+	
 
 }

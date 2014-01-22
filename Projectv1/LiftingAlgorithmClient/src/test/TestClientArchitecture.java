@@ -15,37 +15,68 @@ import org.jdom2.JDOMException;
 import org.jdom2.input.SAXBuilder;
 
 public class TestClientArchitecture {
+
+	private static File testFile = new File(Variables.pathXML);
+
+	/**
+	 * Returns a Document instance from a file.
+	 * @param file
+	 * @return the Document instance
+	 * @throws JDOMException
+	 * @throws IOException
+	 */
+	public Document docFromFile(File file) throws JDOMException, IOException{
+		SAXBuilder builder = new SAXBuilder();
+		return builder.build(testFile);
+	}
 	
-	public Document docLifted(Document initDoc, Class<?> clazz){
+	/**
+	 * Tests the behavior of ClientLifting class
+	 * @param initDoc
+	 * @param clazz
+	 * @return the lifted Document
+	 */
+	public Document docLifted(Document initDoc, Class<?> clazz) {
 		ClientLifting clientLifting = new ClientLifting(initDoc, clazz);
 		return clientLifting.lifting();
 	}
-	
-	public Document liftingTest() throws JDOMException, IOException{
-		Document doc = null;
-		SAXBuilder builder = new SAXBuilder();
-		doc = builder.build(new File(Variables.pathXML));
-		this.docLifted(doc, Personne.class);
-		return doc;
-	}
-	
-	public Document liftingCallerTest() throws FileNotFoundException{
-		InputStream input = new FileInputStream(new File(Variables.pathXML));
-		ClientLifterCaller clientLifterCaller=new ClientLifterCaller(input, Personne.class);
+
+
+	/**
+	 * Tests the behavior of ClientLifterCaller class
+	 * @return the lifted Document
+	 * @throws FileNotFoundException
+	 */
+	public Document liftingCallerTest() throws FileNotFoundException {
+		InputStream input = new FileInputStream(testFile);
+		ClientLifterCaller clientLifterCaller = new ClientLifterCaller(input,
+				Personne.class);
 		return clientLifterCaller.call();
 	}
-	
-	public void testFinal() throws JDOMException, IOException{
-		Document doc = liftingTest();
+
+	/**
+	 * Test calling liftingTest and liftingCallerTest methods. Makes sure that
+	 * what's produced by the lifting class and the lifterCaller class is the same
+	 * and is what's expected.
+	 * @throws JDOMException
+	 * @throws IOException
+	 */
+	public void testFinal() throws JDOMException, IOException {
+		//Initial document
+		Document initDoc = docFromFile(testFile);
+		System.out.println("Initial document :");
+		Variables.printDoc(initDoc);
+		
+		Document doc = docLifted(initDoc, Personne.class);
 		Document docCaller = liftingCallerTest();
-		
-		System.out.println("Document obtenu par ClientLifting :");
+
+		System.out.println("Document obtained with ClientLifting :");
 		Variables.printDoc(doc);
-		
-		System.out.println("Document obtenur par ClientLifterCaller :");
+
+		System.out.println("Document obtained with ClientLifterCaller :");
 		Variables.printDoc(docCaller);
 	}
-	
+
 	public static void main(String[] args) {
 		TestClientArchitecture test = new TestClientArchitecture();
 		try {
