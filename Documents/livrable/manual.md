@@ -12,7 +12,9 @@ The framework cxf is contrary to the Liskov substitution principle in two aspect
 It works with the support of interceptor and filter in cxf framework. We compare the structure of the body supplied by the sender and the structure needed by the receiver, prune away the redundant elements and modify the name of the body. After, the receiver may unmarshall the body smoothly.
 
 ## How to use it?
-
+1. import the jar.
+- For the server side, add a bean *ClientRequestFilter*.
+- For the client side, create a client by extending the abstract class Client. 
 
 log:
 - first version: Hao, 15 jan, 2014
@@ -20,4 +22,7 @@ without the principle and the usage.
 
 - second version: Hao, 15 jan, 2014
 add the principle.
+
+- third version: Hao, 27 jan, 2014
+add how to use the project.
 
