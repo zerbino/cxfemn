@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 @Path("/rest")
@@ -17,17 +18,36 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(Personne p);
+	public String op(PersonneImpl p);
+	
+	@POST
+	@Path("/opInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public String opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
+	
 	
 	@POST
 	@Path("/ops")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Personne> op(Personne p1, Personne p2);
+	public List<PersonneImpl> op(PersonneImpl p1, 
+			PersonneImpl p2);
+	
+	@POST
+	@Path("/opsInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<Personne> opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p1, 
+			@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p2);
 	
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant op();
+	public EtudiantImpl op();
+	
+	@GET
+	@Path("/get")
+	@Produces(MediaType.APPLICATION_XML)
+	public Etudiant opInt();
+	
 	
 	@GET
 	@Path("/getPersonne/{id}")
@@ -52,7 +72,12 @@ public interface Service {
 	@POST
 	@Path("/ajouterPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public String ajouterPersonne(Personne p);
+	public String ajouterPersonne(PersonneImpl p);
+	
+	@POST
+	@Path("/ajouterPersonneInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public String ajouterPersonne(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 
 	@DELETE
 	@Path("/effacerPersonne/{id}")
@@ -62,7 +87,13 @@ public interface Service {
 	@GET
 	@Path("/getPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Personne> getPersonnes();
+	public List<PersonneImpl> getPersonnes();
+	
+	@GET
+	@Path("/getPersonneInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnesInt();
+	
 
 }
 

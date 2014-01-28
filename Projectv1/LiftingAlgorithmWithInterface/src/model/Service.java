@@ -17,12 +17,12 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
+	public String op(Personne p);
 	
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant op();
+	public Etudiant op();
 	
 	@GET
 	@Path("/getPersonne/{id}")
@@ -47,7 +47,7 @@ public interface Service {
 	@POST
 	@Path("/ajouterPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public String ajouterPersonne(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
+	public String ajouterPersonne(Personne p);
 
 	@DELETE
 	@Path("/effacerPersonne/{id}")

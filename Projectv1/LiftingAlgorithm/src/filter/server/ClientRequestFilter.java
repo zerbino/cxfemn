@@ -9,6 +9,7 @@ import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
+import adapters.AdapterTackle;
 import serverLifter.archi.LifterCaller;
 import serverLifter.archi.ServerLifterCaller;
 
@@ -24,7 +25,8 @@ public class ClientRequestFilter implements ContainerRequestFilter{
 		//InputStream input = lifter.HTTPAdapter(requestContext.getEntityStream(),info.getResourceMethod());
 		InputStream input = requestContext.getEntityStream();
 		Class<?>[] classes=info.getResourceMethod().getParameterTypes();
-		LifterCaller lifterCaller = new ServerLifterCaller(input, classes);
+		AdapterTackle adpt = new AdapterTackle(info.getResourceMethod().getDeclaringClass().getPackage());
+		LifterCaller lifterCaller = new ServerLifterCaller(input, classes, adpt);
 		InputStream output = lifterCaller.callStream();
 		requestContext.setEntityStream(output);
 	}

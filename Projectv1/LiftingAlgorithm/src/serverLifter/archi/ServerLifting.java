@@ -2,6 +2,8 @@ package serverLifter.archi;
 
 
 import org.jdom2.Document;
+import adapters.AdapterTackle;
+
 
 /**
  * Extends AbstractLifting. Specifies the generic type with Class<?>[].
@@ -11,10 +13,11 @@ import org.jdom2.Document;
  * @author raphael
  *
  */
+
 public class ServerLifting extends AbstractLifting<Class<?>[]> {
 
-	public ServerLifting(Document doc, Class<?>[] clazz) {
-		super(doc, clazz);
+	public ServerLifting(Document doc, Class<?>[] clazz, AdapterTackle adpt) {
+		super(doc, clazz, adpt);
 	}
 
 	@Override
