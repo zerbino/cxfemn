@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 //    "nom",
 //    "prenom"
 //})
-@XmlRootElement(name="personne")
+@XmlRootElement(name="personneimpl")
 public class PersonneImpl implements Personne {
 	protected int id;
     protected String nom;

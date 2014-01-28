@@ -42,6 +42,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	
 	@Override
 	protected boolean removeExtraFields(Element e, Class<?> class1) {
+		/// dstClass the class used by marshalling, instead of the interface.
 		Class<?> dstClass = class1;
 		if (null != adpt){
 			dstClass = adpt.getClassByInterface(class1);

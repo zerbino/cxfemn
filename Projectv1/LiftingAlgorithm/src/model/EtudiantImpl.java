@@ -37,7 +37,7 @@ import javax.xml.bind.annotation.XmlType;
 //@XmlType(name = "etudiant", propOrder = {
 //    "promo"
 //})
-@XmlRootElement(name="etudiant")
+@XmlRootElement(name="etudiantimpl")
 public class EtudiantImpl extends PersonneImpl implements Etudiant
 {
 
