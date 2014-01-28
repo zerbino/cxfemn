@@ -1,6 +1,7 @@
 package client;
 
 import model.Etudiant;
+import model.EtudiantImpl;
 import model.Personne;
 import model.Service;
 import user.Client;
@@ -27,7 +28,7 @@ public class TestClient5 extends Client<Service>{
 	public static void main(String[] args) {
 		TestClient5 tc = new TestClient5("http://localhost:8080/LiftingAlgorithm", Service.class);
 		Service service = tc.getService();
-		Etudiant e = new Etudiant();
+		EtudiantImpl e = new EtudiantImpl();
 		e.setId(1);
 		e.setNom("ZHANG");
 		e.setPrenom("Hao");
