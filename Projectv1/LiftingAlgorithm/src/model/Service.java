@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 @Path("/rest")
@@ -17,12 +18,13 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(Personne p);
+	public String op(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 	
 	@POST
 	@Path("/ops")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Personne> op(Personne p1, Personne p2);
+	public List<Personne> op(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p1, 
+			@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p2);
 	
 	@GET
 	@Path("/get")
@@ -52,7 +54,7 @@ public interface Service {
 	@POST
 	@Path("/ajouterPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public String ajouterPersonne(Personne p);
+	public String ajouterPersonne(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 
 	@DELETE
 	@Path("/effacerPersonne/{id}")
@@ -62,7 +64,7 @@ public interface Service {
 	@GET
 	@Path("/getPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Personne> getPersonnes();
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnes();
 
 }
 

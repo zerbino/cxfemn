@@ -5,6 +5,8 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
 import utile.UniformementRepresentable;
 
 //@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
@@ -31,6 +33,7 @@ public class ServiceImpl implements Service {
 			System.out.println(path);
 			
 			listePersonne.add(p);
+			System.out.println(p.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

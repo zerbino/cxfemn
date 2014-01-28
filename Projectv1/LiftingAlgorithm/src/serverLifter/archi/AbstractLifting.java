@@ -93,9 +93,10 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	@Override
 	protected void indivLifting(Element element, Class<?> clazz) {
+		System.out.println(element);
 		this.removeExtraFields(element, clazz);
 		this.rename(element, clazz);
-
+		System.out.println(element);
 	}
 
 	/**

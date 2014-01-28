@@ -27,6 +27,5 @@ public class TestClient4 {
 			e.setPromo("GSI");
 			String resu = service.op(e);
 			System.out.println(resu);
-			
 	}
 }

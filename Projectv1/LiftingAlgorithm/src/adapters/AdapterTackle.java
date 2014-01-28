@@ -17,6 +17,7 @@ public class AdapterTackle {
 	
 	public AdapterTackle(Package pkg){
 		addFromPkg(adapters, pkg);
+		System.out.println(adapters);
 	}
 	
 	private void addFromPkg(Map<Class<?>, Class<?>> adps, Package pkg){
