@@ -105,7 +105,16 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	@Override
 	protected void rename(Element element, Class<?> clazz) {
-		element.setName(clazz.getSimpleName().toLowerCase());
+		Class<?> dstClass = clazz;
+		if (null != adpt){
+			dstClass = adpt.getClassByInterface(clazz);
+			
+			if (null == dstClass){
+				dstClass = clazz;
+			}
+		}
+		element.setName(dstClass.getSimpleName().toLowerCase());
+		System.out.println("After rename:" + element.getName());
 	}
 	
 

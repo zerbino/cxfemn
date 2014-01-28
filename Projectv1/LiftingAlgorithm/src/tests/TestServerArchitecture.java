@@ -55,7 +55,7 @@ public class TestServerArchitecture {
 		Class<?>[] classes = new Class<?>[1];
 		classes[0] = Personne.class;
 		LifterCaller clientLifterCaller = new ServerLifterCaller(input,
-				classes);
+				classes, null);
 		return clientLifterCaller.call();
 	}
 
