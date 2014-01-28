@@ -1,0 +1,25 @@
+* Implémentation de la solution pour un service manipulant des interfaces (Hao)
+
+1. J'ai modifié les Personne et Etudiant aux Interfaces, et ajouté PersonneImpl et EtudiantImpl. Après j'ai ajouté PersonneAdapter et EtudiantAdapter pour l'échange entre Interface et Classe.
+
+2. J'ai ajouté @XmlJavaTypeAdapters({
+    @XmlJavaTypeAdapter(PersonneAdapter.class),
+    @XmlJavaTypeAdapter(EtudiantAdapter.class)
+})
+dans package-info.java pour trouver les annotations XmlJavaTypeAdapter dynamiquement.
+
+3. J'ai ajouté les annotations XmlJavaTypeAdapter dans l'Interface Service, sinon, il y a des problèmes plaints par JAXB. C'est un bug de CXF, c'est pas grave.
+
+4. J'ai ajouté une classe AdapterTackle, qui peut trouver la Classe -> le Package -> les annotations selon le contexte dans ClientRequestFilter et sauvegarder le relation entre les classes et les interfaces dans un HashMap.
+
+5. Quand on fait le lifting, par exemple, pour Personne, on peut trouver la classe PersonneImpl qui a implémenté Personne et on fait le lifting par PersonneImpl au lieu de Personne(rename selon Personne encore).
+
+C'est tout.
+
+Le problème est le bug de CXF, le runtime ne trouve pas les annotations dans le package-info.java, on doit les ajouter dans Service encore une fois. C'est pas grave.
+
+* Architecture
+
+Un UML représentant la nouvelle architecture est présent dans Projetv1>liftingAlgorithmClient>uml
+Les anciens tests dans le client (package client) doivent fonctionner.
+Un package de test (package test) permet de vérifier le fonctionnement de la nouvelle architecture
