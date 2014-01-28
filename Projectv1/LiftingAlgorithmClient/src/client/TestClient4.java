@@ -1,11 +1,8 @@
 package client;
 
-import java.util.LinkedList;
-import java.util.List;
 
 import model.Etudiant;
 import model.EtudiantImpl;
-import model.Personne;
 import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
