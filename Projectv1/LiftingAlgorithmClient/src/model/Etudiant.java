@@ -8,10 +8,19 @@
 
 package model;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.sun.xml.bind.AnyTypeAdapter;
 
 
 /**
@@ -33,16 +42,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "etudiant", propOrder = {
-    "promo"
-})
-@XmlRootElement
-public class Etudiant
+//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlSeeAlso({EtudiantImpl.class})
+public interface Etudiant
     extends Personne
 {
 
-    protected String promo;
+    
 
     /**
      * Gets the value of the promo property.
@@ -52,9 +58,9 @@ public class Etudiant
      *     {@link String }
      *     
      */
-    public String getPromo() {
-        return promo;
-    }
+	@GET
+	@Path("promo")
+    public String getPromo();
 
     /**
      * Sets the value of the promo property.
@@ -64,8 +70,13 @@ public class Etudiant
      *     {@link String }
      *     
      */
-    public void setPromo(String value) {
-        this.promo = value;
-    }
+	@PUT
+	@Path("promo")
+    public void setPromo(String value);
+	
+	@GET
+	@Path("")
+	@Produces(MediaType.APPLICATION_XML)
+	public Etudiant getRepresentation();
 
 }

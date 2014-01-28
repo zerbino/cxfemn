@@ -1,7 +1,6 @@
 package serverLifter.archi;
 
 import java.io.InputStream;
-
 import adapters.AdapterTackle;
 
 public class ServerLifterCaller extends AbstractLifterCaller<Class<?>[]> {

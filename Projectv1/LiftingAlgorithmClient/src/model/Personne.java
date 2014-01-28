@@ -8,11 +8,16 @@
 
 package model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
+import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+
+import com.sun.xml.bind.AnyTypeAdapter;
 
 
 /**
@@ -25,7 +30,6 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int" minOccurs="0"/>
  *         &lt;element name="nom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *         &lt;element name="prenom" type="{http://www.w3.org/2001/XMLSchema}string" minOccurs="0"/>
  *       &lt;/sequence>
@@ -36,23 +40,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "personne", propOrder = {
-	"id",	
-    "nom",
-    "prenom"
-})
-/*@XmlSeeAlso({
-    Etudiant.class
-})*/
-@XmlRootElement
-public class Personne {
-
-	protected int id;
-    protected String nom;
-    protected String prenom;
-
-    /**
+//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlSeeAlso({PersonneImpl.class})
+//@XmlJavaTypeAdapter(PersonneAdapter.class)
+public interface Personne {
+	/**
      * Gets the value of the id property.
      * 
      * @return
@@ -60,9 +52,9 @@ public class Personne {
      *     {@link Integer }
      *     
      */
-    public int getId() {
-        return id;
-    }
+	@GET
+	@Path("id")
+    public int getId();
 
     /**
      * Sets the value of the id property.
@@ -72,10 +64,9 @@ public class Personne {
      *     {@link Integer }
      *     
      */
-    public void setId(int value) {
-        this.id = value;
-    }
-    
+	@PUT
+	@Path("id")
+    public void setId(int value);
     /**
      * Gets the value of the nom property.
      * 
@@ -84,9 +75,9 @@ public class Personne {
      *     {@link String }
      *     
      */
-    public String getNom() {
-        return nom;
-    }
+	@GET
+	@Path("nom")
+    public String getNom();
 
     /**
      * Sets the value of the nom property.
@@ -96,9 +87,9 @@ public class Personne {
      *     {@link String }
      *     
      */
-    public void setNom(String value) {
-        this.nom = value;
-    }
+	@PUT
+	@Path("nom")
+    public void setNom(String value);
 
     /**
      * Gets the value of the prenom property.
@@ -108,9 +99,9 @@ public class Personne {
      *     {@link String }
      *     
      */
-    public String getPrenom() {
-        return prenom;
-    }
+	@GET
+	@Path("prenom")
+    public String getPrenom();
 
     /**
      * Sets the value of the prenom property.
@@ -120,9 +111,13 @@ public class Personne {
      *     {@link String }
      *     
      */
-    public void setPrenom(String value) {
-        this.prenom = value;
-    }
+	@PUT
+	@Path("prenom")
+    public void setPrenom(String value);
+	
+	@GET
+	@Path("")
+	@Produces(MediaType.APPLICATION_XML)
+	public Personne getRepresentation();
 
 }
-
