@@ -5,7 +5,7 @@ import interceptor.LiftingInterceptor;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Personne;
+import model.PersonneImpl;
 import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
@@ -32,7 +32,7 @@ public class TestClient2 {
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class,
 				filtres);
-		Personne etudiant = service.op();
+		PersonneImpl etudiant = service.op();
 		System.out.println(etudiant.getClass().getSimpleName());
 		System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), etudiant));

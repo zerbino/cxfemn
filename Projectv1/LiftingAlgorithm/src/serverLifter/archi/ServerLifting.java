@@ -23,8 +23,10 @@ public class ServerLifting extends AbstractLifting<Class<?>[]> {
 	@Override
 	public Document lifting() {
 		
+		if(this.clazz.length>0){
 		Class<?> oneClass = this.clazz[0];
 		this.indivLifting(doc.getRootElement(), oneClass);
+		}
 		return this.doc;
 		
 	}

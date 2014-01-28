@@ -1,6 +1,7 @@
 package client;
 
 import model.Etudiant;
+import model.EtudiantImpl;
 import model.Personne;
 import model.Service;
 
@@ -14,7 +15,7 @@ public class TestClientKevin {
 
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class);
-		Etudiant etudiant = new Etudiant();
+		Etudiant etudiant = new EtudiantImpl();
 		etudiant.setPrenom("Kevin");
 		etudiant.setNom("Llopart");
 		etudiant.setPromo("GSI");

@@ -10,6 +10,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 
+import model.EtudiantImpl;
 import model.Service;
 
 
@@ -79,7 +80,7 @@ public class TestClient {
 	
 	public static void main(String[] args) throws Exception {
 
-		Etudiant p= new Etudiant();
+		Etudiant p= new EtudiantImpl();
 		p.setNom("Op-AFaitSonJob");
 		p.setPrenom("Kevin");
 		p.setPromo("gsi");

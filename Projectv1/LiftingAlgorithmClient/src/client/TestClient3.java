@@ -4,6 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import model.Personne;
+import model.PersonneImpl;
 import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
@@ -20,19 +21,19 @@ public class TestClient3 {
 			List<Object> filtres = new LinkedList<>();
 			Service service = JAXRSClientFactory.create(
 					"http://localhost:8080/LiftingAlgorithm", Service.class, filtres);
-			Personne pa=new Personne();
+			PersonneImpl pa=new PersonneImpl();
 			pa.setNom("Seguin-Henry");
 			pa.setPrenom("Gregoire");
 			pa.setId(45);
-			Personne pb=new Personne();
+			PersonneImpl pb=new PersonneImpl();
 			pb.setNom("Martignoni");
 			pb.setPrenom("Raphaël");
 			pb.setId(8);
-			Personne pc=new Personne();
+			PersonneImpl pc=new PersonneImpl();
 			pc.setNom("Llopart");
 			pc.setPrenom("Kevin");
 			pc.setId(77);
-			Personne pd=new Personne();
+			PersonneImpl pd=new PersonneImpl();
 			pd.setNom("Zhang");
 			pd.setPrenom("Hao");
 			pd.setId(56);						
