@@ -40,7 +40,7 @@ public class ServiceImpl implements Service {
 
 	@Override
 	public Etudiant op() {
-		Etudiant etudiant = new Etudiant();
+		Etudiant etudiant = new EtudiantImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");

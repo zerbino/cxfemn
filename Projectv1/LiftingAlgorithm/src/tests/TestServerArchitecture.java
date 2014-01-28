@@ -40,7 +40,7 @@ public class TestServerArchitecture {
 	 * @return the lifted Document
 	 */
 	public Document docLifted(Document initDoc, Class<?>[] clazz) {
-		Lifting clientLifting = new ServerLifting(initDoc, clazz);
+		Lifting clientLifting = new ServerLifting(initDoc, clazz, null);
 		return clientLifting.lifting();
 	}
 

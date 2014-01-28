@@ -45,7 +45,7 @@ public class ObjectFactory {
      * 
      */
     public Personne createPersonne() {
-        return new Personne();
+        return new PersonneImpl();
     }
 
     /**
@@ -53,7 +53,7 @@ public class ObjectFactory {
      * 
      */
     public Etudiant createEtudiant() {
-        return new Etudiant();
+        return new EtudiantImpl();
     }
 
     /**

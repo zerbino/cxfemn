@@ -11,6 +11,7 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 import org.jdom2.output.*;
 
+import adapters.AdapterTackle;
 import utile.UniformementRepresentable;
 
 import java.util.LinkedList;
@@ -26,6 +27,7 @@ public class JDom
 	protected Element racine;
 	protected String outputPath;
 	protected Method service;
+	protected AdapterTackle adpt;
 
 	public JDom(String filePath, String outputPath, Method m) throws Exception
 	{
@@ -34,6 +36,7 @@ public class JDom
 		document = sxb.build(new File(filePath));
 		racine = document.getRootElement();
 		service=m;
+		adpt = new AdapterTackle(service.getDeclaringClass().getPackage());
 	}
 
 	public Document Lift(){
@@ -54,29 +57,9 @@ public class JDom
 	protected void treeInclusion(){
 		Class<?> classDest = service.getParameterTypes()[0];
 //-check annotation
-		Annotation[][] anns = service.getParameterAnnotations();
-		System.out.println(service.getName());
-		System.out.println("Annotations:" + anns.length);
-		for (int i = 0; i < anns.length; i++){
-			for (int j = 0; j < anns[i].length; j++){
-				System.out.println("Annotation: "+anns[i][j].annotationType());
-				if (anns[i][j] instanceof XmlJavaTypeAdapter){
-					System.out.println("XmlJavaTypeAdapter");
-					XmlJavaTypeAdapter ann = (XmlJavaTypeAdapter)anns[i][j];
-					Class<? extends XmlAdapter> cAdapter = ann.value();
-					Type[] types = ((ParameterizedType)(cAdapter.getGenericSuperclass())).getActualTypeArguments();
-					Class c = null;
-					try {
-						String typeAndname = types[0].toString();
-						c = Class.forName(typeAndname.split(" ")[1]);
-					} catch (ClassNotFoundException e){
-						e.printStackTrace();
-					}
-					System.out.println(c.getName());
-					
-					classDest = c;
-				}
-			}
+		if (null != adpt.getClassByInterface(classDest)){
+			classDest = adpt.getClassByInterface(classDest);
+			System.out.println("cast to "+classDest.getName());
 		}
 //-----------------
 		if(removeExtraFields(racine, classDest)){
