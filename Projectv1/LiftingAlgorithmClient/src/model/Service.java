@@ -11,10 +11,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-import lifting.PersonneAdapter;
+
 
 @Path("/rest")
 public interface Service {
+
+	@POST
+	@Path("/opWithoutFields")
+	@Produces(MediaType.APPLICATION_XML)
+	public String opWithoutFields(EtudiantWithoutFields p);
+	
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
@@ -41,7 +47,7 @@ public interface Service {
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
-	public PersonneImpl op();
+	public EtudiantImpl op();
 	
 	@GET
 	@Path("/get")

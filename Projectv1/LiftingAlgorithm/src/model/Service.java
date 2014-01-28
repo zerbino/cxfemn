@@ -15,6 +15,12 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 @Path("/rest")
 public interface Service {
+
+	@POST
+	@Path("/opWithoutFields")
+	@Produces(MediaType.APPLICATION_XML)
+	public String opWithoutFields(PersonneWithoutFields p);
+	
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)

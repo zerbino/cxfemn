@@ -36,13 +36,11 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	/**
 	 * Removes the fields from element which are not present in class1
-	 * 
-	 * TODO : solve the problem mentionned in the report.
 	 */
 	
 	@Override
-	protected boolean removeExtraFields(Element e, Class<?> class1) {
-		/// dstClass the class used by marshalling, instead of the interface.
+	protected void removeExtraFields(Element e, Class<?> class1) {
+		// dstClass the class used by marshalling, instead of the interface.
 		Class<?> dstClass = class1;
 		if (null != adpt){
 			dstClass = adpt.getClassByInterface(class1);
@@ -50,37 +48,36 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 				dstClass = class1;
 			}
 		}
-		Field[] fields = dstClass.getDeclaredFields();
-		boolean isNotInSuperClass;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
-		int mandatoryFields = 0;
 		while (i.hasNext()) {
 			Element courant = i.next();
-			isNotInSuperClass = true;
-			for (int j = fields.length - 1; j >= 0; j--) {
-				if (fields[j].getName().equals(courant.getName())) {
-					isNotInSuperClass = false;
-					mandatoryFields++;
-					break;
+
+			Class<?> class2 = dstClass;
+			while(class2 != null && !fieldIsInClass(courant, class2)) {
+				/**Checks if the name of "courant" matches a field in the super-classes
+				 * of dstClass.
+				 */
+				if(class2==Object.class){
+					System.out.println("suppression"+courant.getName());
+					i.remove();
 				}
+				class2=dstClass.getSuperclass();
 			}
-			if (isNotInSuperClass) {
-				i.remove();
-			}
-		}
-
-		
-		// TODO : to be completed !
-
-		if (fields.length == mandatoryFields) {
-
-			return true;
-		} else {
-			return false;
 		}
 	}
-	
+	/**Checks if the name of e matches a field in dstClass
+	 */
+	private final boolean fieldIsInClass(Element e, Class<?> dstClass) {
+		System.out.println(dstClass.getSimpleName());
+		Field[] fields = dstClass.getDeclaredFields();
+		for (int j = fields.length - 1; j >= 0; j--) {
+			if (fields[j].getName().equals(e.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 	/**
@@ -94,10 +91,9 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	@Override
 	protected void indivLifting(Element element, Class<?> clazz) {
-		System.out.println(element);
+		System.out.println("classe attendue:"+clazz.getSimpleName());
 		this.removeExtraFields(element, clazz);
 		this.rename(element, clazz);
-		System.out.println(element);
 	}
 
 	/**

@@ -15,7 +15,32 @@ public class ServiceImpl implements Service {
 	private ArrayList<PersonneImpl> listePersonneImpl=new ArrayList<>();
 	private ArrayList<Personne> listePersonne = new ArrayList<>();
 	
-	
+	@Override
+	public String opWithoutFields(PersonneWithoutFields p) {
+		PrintWriter writer;
+		try {
+			//path correspond au répertoire d'installation de tomcat
+			String path = getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/FAKEdatabase.txt";
+			File f = new File(path);
+			if(!f.exists()) {
+				f.getParentFile().mkdirs();
+			}
+			writer = new PrintWriter(path, "UTF-8");
+			writer.append("Incoming request for: ");
+			writer.append(UniformementRepresentable.toString(new StringBuilder(), p));
+			writer.close();
+			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
+			System.out.println("Chemin vers la base de donnée: ");
+			System.out.println(path);
+			
+			listePersonneImpl.add(p);
+			System.out.println(p.getId());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return p.getPrenom();
+	}
 	@Override
 	public String op(PersonneImpl p) {
 		PrintWriter writer;

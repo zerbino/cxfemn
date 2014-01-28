@@ -14,8 +14,12 @@ import org.jdom2.Element;
  * return type of the proxy resource method. It can be an array of class.
  */
 public abstract class Lifting<E> {
-
-	protected abstract boolean removeExtraFields(Element e, Class<?> class1);
+	
+	/**
+	 * Check if the names of sub-elements in Element e match fields in class1 or super-classes
+	 * of class1. If not, removes these sub-elements.
+	 */
+	protected abstract void removeExtraFields(Element e, Class<?> class1);
 	
 	/**
 	 * This method is the heart of the lifting algorithm : it consists in
