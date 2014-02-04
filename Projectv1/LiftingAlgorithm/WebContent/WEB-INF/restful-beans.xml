@@ -32,7 +32,7 @@ http://cxf.apache.org/core
 		</jaxrs:providers>
 	</jaxrs:server>
 	<bean id="Service" class="model.ServiceImpl" />
-	<bean id="ClientRequestFilter" class="filter.server.ClientRequestFilter">
-<!--  		authorization bean properties  -->
-	</bean>
+	<bean id="ClientRequestFilter" class="filter.server.ClientRequestFilter"></bean>
+	<!--  		authorization bean properties  -->
+	
 </beans>

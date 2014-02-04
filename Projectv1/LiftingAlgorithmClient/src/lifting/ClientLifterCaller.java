@@ -12,9 +12,9 @@ import org.jdom2.Document;
  * @see AbstractLifterCaller for more details.
  *
  */
-public class ClientLifterCaller extends AbstractLifterCaller<Class<?>> {
+public class ClientLifterCaller extends AbstractLifterCaller<Class<?>[]> {
 
-	public ClientLifterCaller(InputStream entity, Class<?> clazz) {
+	public ClientLifterCaller(InputStream entity, Class<?>[] clazz) {
 		super(entity, clazz);
 		this.lifting = new ClientLifting(doc, clazz);
 	}

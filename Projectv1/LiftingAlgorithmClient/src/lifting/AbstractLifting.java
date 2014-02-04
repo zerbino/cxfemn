@@ -38,19 +38,29 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	
 	@Override
-	protected boolean removeExtraFields(Element e, Class<?> class1) {
-		Field[] fields = class1.getDeclaredFields();
-		boolean isNotInSuperClass;
+	protected boolean removeExtraFieldsFromList(Element e, Class<?> class1){
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
-		int mandatoryFields = 0;
+		while( i.hasNext()){
+			Element courant = i.next();
+			this.removeExtraFields(courant, class1);
+			this.rename(courant, class1);
+		}
+		return true;
+	}
+	
+	@Override
+	protected boolean removeExtraFields(Element e, Class<?> class1) {
+		boolean isNotInSuperClass;
+		Field[] fields = class1.getDeclaredFields();
+		List<Element> l = e.getChildren();
+		Iterator<Element> i = l.iterator();
 		while (i.hasNext()) {
 			Element courant = i.next();
 			isNotInSuperClass = true;
 			for (int j = fields.length - 1; j >= 0; j--) {
 				if (fields[j].getName().equals(courant.getName())) {
 					isNotInSuperClass = false;
-					mandatoryFields++;
 					break;
 				}
 			}
@@ -58,16 +68,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 				i.remove();
 			}
 		}
-
-		
-		// TODO : to be completed !
-
-		if (fields.length == mandatoryFields) {
-
-			return true;
-		} else {
-			return false;
-		}
+		return true;
 	}
 	
 
@@ -82,9 +83,15 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
 	@Override
-	protected void indivLifting(Element element, Class<?> clazz) {
-		this.removeExtraFields(element, clazz);
-		this.rename(element, clazz);
+	protected void indivLifting(Element element, Class<?>[] clazz) {
+		if(clazz.length==2){
+			this.removeExtraFieldsFromList(element, clazz[1]);
+			this.renames(element, clazz[1]);
+		}
+		else{
+			this.removeExtraFields(element, clazz[0]);
+			this.rename(element, clazz[0]);
+		}
 
 	}
 
@@ -94,6 +101,10 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	@Override
 	protected void rename(Element element, Class<?> clazz) {
 		element.setName(clazz.getSimpleName().toLowerCase());
+	}
+	@Override
+	protected void renames(Element element, Class<?> clazz) {
+		element.setName(clazz.getSimpleName().toLowerCase()+"s");
 	}
 	
 

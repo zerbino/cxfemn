@@ -9,9 +9,9 @@ import org.jdom2.Document;
  *
  * @ see AbstractLifting<E> for more details
  */
-public class ClientLifting extends AbstractLifting<Class<?>> {
+public class ClientLifting extends AbstractLifting<Class<?>[]> {
 
-	public ClientLifting(Document doc, Class<?> clazz) {
+	public ClientLifting(Document doc, Class<?>[] clazz) {
 		super(doc, clazz);
 
 	}

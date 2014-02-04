@@ -40,25 +40,30 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	@Override
 	protected boolean removeExtraFields(Element e, Class<?> class1) {
 		Field[] fields = class1.getDeclaredFields();
-		boolean isNotInSuperClass;
-		List<Element> l = e.getChildren();
-		Iterator<Element> i = l.iterator();
 		int mandatoryFields = 0;
-		while (i.hasNext()) {
-			Element courant = i.next();
-			isNotInSuperClass = true;
-			for (int j = fields.length - 1; j >= 0; j--) {
-				if (fields[j].getName().equals(courant.getName())) {
-					isNotInSuperClass = false;
-					mandatoryFields++;
-					break;
+		if(class1.isArray()){
+			System.out.println("rrrrrrrrrrrrrr");	
+		}
+		else{
+
+			boolean isNotInSuperClass;
+			List<Element> l = e.getChildren();
+			Iterator<Element> i = l.iterator();
+			while (i.hasNext()) {
+				Element courant = i.next();
+				isNotInSuperClass = true;
+				for (int j = fields.length - 1; j >= 0; j--) {
+					if (fields[j].getName().equals(courant.getName())) {
+						isNotInSuperClass = false;
+						mandatoryFields++;
+						break;
+					}
+				}
+				if (isNotInSuperClass) {
+					i.remove();
 				}
 			}
-			if (isNotInSuperClass) {
-				i.remove();
-			}
 		}
-
 		
 		// TODO : to be completed !
 

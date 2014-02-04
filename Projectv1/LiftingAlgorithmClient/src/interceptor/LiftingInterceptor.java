@@ -1,8 +1,11 @@
 package interceptor;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.container.ResourceInfo;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
@@ -23,18 +26,35 @@ import lifting.ClientLifterCaller;
  *
  */
 
+
+
+
 @Provider
 public class LiftingInterceptor implements ReaderInterceptor{
 
+	@Context
+	ResourceInfo info;
+	
 	@Override
 	public Object aroundReadFrom(ReaderInterceptorContext context)
 			throws IOException, WebApplicationException {
+		System.out.println("debut intercpteur");
 		Class<?> expectedClass = (Class<?>)context.getGenericType();
-		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedClass);
+		Class<?>[] classes={expectedClass};
+		if(info!=null && info.getResourceMethod()!=null){
+			System.out.println("info non null et ses methode aussi");
+			Class<?>[] classesParametre=info.getResourceMethod().getParameterTypes();
+			if(classesParametre!=null && classesParametre.length==1 &&  
+					Collection.class.isAssignableFrom(expectedClass)){
+				System.out.println("filtrage de liste");
+				Class<?>[] classes2={expectedClass, classesParametre[0]};
+				classes=classes2;
+			}
+		}
+		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),classes);
 		context.setInputStream(lifterCaller.callStream());
+		System.out.println("fin intercpteur");
 		return context.proceed();
 	}
-
-
 
 }

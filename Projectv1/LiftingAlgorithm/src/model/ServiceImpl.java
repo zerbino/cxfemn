@@ -48,11 +48,39 @@ public class ServiceImpl implements Service {
 	}
 	
 	@Override
-	public List<Personne> op(Personne p1, Personne p2) {
-		listePersonne.add(p2);
-		listePersonne.add(p1);
-		return listePersonne;
+	public String op(List<Personne> liste, Class<?> classe) {
+		listePersonne.addAll(liste);
+		return "ok";
 	}
+	@Override
+	public List<Etudiant> opListe(Personne classe) {
+		Etudiant etudiant = new Etudiant();
+		etudiant.setNom("Bon");
+		etudiant.setPrenom("Jean");
+		etudiant.setPromo("gsi");
+		Etudiant etudiant2 = new Etudiant();
+		etudiant2.setNom("Bon2");
+		etudiant2.setPrenom("Jean2");
+		etudiant2.setPromo("gsi2");
+		Etudiant etudiant3 = new Etudiant();
+		etudiant3.setNom("Bon3");
+		etudiant3.setPrenom("Jean3");
+		etudiant3.setPromo("gsi3");
+		List<Etudiant> liste=new ArrayList<Etudiant>();
+		liste.add(etudiant);
+		liste.add(etudiant2);
+		liste.add(etudiant3);
+		return liste;
+	}
+	
+/*	@Override
+	public List<Personne> op2(Personne p1, Personne p2) {
+		listePersonne.add(p1);
+		if(p2!=null)listePersonne.add(p2);
+		return this.listePersonne;
+	}*/
+
+
 	
 	@Override
 	public String getPersonne(int id) {
@@ -139,10 +167,9 @@ public class ServiceImpl implements Service {
 		return i;
 	}
 
-	@Override
-	public List<Personne> getPersonnes() {
-		return this.listePersonne;
-	}
+
+
+
 
 
 }

@@ -36,7 +36,7 @@ public class TestClientArchitecture {
 	 * @param clazz
 	 * @return the lifted Document
 	 */
-	public Document docLifted(Document initDoc, Class<?> clazz) {
+	public Document docLifted(Document initDoc, Class<?>[] clazz) {
 		ClientLifting clientLifting = new ClientLifting(initDoc, clazz);
 		return clientLifting.lifting();
 	}
@@ -49,8 +49,9 @@ public class TestClientArchitecture {
 	 */
 	public Document liftingCallerTest() throws FileNotFoundException {
 		InputStream input = new FileInputStream(testFile);
+		Class<?>[] classes={Personne.class};
 		ClientLifterCaller clientLifterCaller = new ClientLifterCaller(input,
-				Personne.class);
+				classes);
 		return clientLifterCaller.call();
 	}
 
@@ -67,7 +68,8 @@ public class TestClientArchitecture {
 		System.out.println("Initial document :");
 		Variables.printDoc(initDoc);
 		
-		Document doc = docLifted(initDoc, Personne.class);
+		Class<?>[] classes={Personne.class};
+		Document doc = docLifted(initDoc, classes);
 		Document docCaller = liftingCallerTest();
 
 		System.out.println("Document obtained with ClientLifting :");
