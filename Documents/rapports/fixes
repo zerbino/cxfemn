@@ -20,3 +20,4 @@ removeExtraFields(@@) vérifie que tous les attributs de la super classe sont bi
 3) Factory
 
 Les objets sont encore souvent instanciés à partir de new dans le code. Il faudrait faire appel à la factory systématiquement.
+

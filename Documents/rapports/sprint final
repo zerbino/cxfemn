@@ -1,0 +1,13 @@
+** Travail sur le rendu final
+- Rédaction du rapport de motivation (à débuter pour la semaine prochaine)
+- Voir comment se font les contributions (priorité 1)
+- Permettre d'ajouter une annotation pour faire appel à nos filtres (priorité 1, rapide à faire normalement)
+- Rédiger la documentation utilisateur (voir remarques plus bas)
+- Rédiger la documentation développeur (voir remarques plus bas)
+
+** Travail de développement
+Priorité 1 :
+- Permettre de passer des objets éclatés dans une requête GET/PUT
+- Permettre l'utilisation de notre solution, dans le cas d'un service avec plusieurs arguments ou une liste en argument
+Priorité 2 :
+- Réécriture des algorithmes en Groovy (à faire quand tout est fini)

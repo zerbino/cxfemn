@@ -18,8 +18,23 @@ C'est tout.
 
 Le problème est le bug de CXF, le runtime ne trouve pas les annotations dans le package-info.java, on doit les ajouter dans Service encore une fois. C'est pas grave.
 
-* Architecture
+* Architecture (Raphaël)
 
 Un UML représentant la nouvelle architecture est présent dans Projetv1>liftingAlgorithmClient>uml
 Les anciens tests dans le client (package client) doivent fonctionner.
 Un package de test (package test) permet de vérifier le fonctionnement de la nouvelle architecture
+
+- Redéfinition de l'architecture : 
+	-- Création d'un convertisseur Document <> InputStream pour éviter de créer des fichiers inutiles (méthodes enregistreFichier(@@@)...)
+	-- Création d'interfaces, classes abstraites, génériques pour généraliser l'architecture des classes liées à l'algorithme de lifting
+	-- Création de classes test simples pour : 
+		# Le convertisseur Document <> InputStream
+		# La nouvelle architecture
+		# Lancement des tests et succès
+- Fix d'un bug dans la méthode removeExtraFields(@@@) : La modification d'un élément du schéma XML lors de son parcours
+par un Iterator entrainait une erreur de type ConcurrentModificationException. Résolution en utilisant des méthodes propres
+à l'objet Iterator. 
+- Rédaction de la javadoc associée à la nouvelle architecture
+- Merge à la main de la classe Lifting : lors du sprint 2, la qualité du code interdisait de réutiliser la même classe (celle contenant
+l'algorithme de lifting), du côté du client et du serveur. Deux classes différentes existaient avec certains algorithmes en commun. Utilisation
+de meld pour merger les deux classes. 

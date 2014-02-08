@@ -1,0 +1,55 @@
+Participants :
+Hervé Grall, Hao Zhang, Kévin Llopart, Raphaël Martignoni
+
+* Point sur le sprint 3 (fin le 3 février)
+- Documentation développeur : fait, mais à modifier
+- Refactoring : fait
+- Documentation utilisateur : fait, mais à modifier
+- Permettre l'application de notre solution à des services utilisant des interfaces : fait
+- Permettre l'utilisation de plusieurs arguments/d'une liste : non fait
+- Permettre de passer des objets éclatés dans une requête GET/PUT : non fait
+
+* Sprint 4
+
+** Travail sur le rendu final
+- Rédaction du rapport de motivation (à débuter pour la semaine prochaine)
+- Voir comment se font les contributions (priorité 1)
+- Permettre d'ajouter une annotation pour faire appel à nos filtres (priorité 1, rapide à faire normalement)
+- Rédiger la documentation utilisateur (voir remarques plus bas)
+- Rédiger la documentation développeur (voir remarques plus bas)
+
+** Travail de développement
+Priorité 1 :
+- Permettre de passer des objets éclatés dans une requête GET/PUT
+- Permettre l'utilisation de notre solution, dans le cas d'un service avec plusieurs arguments ou une liste en argument
+Priorité 2 :
+- Réécriture des algorithmes en Groovy (à faire quand tout est fini)
+
+* Rapports
+
+** Rapport de motivation
+
+Il sert à décrire l'utilité du projet. La documentation développeur rédigée par Kévin contient des paragraphes qui peuvent y 
+être transférés
+
+** Documentation utilisateur
+
+C'est la documentation qui est lue par l'utilisateur de la solution. Elle doit être simple à comprendre, ne doit pas rentrer dans les
+détails de l'architecture. Il faut donc décrire l'ensemble de la procédure pour qu'à partir de n'importe quel projet CXF, notre solution
+puisse être utilisée. 
+
+Deux aspects : les dépendances + les annotations.
+Notre solution finale consistera sans doute en un jar à importer, et des annotations à ajouter sur les méthodes des
+services où l'on souhaite voir le principe de subsomption appliqué. 
+Il faudra ensuite tester notre documentation en la faisant lire à un utilisateur ne connaissant pas le projet. Pour donner un indice de qualité,
+notre solution peut être donnée à tester par :
+- Un GSI ne faisant pas partie du projet CXF (niveau de qualité acceptable en cas de succès)
+- Un GSI A2
+- Un OMTI A3 (niveau de qualité excellent en cas de succès)
+
+** Documentation développeur
+
+Cette documentation doit être utile à toute personne cherchant à étendre notre solution. Il faut donc tenter de prévoir les extensions possibles :
+- résolution de bugs
+- modification de l'algorithme
+- quelque chose à propos d'une architecture dynamique, pas compris
