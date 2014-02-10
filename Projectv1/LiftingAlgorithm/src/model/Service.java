@@ -13,6 +13,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import filter.server.AdjustClient;
 
 @Path("/rest")
 public interface Service {
@@ -21,30 +22,33 @@ public interface Service {
 	@Path("/opget")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String opGet(@QueryParam("")PersonneImpl personne);
-
+	
+	@AdjustClient
 	@POST
 	@Path("/opWithoutFields")
 	@Produces(MediaType.APPLICATION_XML)
 	public String opWithoutFields(PersonneWithoutFields p);
 
-	
+	@AdjustClient
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
 	public String op(PersonneImpl p);
 	
+	@AdjustClient
 	@POST
 	@Path("/opInt")
 	@Produces(MediaType.APPLICATION_XML)
 	public String opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 	
-	
+	@AdjustClient
 	@POST
 	@Path("/ops")
 	@Produces(MediaType.APPLICATION_XML)
 	public List<PersonneImpl> op(PersonneImpl p1, 
 			PersonneImpl p2);
 	
+	@AdjustClient
 	@POST
 	@Path("/opsInt")
 	@Produces(MediaType.APPLICATION_XML)
@@ -82,11 +86,13 @@ public interface Service {
 	@Produces(MediaType.APPLICATION_XML)
 	public String modificationPrenomPersonne(@PathParam("id") int id, String nom);
 	
+	@AdjustClient
 	@POST
 	@Path("/ajouterPersonne")
 	@Produces(MediaType.APPLICATION_XML)
 	public String ajouterPersonne(PersonneImpl p);
 	
+	@AdjustClient
 	@POST
 	@Path("/ajouterPersonneInt")
 	@Produces(MediaType.APPLICATION_XML)

@@ -61,6 +61,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 				if(class2==Object.class){
 					System.out.println("suppression"+courant.getName());
 					i.remove();
+					break;
 				}
 				class2=dstClass.getSuperclass();
 			}

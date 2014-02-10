@@ -3,6 +3,7 @@ package filter.server;
 import java.io.IOException;
 import java.io.InputStream;
 
+import javax.ws.rs.BindingPriority;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.container.ResourceInfo;
@@ -14,6 +15,8 @@ import serverLifter.archi.LifterCaller;
 import serverLifter.archi.ServerLifterCaller;
 
 @Provider
+@AdjustClient
+@BindingPriority(BindingPriority.ENTITY_CODER)
 public class ClientRequestFilter implements ContainerRequestFilter{
 	@Context
 	ResourceInfo info;
