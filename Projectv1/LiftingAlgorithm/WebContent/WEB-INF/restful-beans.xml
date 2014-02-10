@@ -28,7 +28,7 @@ http://cxf.apache.org/core
 		</jaxrs:features>
 
 		<jaxrs:providers>
-			<ref bean="ClientRequestFilter" />
+<!-- 			<ref bean="ClientRequestFilter" /> -->
 		</jaxrs:providers>
 	</jaxrs:server>
 	<bean id="Service" class="model.ServiceImpl" />

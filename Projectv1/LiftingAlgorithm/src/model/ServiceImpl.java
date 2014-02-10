@@ -5,6 +5,11 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 import utile.UniformementRepresentable;
@@ -14,6 +19,15 @@ public class ServiceImpl implements Service {
 
 	private ArrayList<PersonneImpl> listePersonneImpl=new ArrayList<>();
 	private ArrayList<Personne> listePersonne = new ArrayList<>();
+	
+	@Override
+	@GET
+	@Path("/opget")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String opGet(@QueryParam("")PersonneImpl personne){
+		listePersonneImpl.add(personne);
+		return personne.getNom();
+	}
 	
 	@Override
 	public String opWithoutFields(PersonneWithoutFields p) {

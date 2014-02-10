@@ -9,17 +9,24 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
 
 @Path("/rest")
 public interface Service {
+	
+	@GET
+	@Path("/opget")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String opGet(@QueryParam("")PersonneImpl personne);
 
 	@POST
 	@Path("/opWithoutFields")
 	@Produces(MediaType.APPLICATION_XML)
 	public String opWithoutFields(PersonneWithoutFields p);
+
 	
 	@POST
 	@Path("/op")

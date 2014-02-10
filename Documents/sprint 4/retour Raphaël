@@ -1,0 +1,25 @@
+* Rapport de motivation :
+- Vérifier dans quelles conditions CXF est censé lever une exception
+- III)1) Pas trop compris
+
+* Passage d'un objet via une requête GET :
+- Voir dans projet client : client.bugs.cxf.Test7
+Aucun bug n'apparait lors du passage d'un sous type du type attendu côté client. 
+
+Requête :
+
+ID: 1
+Address: http://localhost:8080/LiftingAlgorithm/rest/opget?representation.promo=GSI&representation.id=1&representation.nom=Martignoni&representation.prenom=Raphael&promo=GSI&id=1&nom=Martignoni&prenom=Raphael
+Http-Method: GET
+Content-Type: application/xml
+Headers: {Accept=[text/plain], cache-control=[no-cache], connection=[keep-alive], content-type=[application/xml], host=[localhost:8080], pragma=[no-cache], user-agent=[Apache CXF 2.7.7]}
+
+Réponse du serveur :
+
+---------------------------
+ID: 1
+Response-Code: 200
+Content-Type: text/plain
+Headers: {Content-Type=[text/plain], Date=[Mon, 10 Feb 2014 14:36:23 GMT]}
+Payload: Martignoni
+--------------------------------------

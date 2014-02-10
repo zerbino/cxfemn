@@ -1,0 +1,70 @@
+I Non-compliance to the Liskov substitution principle in Apache CXF (2.7.x) restful web services
+
+The Liskov substitution principle states that “If S is a declared subtype of T, objects of type S should behave as objects of type T
+are expected to behave, if they are treated as objects of type T” 
+
+In the following “receiver” stands for  “server or client”, an “incoming object” stands for a “given service argument” server-side or an “object returned by a given service” client-side.
+
+Non-compliance to this principle appear in Apache CXF (2.7.x) restful web services1 in the following cases:
+
+-CXF framework users develop their own data-binding schema (.xsd), either by modifying the web.xml configuration file or by implementing their own marshalling/unmarshalling methods. In this case interoperability might be compromised when subtypes of a given expected object type are received, even if these subtypes are known from the receiver.
+
+-For a given distributed application receiver do not know about the type of an incoming object. This might be the case  either
+	-server-side: In this example B extends A client-side, B is not known server-side. The client calls a service with B as argument whereas A is expected. --> To be checked. It seems like it works (see Test6 with ClientModel class)
+
+Response-Code: 400
+Content-Type: text/plain
+Headers: {Content-Type=[text/plain], Date=[Sun, 15 Dec 2013 15:56:01 GMT]}
+Payload: JAXBException occurred : unexpected element (uri:"", local:"B"). Expected elements are <{}A>.
+
+	-client-side: or if the back-end is modified server-side by returning a subtype of what clients expect as response to requests. 
+In this case the Liskov principle should be applied, as the client is receiving a subtype of the expected object. 
+
+In order to solve the issues previously mentioned, two families of solutions exist. The first one consists in modifying the models corresponding to expected incoming objects. The second one is to completely modify incoming objects structure to make it compliant with those models.
+
+“WADL models the resources provided by a service and the relationships between them.”2
+
+WADL files are not an option since they are not mandatory in web projects, so developing a solution built on WADL would force developers to write WADL files for this purpose only.
+
+Moreover WADL grammar is not standardized. In the CXF implementation, it is not possible to distinguish between arguments and returned objects  and to sort arguments, at least with the automatically generated version.
+
+Another constraint was to not modify the core of CXF, so we finally chose to modify incoming objects structure. JAXRS offers a way to 
+intercept incoming objects using filters. 
+
+II Adopted solution
+
+JAXRS filters are used to intercept incoming streams. Those filters are less specific than CXF interceptors which means our implementation ensuring the substititution principle compliance might be reused with other frameworks. 
+
+The filter calls an algorithm we developed which modifies serialized objects. XSL is not used because it only allows transformations between XML documents with constant structures. The algorithm checks if the XML HTTP body request contains the expected child nodes which corresponds to the expected class fields, if it does it erases the unexpected child nodes and rename the root element so that it matches the expected class name.
+
+In order to figure what is the structure of the expected incoming object, reflection is used on the method exposed by the service targeted by the HTTP request. 
+
+III Major issues
+
+1) Detection of inherited fields
+
+When the algorithm tries to detect unexpected fields in incoming objects, fields that are not immediately inherited from the expected super-class are erased. ==> we'll fix this --> A voir avec Kévin
+
+2) Interfaces and abstract classes in services
+
+Abstract objects cannot be instantiated thus when the algorithm modifies incoming serialized objects (so that their root element matches an abstract object) unmarshalling cannot be completed. In that case users should specify a dependency on a class implementation. We defined an annotation for that purpose.
+ 
+
+
+References
+
+Diana Allam, Hervé Grall and Jean-Claude Royer
+From Object-Oriented Programming to Service-Oriented Computing:
+How to Improve Interoperability by Preserving Subtyping http://hal.archives-ouvertes.fr/docs/00/80/01/53/PDF/main.pdf
+
+Official CXF documentation for JAXRS filters
+http://cxf.apache.org/docs/jax-rs-filters.html#JAX-RSFilters-DifferencebetweenJAXRSfiltersandCXFinterceptors
+
+CXF documentation wiki for JAXRS context injection
+https://cwiki.apache.org/confluence/display/CXF20DOC/JAX-RS+Basics#JAX-RSBasics-ResourceInfo
+
+Sun Microsystems 
+(31 August 2009). Web Application Description Language: W3C Member Submission 31 August 2009. World Wide Web Consortium. 
+http://www.w3.org/Submission/wadl/
+
+
