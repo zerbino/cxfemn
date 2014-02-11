@@ -61,9 +61,9 @@ public interface Service {
 	public EtudiantImpl op();
 	
 	@GET
-	@Path("/get")
+	@Path("/getInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant opInt();
+	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant opInt();
 	
 	
 	@GET

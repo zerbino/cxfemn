@@ -54,12 +54,12 @@ public interface Service {
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
-	public EtudiantImpl op();
+	public PersonneImpl op();
 	
 	@GET
-	@Path("/get")
+	@Path("/getInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant opInt();
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne opInt();
 	
 	
 	@GET
