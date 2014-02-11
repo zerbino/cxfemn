@@ -4,6 +4,8 @@ import java.io.InputStream;
 
 import org.jdom2.Document;
 
+import adapters.AdapterTackle;
+
 /**
  * Subclass of AbstractLifterCaller
  * 
@@ -14,9 +16,9 @@ import org.jdom2.Document;
  */
 public class ClientLifterCaller extends AbstractLifterCaller<Class<?>> {
 
-	public ClientLifterCaller(InputStream entity, Class<?> clazz) {
-		super(entity, clazz);
-		this.lifting = new ClientLifting(doc, clazz);
+	public ClientLifterCaller(InputStream entity, Class<?> clazz, AdapterTackle adpt) {
+		super(entity, clazz, adpt);
+		this.lifting = new ClientLifting(doc, clazz, adpt);
 	}
 
 	

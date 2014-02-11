@@ -4,6 +4,7 @@ import java.io.InputStream;
 
 import org.jdom2.Document;
 
+import adapters.AdapterTackle;
 import factory.Factory;
 import factory.FactoryImp;
 
@@ -29,12 +30,14 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	protected Document doc;
 	protected E clazz;
 	protected Lifting<E> lifting;
+	protected AdapterTackle adpt;
 	
 	protected Factory factory = new FactoryImp();
 	
-	protected AbstractLifterCaller(InputStream entity, E clazz){
+	protected AbstractLifterCaller(InputStream entity, E clazz, AdapterTackle adpt){
 		this.doc = factory.createConverter().stream2Doc(entity);
 		this.clazz = clazz;
+		this.adpt = adpt;
 	}
 
 	@Override

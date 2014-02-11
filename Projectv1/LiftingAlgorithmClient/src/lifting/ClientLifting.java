@@ -2,6 +2,8 @@ package lifting;
 
 import org.jdom2.Document;
 
+import adapters.AdapterTackle;
+
 /**
  * Subclass of AbstractLifting<E>. E is specified by Class<?>. 
  * 
@@ -11,8 +13,8 @@ import org.jdom2.Document;
  */
 public class ClientLifting extends AbstractLifting<Class<?>> {
 
-	public ClientLifting(Document doc, Class<?> clazz) {
-		super(doc, clazz);
+	public ClientLifting(Document doc, Class<?> clazz, AdapterTackle adpt) {
+		super(doc, clazz, adpt);
 
 	}
 

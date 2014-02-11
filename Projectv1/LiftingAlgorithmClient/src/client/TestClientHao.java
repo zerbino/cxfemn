@@ -25,16 +25,16 @@ public class TestClientHao {
 		filtres.add(new LiftingInterceptor());
 			Service service = JAXRSClientFactory.create(
 					"http://localhost:8080/LiftingAlgorithm", 
-					Service.class);//, filtres);
+					Service.class, filtres);
 			Etudiant e = new EtudiantImpl();
 			e.setId(1);
 			e.setNom("ZHANG");
 			e.setPrenom("Hao");
 			e.setPromo("GSI");
-			String resu = service.opInt(e);
-			System.out.println(resu);
+			//String resu = service.opInt(e);
+			//System.out.println(resu);
 			
-			//Personne p = service.opInt();
-			//System.out.println(p.getNom() + " " + p.getPrenom());
+			Personne p = service.opInt();
+			System.out.println(p.getNom() + " " + p.getPrenom());
 	}
 }

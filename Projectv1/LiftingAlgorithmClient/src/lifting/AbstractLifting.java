@@ -7,6 +7,8 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
+import adapters.AdapterTackle;
+
 /**
  * The abstract class containing the methods to lift a schema. It's extended by two classes :
  * one used to lift when the client is making a request to the server, the other when the
@@ -23,12 +25,14 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
 	protected E clazz;
+	protected AdapterTackle adpt;
 
 
-	public AbstractLifting(Document doc, E clazz) {
+	public AbstractLifting(Document doc, E clazz, AdapterTackle adpt) {
 		super();
 		this.doc = doc;
 		this.clazz = clazz;
+		this.adpt = adpt;
 	}
 
 	/**
@@ -39,7 +43,15 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	
 	@Override
 	protected boolean removeExtraFields(Element e, Class<?> class1) {
-		Field[] fields = class1.getDeclaredFields();
+		// dstClass the class used by marshalling, instead of the interface.
+		Class<?> dstClass = class1;
+		if (null != adpt) {
+			dstClass = adpt.getClassByInterface(class1);
+			if (null == dstClass) {
+				dstClass = class1;
+			}
+		}
+		Field[] fields = dstClass.getDeclaredFields();
 		boolean isNotInSuperClass;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
@@ -93,7 +105,15 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	@Override
 	protected void rename(Element element, Class<?> clazz) {
-		element.setName(clazz.getSimpleName().toLowerCase());
+		Class<?> dstClass = clazz;
+		if (null != adpt){
+			dstClass = adpt.getClassByInterface(clazz);
+			
+			if (null == dstClass){
+				dstClass = clazz;
+			}
+		}
+		element.setName(dstClass.getSimpleName().toLowerCase());
 	}
 	
 

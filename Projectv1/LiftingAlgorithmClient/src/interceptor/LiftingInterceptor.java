@@ -7,6 +7,7 @@ import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
+import adapters.AdapterTackle;
 import lifting.ClientLifterCaller;
 
 /**
@@ -30,7 +31,8 @@ public class LiftingInterceptor implements ReaderInterceptor{
 	public Object aroundReadFrom(ReaderInterceptorContext context)
 			throws IOException, WebApplicationException {
 		Class<?> expectedClass = (Class<?>)context.getGenericType();
-		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedClass);
+		AdapterTackle adpt = new AdapterTackle(expectedClass.getPackage());
+		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedClass, adpt);
 		context.setInputStream(lifterCaller.callStream());
 		return context.proceed();
 	}

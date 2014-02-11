@@ -37,7 +37,7 @@ public class TestClientArchitecture {
 	 * @return the lifted Document
 	 */
 	public Document docLifted(Document initDoc, Class<?> clazz) {
-		ClientLifting clientLifting = new ClientLifting(initDoc, clazz);
+		ClientLifting clientLifting = new ClientLifting(initDoc, clazz, null);
 		return clientLifting.lifting();
 	}
 
@@ -50,7 +50,7 @@ public class TestClientArchitecture {
 	public Document liftingCallerTest() throws FileNotFoundException {
 		InputStream input = new FileInputStream(testFile);
 		ClientLifterCaller clientLifterCaller = new ClientLifterCaller(input,
-				Personne.class);
+				Personne.class, null);
 		return clientLifterCaller.call();
 	}
 
