@@ -12,3 +12,15 @@ dans AbstractLifting::removeExtraFields, ajoute un *break* pour sauter le boucle
 ## Usage de l'annotation AjustClient
 Ajouter l'annotation AjustClient sur la méthode dans Service, qui demande ma fonction de lifting.
 
+## L'ajout de interface substitution(11/02/2014)
+1. Changer la définition de la méthode op() et opInt() entre le serveur et le client.
+	Pour le serveur:
+	EtudiantImpl op();
+	@XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant opInt();
+
+	Pour le client:
+	PersonneImpl op();
+	@XmlJavaTypeAdapter(PersonneAdapter.class)Personne opInt();
+
+2. Modifier le nom du fichier TestClient4.java à TestClientHao.java pour examiner l'utilisation de l'interface.
+
