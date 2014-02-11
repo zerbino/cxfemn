@@ -1,0 +1,36 @@
+Réunion de rédaction de rapport avec Hervé Grall
+Participants : Hervé Grall, Grégoire Séguin-Henry, Kévin Llopart, Raphaël Martignoni, Hao Zhang
+
+Objectif : séance atelier de rédaction de rapport
+
+* Point sur l'avancement :
+
+- Grégoire a bien avancé sur le traitement de plusieurs arguments (via une liste). Il a rencontré un bug sur une autre partie
+qui l'empêchait d'avancer. Hao et Grégoire l'ont identifié récemment.
+Il reste à trouver comment permettre l'utilisation de plusieurs arguments, sans utiliser de liste, si cela est possible.
+
+
+- Cas du passage d'un objet via une requête GET. Rappel - le cas à tester est le suivant : on envoie au serveur un sous type
+du type attendu, via une requête GET. L'objet est alors éclaté dans la requête URI, ses attributs sont passés en paramètres. 
+Par observation, le principe de subsomption est ici respecté. Les paramètres ne correspondant à aucun champ sont simplement ignorés.
+Ces résultats sont visibles sur github dans le dossier "Documents/sprint4/retour Raphaël"
+
+- L'annotation pour permettre l'utilisation de notre solution : elle a été créée par Hao, pour les requêtes au serveur. Voir comment
+faire pour le côté client, comment la configurer. Revoir le nom, quelque chose de plus parlant. Proposition évoquée : @AllowSubstitution
+
+* TODOS
+Grégoire : Terminer la gestion des listes, formaliser les tests effectués. Pour ce dernier point, consiste à décrire les modèles utilisés
+( comme Personne, PersonneImpl...). On décrit le test : le type de la requête (GET...), l'objet passé. On donne le résultat sans la solution
+puis avec la solution.
+Kévin : faire un premier jet du rapport de motivation
+Hao : faire un premier jet de la documentation utilisateur
+Raphaël : faire un premier jet de la documentation développeur
+Hervé Grall : se renseigne sur le déploiement, et sur la gestion de plusieurs arguments
+
+- Regarder comment contribuer
+- modifier le nom de l'annotation
+
+
+
+
+
