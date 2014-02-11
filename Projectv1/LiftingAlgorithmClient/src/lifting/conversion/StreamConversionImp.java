@@ -28,7 +28,6 @@ public class StreamConversionImp implements StreamConversion {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
 		return document;
 	}
 

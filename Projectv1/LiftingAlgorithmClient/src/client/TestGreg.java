@@ -6,6 +6,7 @@ import interceptor.TestInterceptor;
 import java.util.LinkedList;
 import java.util.List;
 
+import model.EtudiantImpl;
 import model.Personne;
 import model.PersonneImpl;
 import model.Service;
@@ -26,9 +27,16 @@ public class TestGreg {
 		p2.setNom("Martignoni");
 		p2.setPrenom("Raphaël");
 		
+		EtudiantImpl e1 = new EtudiantImpl();
+		p1.setNom("Séguin-Henry");
+		p1.setPrenom("Grégoire");
 		
-		service.op(p1);
-		service.op(p2);
+		EtudiantImpl e2 = new EtudiantImpl();
+		p2.setNom("Martignoni");
+		p2.setPrenom("Raphaël");
+		
+		System.out.println(service.op(e1));
+		System.out.println(service.op(e2));
 	}
 	
 

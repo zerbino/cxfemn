@@ -31,7 +31,7 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(PersonneImpl p);
+	public String op(EtudiantImpl p);
 	
 	@POST
 	@Path("/opInt")

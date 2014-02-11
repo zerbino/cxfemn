@@ -79,7 +79,7 @@ public class ServiceImpl implements Service {
 			e.printStackTrace();
 		}
 
-		return p.getPrenom();
+		return UniformementRepresentable.toString(new StringBuilder(), p);
 	}
 	
 	@Override
