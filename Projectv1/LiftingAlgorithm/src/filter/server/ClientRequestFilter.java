@@ -15,7 +15,7 @@ import serverLifter.archi.LifterCaller;
 import serverLifter.archi.ServerLifterCaller;
 
 @Provider
-@AdjustClient
+@AllowSubstitution
 @BindingPriority(BindingPriority.ENTITY_CODER)
 public class ClientRequestFilter implements ContainerRequestFilter{
 	@Context

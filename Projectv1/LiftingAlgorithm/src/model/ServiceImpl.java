@@ -234,7 +234,7 @@ public class ServiceImpl implements Service {
 	}
 
 	@Override
-	public String ajouterPersonne(Personne p) {
+	public String ajouterPersonneInt(Personne p) {
 		int i=trouverPersonne(listePersonne,p.getId());
 		if(i!=-1){
 			return "Une personne possède déjà cet identifiant:"+p.getId();

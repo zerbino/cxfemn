@@ -90,7 +90,7 @@ public interface Service {
 	@POST
 	@Path("/ajouterPersonneInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public String ajouterPersonne(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
+	public String ajouterPersonneInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 
 	@DELETE
 	@Path("/effacerPersonne/{id}")
