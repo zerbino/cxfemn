@@ -35,6 +35,4 @@ public class LiftingInterceptor implements ReaderInterceptor{
 		return context.proceed();
 	}
 
-
-
 }
