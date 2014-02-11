@@ -1,18 +1,23 @@
 * Rapport de motivation :
-- Vérifier dans quelles conditions CXF est censé lever une exception
+- Vérifier dans quelles conditions CXF est censé lever une exception. Voir Test6, en général CXF n'a pas l'air de lever d'exception
+dans le cas d'une classe inconnue côté serveur, si celle ci étend une autre classe connue côté serveur. 
 - III)1) Pas trop compris
 
 * Passage d'un objet via une requête GET :
 - Voir dans projet client : client.bugs.cxf.Test7
-Aucun bug n'apparait lors du passage d'un sous type du type attendu côté client. 
+Aucun bug n'apparait lors du passage d'un sous type du type attendu côté client. L'objet envoyé au serveur est un objet de type
+ClientModel qui étend PersonneImpl. Elle possède un champ supplémentaire de type String par rapport à cette classe. La classe est
+inconnue côté serveur. Les résultats sont les suivants :
 
 Requête :
 
+----------------------------
 ID: 1
-Address: http://localhost:8080/LiftingAlgorithm/rest/opget?representation.promo=GSI&representation.id=1&representation.nom=Martignoni&representation.prenom=Raphael&promo=GSI&id=1&nom=Martignoni&prenom=Raphael
+Address: http://localhost:8080/LiftingAlgorithm/rest/opget?champ=champ&id=1&nom=Martignoni&prenom=Raphael&representation.champ=champ&representation.id=1&representation.nom=Martignoni&representation.prenom=Raphael
 Http-Method: GET
 Content-Type: application/xml
 Headers: {Accept=[text/plain], cache-control=[no-cache], connection=[keep-alive], content-type=[application/xml], host=[localhost:8080], pragma=[no-cache], user-agent=[Apache CXF 2.7.7]}
+--------------------------------------
 
 Réponse du serveur :
 
@@ -20,6 +25,6 @@ Réponse du serveur :
 ID: 1
 Response-Code: 200
 Content-Type: text/plain
-Headers: {Content-Type=[text/plain], Date=[Mon, 10 Feb 2014 14:36:23 GMT]}
+Headers: {Content-Type=[text/plain], Date=[Tue, 11 Feb 2014 16:07:39 GMT]}
 Payload: Martignoni
 --------------------------------------

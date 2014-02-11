@@ -12,4 +12,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name="clientmodel")
 public class ClientModel extends PersonneImpl {
 
+	protected String champ;
+
+	public String getChamp() {
+		return champ;
+	}
+
+	public void setChamp(String champ) {
+		this.champ = champ;
+	}
+	
+	
 }
