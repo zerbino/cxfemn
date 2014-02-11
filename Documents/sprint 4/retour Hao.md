@@ -24,3 +24,7 @@ Ajouter l'annotation AjustClient sur la méthode dans Service, qui demande ma fo
 
 2. Modifier le nom du fichier TestClient4.java à TestClientHao.java pour examiner l'utilisation de l'interface.
 
+## L'ajout de adapter à Client(11/02/2014)
+1. Ajouter la classe AdapterTrackle à Client
+2. Modifier le code de lifting pour ajouter l'adapter
+
