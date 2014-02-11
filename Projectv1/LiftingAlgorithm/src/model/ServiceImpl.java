@@ -35,7 +35,7 @@ public class ServiceImpl implements Service {
 			e.printStackTrace();
 		}
 
-		return p.getPrenom();
+		return UniformementRepresentable.toString(new StringBuilder(), p);
 	}
 
 	@Override
@@ -48,12 +48,12 @@ public class ServiceImpl implements Service {
 	}
 	
 	@Override
-	public String op(List<Personne> liste, Class<?> classe) {
+	public String op(List<Personne> liste) {
 		listePersonne.addAll(liste);
 		return "ok";
 	}
 	@Override
-	public List<Etudiant> opListe(Personne classe) {
+	public List<Etudiant> opListe() {
 		Etudiant etudiant = new Etudiant();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
@@ -165,6 +165,12 @@ public class ServiceImpl implements Service {
 			return -1;
 		}
 		return i;
+	}
+
+	@Override
+	public String op2(Etudiant p) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

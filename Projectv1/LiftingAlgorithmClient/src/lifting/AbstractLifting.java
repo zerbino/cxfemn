@@ -1,6 +1,8 @@
 package lifting;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,13 +24,13 @@ import org.jdom2.Element;
 public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
-	protected E clazz;
+	protected E type;
 
 
-	public AbstractLifting(Document doc, E clazz) {
+	public AbstractLifting(Document doc, E type) {
 		super();
 		this.doc = doc;
-		this.clazz = clazz;
+		this.type = type;
 	}
 
 	/**
@@ -83,14 +85,15 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
 	@Override
-	protected void indivLifting(Element element, Class<?>[] clazz) {
-		if(clazz.length==2){
-			this.removeExtraFieldsFromList(element, clazz[1]);
-			this.renames(element, clazz[1]);
+	protected void indivLifting(Element element, Type type) {
+		if(type instanceof ParameterizedType){
+			ParameterizedType typeP=(ParameterizedType) type;
+			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
+			this.renames(element, (Class<?>) typeP.getActualTypeArguments()[0]);
 		}
 		else{
-			this.removeExtraFields(element, clazz[0]);
-			this.rename(element, clazz[0]);
+			this.removeExtraFields(element, (Class<?>) type);
+			this.rename(element, (Class<?>) type);
 		}
 
 	}

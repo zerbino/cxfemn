@@ -46,19 +46,20 @@ public class TestGreg {
 		p2.setPrenom("Raphaël");
 		p2.setPromo("gsi");
 	
+		List<Etudiant> liste=new ArrayList();
+		liste.add(p2);
+		liste.add(p1);
 
 		//TEST avec liste pour conversion list<Etudiant> à list<Personne> au niveau de la reponse
-		Personne vraiPersonne1=new Personne();
-		vraiPersonne1.setId(2);
-		vraiPersonne1.setNom("ffff");
-		vraiPersonne1.setPrenom("gfjgoz");
-		List<Personne> listePersonne=service.opListe(vraiPersonne1);
+		List<Personne> listePersonne=service.opListe();
+		if(listePersonne!=null)System.out.println("la liste est non null :"+listePersonne.size());
 		for(int i=0;i<listePersonne.size();i++){
 			System.out.println(listePersonne.get(i).getClass().getSimpleName());
 			System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), listePersonne.get(i)));
 		}	
-		
+		System.out.println("commence le poste :"+service.op(liste));
+		System.out.println(service.listePersonne());
 		//TEST avec liste pour conversion list<Etudiant> à list<Personne> au niveau de la requete
 		/*List<Etudiant> listeEtudiants= new ArrayList<Etudiant>();
 		List<Personne> listePersonne=service.op(listeEtudiants);

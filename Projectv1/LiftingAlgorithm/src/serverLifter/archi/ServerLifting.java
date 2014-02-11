@@ -1,19 +1,19 @@
 package serverLifter.archi;
 
 
+import java.lang.reflect.Type;
+
 import org.jdom2.Document;
 
-public class ServerLifting extends AbstractLifting<Class<?>[]> {
+public class ServerLifting extends AbstractLifting<Type> {
 
-	public ServerLifting(Document doc, Class<?>[] clazz) {
-		super(doc, clazz);
+	public ServerLifting(Document doc, Type type) {
+		super(doc, type);
 	}
 
 	@Override
 	public Document lifting() {
-		
-		Class<?> oneClass = this.clazz[0];
-		this.indivLifting(doc.getRootElement(), oneClass);
+		this.indivLifting(doc.getRootElement(), this.type);
 		return this.doc;
 		
 	}

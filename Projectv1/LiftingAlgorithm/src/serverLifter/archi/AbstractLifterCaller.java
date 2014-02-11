@@ -27,14 +27,14 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	 * - For a response to the client : represents the return type of the proxy service
 	 */
 	protected Document doc;
-	protected E clazz;
+	protected E type;
 	protected Lifting<E> lifting;
 	
 	protected Factory factory = new FactoryImp();
 	
-	protected AbstractLifterCaller(InputStream entity, E clazz){
+	protected AbstractLifterCaller(InputStream entity, E type){
 		this.doc = factory.createConverter().stream2Doc(entity);
-		this.clazz = clazz;
+		this.type = type;
 	}
 
 	@Override

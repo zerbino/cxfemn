@@ -1,6 +1,8 @@
 package serverLifter.archi;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 
@@ -22,13 +24,13 @@ import org.jdom2.Element;
 public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
-	protected E clazz;
+	protected E type;
 
 
-	public AbstractLifting(Document doc, E clazz) {
+	public AbstractLifting(Document doc, E type) {
 		super();
 		this.doc = doc;
-		this.clazz = clazz;
+		this.type = type;
 	}
 
 	/**
@@ -36,43 +38,37 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * 
 	 * TODO : solve the problem mentionned in the report.
 	 */
-	
+	@Override
+	protected boolean removeExtraFieldsFromList(Element e, Class<?> class1){
+		List<Element> l = e.getChildren();
+		Iterator<Element> i = l.iterator();
+		while( i.hasNext()){
+			Element courant = i.next();
+			this.removeExtraFields(courant, class1);
+			this.rename(courant, class1);
+		}
+		return true;
+	}
 	@Override
 	protected boolean removeExtraFields(Element e, Class<?> class1) {
+		boolean isNotInSuperClass;
 		Field[] fields = class1.getDeclaredFields();
-		int mandatoryFields = 0;
-		if(class1.isArray()){
-			System.out.println("rrrrrrrrrrrrrr");	
-		}
-		else{
-
-			boolean isNotInSuperClass;
-			List<Element> l = e.getChildren();
-			Iterator<Element> i = l.iterator();
-			while (i.hasNext()) {
-				Element courant = i.next();
-				isNotInSuperClass = true;
-				for (int j = fields.length - 1; j >= 0; j--) {
-					if (fields[j].getName().equals(courant.getName())) {
-						isNotInSuperClass = false;
-						mandatoryFields++;
-						break;
-					}
-				}
-				if (isNotInSuperClass) {
-					i.remove();
+		List<Element> l = e.getChildren();
+		Iterator<Element> i = l.iterator();
+		while (i.hasNext()) {
+			Element courant = i.next();
+			isNotInSuperClass = true;
+			for (int j = fields.length - 1; j >= 0; j--) {
+				if (fields[j].getName().equals(courant.getName())) {
+					isNotInSuperClass = false;
+					break;
 				}
 			}
+			if (isNotInSuperClass) {
+				i.remove();
+			}
 		}
-		
-		// TODO : to be completed !
-
-		if (fields.length == mandatoryFields) {
-
-			return true;
-		} else {
-			return false;
-		}
+		return true;
 	}
 	
 
@@ -87,9 +83,16 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
 	@Override
-	protected void indivLifting(Element element, Class<?> clazz) {
-		this.removeExtraFields(element, clazz);
-		this.rename(element, clazz);
+	protected void indivLifting(Element element, Type type) {
+		if(type instanceof ParameterizedType){
+			ParameterizedType typeP=(ParameterizedType) type;
+			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
+			this.renames(element, (Class<?>) typeP.getActualTypeArguments()[0]);
+		}
+		else{
+			this.removeExtraFields(element, (Class<?>) type);
+			this.rename(element, (Class<?>) type);
+		}
 
 	}
 
@@ -100,7 +103,10 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	protected void rename(Element element, Class<?> clazz) {
 		element.setName(clazz.getSimpleName().toLowerCase());
 	}
-	
+	@Override
+	protected void renames(Element element, Class<?> clazz) {
+		element.setName(clazz.getSimpleName().toLowerCase()+"s");
+	}
 
 
 }

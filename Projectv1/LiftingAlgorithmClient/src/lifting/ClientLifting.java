@@ -1,5 +1,7 @@
 package lifting;
 
+import java.lang.reflect.Type;
+
 import org.jdom2.Document;
 
 /**
@@ -9,16 +11,16 @@ import org.jdom2.Document;
  *
  * @ see AbstractLifting<E> for more details
  */
-public class ClientLifting extends AbstractLifting<Class<?>[]> {
+public class ClientLifting extends AbstractLifting<Type> {
 
-	public ClientLifting(Document doc, Class<?>[] clazz) {
-		super(doc, clazz);
+	public ClientLifting(Document doc, Type type) {
+		super(doc, type);
 
 	}
 
 	@Override
 	public Document lifting() {
-		this.indivLifting(doc.getRootElement(), clazz);
+		this.indivLifting(doc.getRootElement(), type);
 		return doc;
 	}
 

@@ -29,18 +29,22 @@ public interface Service {
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Personne> op2( @Multipart("root") Personne p1, 
 			@Multipart(value="personne2", required=false) Personne p2);*/
-	
+	//TestGreg
+	@POST
+	@Path("/op2")
+	@Produces(MediaType.APPLICATION_XML)
+	public String op2(Etudiant p);
 	//TestGreg
 	@POST
 	@Produces(MediaType.APPLICATION_XML)
 	@Path("/ops2")
-	public String op(List<Personne> liste, Class<?> classe);
+	public String op(List<Personne> liste);
 	//TestGreg
-	@POST
+	@GET
 	@Path("/getListe")
 	@Produces(MediaType.APPLICATION_XML)
 	@Consumes(MediaType.APPLICATION_XML)
-	public List<Etudiant> opListe(Personne classe);
+	public List<Etudiant> opListe();
 
 	//TestClient2
 	@GET
