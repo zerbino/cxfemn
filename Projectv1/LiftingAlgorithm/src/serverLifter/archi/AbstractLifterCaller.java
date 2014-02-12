@@ -36,7 +36,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	
 	protected AbstractLifterCaller(InputStream entity, E clazz){
 		this.doc = factory.createConverter().stream2Doc(entity);
-		System.out.println("After stream2doc"+this.doc.getRootElement());
+		System.out.println("After stream2doc rootelement="+this.doc.getRootElement());
 		this.clazz = clazz;
 	}
 	

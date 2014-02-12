@@ -1,5 +1,7 @@
 package lifting;
 
+import java.lang.reflect.Type;
+
 import org.jdom2.Document;
 
 import adapters.AdapterTackle;
@@ -11,16 +13,18 @@ import adapters.AdapterTackle;
  *
  * @ see AbstractLifting<E> for more details
  */
-public class ClientLifting extends AbstractLifting<Class<?>> {
+public class ClientLifting extends AbstractLifting<Type> {
 
-	public ClientLifting(Document doc, Class<?> clazz, AdapterTackle adpt) {
-		super(doc, clazz, adpt);
+	public ClientLifting(Document doc, Type type, AdapterTackle adpt) {
+		super(doc, type, adpt);
 
 	}
 
 	@Override
 	public Document lifting() {
-		this.indivLifting(doc.getRootElement(), clazz);
+		//System.out.println("classe null?:"+clazz==null);
+		//System.out.println("doc.getrrotelement is rootelement?:"+doc.getRootElement().isRootElement());
+		this.indivLifting(doc.getRootElement(), type);
 		return doc;
 	}
 

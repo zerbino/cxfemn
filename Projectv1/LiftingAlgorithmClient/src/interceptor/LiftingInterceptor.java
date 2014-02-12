@@ -1,6 +1,7 @@
 package interceptor;
 
 import java.io.IOException;
+import java.lang.reflect.Type;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.ext.Provider;
@@ -30,10 +31,12 @@ public class LiftingInterceptor implements ReaderInterceptor{
 	@Override
 	public Object aroundReadFrom(ReaderInterceptorContext context)
 			throws IOException, WebApplicationException {
-		Class<?> expectedClass = (Class<?>)context.getGenericType();
-		AdapterTackle adpt = new AdapterTackle(expectedClass.getPackage());
-		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedClass, adpt);
+		System.out.println("Debut intercepteur de la réponse");
+		Type expectedType = context.getGenericType();
+		AdapterTackle adpt = new AdapterTackle(((Class<?>)expectedType).getPackage());
+		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedType, adpt);
 		context.setInputStream(lifterCaller.callStream());
+		System.out.println("Fin intercepteur de la réponse");
 		return context.proceed();
 	}
 

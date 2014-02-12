@@ -70,7 +70,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	/**Checks if the name of e matches a field in dstClass
 	 */
 	private final boolean fieldIsInClass(Element e, Class<?> dstClass) {
-		System.out.println(dstClass.getSimpleName());
+		System.out.println("classe de parametre de fieldisinclass :"+dstClass.getSimpleName());
 		Field[] fields = dstClass.getDeclaredFields();
 		for (int j = fields.length - 1; j >= 0; j--) {
 			if (fields[j].getName().equals(e.getName())) {

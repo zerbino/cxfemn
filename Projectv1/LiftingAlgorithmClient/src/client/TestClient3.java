@@ -16,7 +16,7 @@ import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
  *
  */
 public class TestClient3 {
-	
+	//TestUselessPour le moment a modifier plus tard pour verifier la robustesse du programme
 	public static void main(String[] args) {
 			List<Object> filtres = new LinkedList<>();
 			Service service = JAXRSClientFactory.create(

@@ -12,9 +12,9 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
 import filter.server.AllowSubstitution;
-
+//import filter.server.AdjustClient;
+//SERVEUR
 @Path("/rest")
 public interface Service {
 	

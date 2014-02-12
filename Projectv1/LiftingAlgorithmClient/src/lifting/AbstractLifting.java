@@ -1,6 +1,8 @@
 package lifting;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
 
@@ -24,14 +26,14 @@ import adapters.AdapterTackle;
 public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
-	protected E clazz;
+	protected E type;
 	protected AdapterTackle adpt;
 
 
-	public AbstractLifting(Document doc, E clazz, AdapterTackle adpt) {
+	public AbstractLifting(Document doc, E type, AdapterTackle adpt) {
 		super();
 		this.doc = doc;
-		this.clazz = clazz;
+		this.type = type;
 		this.adpt = adpt;
 	}
 
@@ -40,6 +42,17 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * 
 	 * TODO : solve the problem mentionned in the report.
 	 */
+	@Override
+	protected boolean removeExtraFieldsFromList(Element e, Class<?> class1){
+		List<Element> l = e.getChildren();
+		Iterator<Element> i = l.iterator();
+		while( i.hasNext()){
+			Element courant = i.next();
+			this.removeExtraFields(courant, class1);
+			this.rename(courant, class1);
+		}
+		return true;
+	}
 	
 	@Override
 	protected boolean removeExtraFields(Element e, Class<?> class1) {
@@ -55,14 +68,12 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 		boolean isNotInSuperClass;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
-		int mandatoryFields = 0;
 		while (i.hasNext()) {
 			Element courant = i.next();
 			isNotInSuperClass = true;
 			for (int j = fields.length - 1; j >= 0; j--) {
 				if (fields[j].getName().equals(courant.getName())) {
 					isNotInSuperClass = false;
-					mandatoryFields++;
 					break;
 				}
 			}
@@ -70,16 +81,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 				i.remove();
 			}
 		}
-
-		
-		// TODO : to be completed !
-
-		if (fields.length == mandatoryFields) {
-
-			return true;
-		} else {
-			return false;
-		}
+		return true;
 	}
 	
 
@@ -93,10 +95,19 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * 
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
-	@Override
-	protected void indivLifting(Element element, Class<?> clazz) {
-		this.removeExtraFields(element, clazz);
-		this.rename(element, clazz);
+	
+	protected void indivLifting(Element element, Type type) {
+		if(type instanceof ParameterizedType){
+			ParameterizedType typeP=(ParameterizedType) type;
+			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
+			this.renames(element, (Class<?>) typeP.getActualTypeArguments()[0]);
+		}
+		else{
+			if(true){
+				this.removeExtraFields(element, (Class<?>) type);
+				this.rename(element, (Class<?>) type);
+			}
+		}
 
 	}
 
@@ -115,7 +126,10 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 		}
 		element.setName(dstClass.getSimpleName().toLowerCase());
 	}
-	
+	@Override
+	protected void renames(Element element, Class<?> clazz) {
+		element.setName(clazz.getSimpleName().toLowerCase()+"s");
+	}	
 
 
 }
