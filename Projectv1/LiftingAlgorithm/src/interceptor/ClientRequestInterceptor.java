@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
 import model.Personne;
 
 import org.apache.cxf.interceptor.Fault;
