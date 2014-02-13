@@ -17,6 +17,8 @@ import example.model.Person;
 import example.model.PersonImpl;
 import example.model.PersonAdapter;
 import example.model.PersonWithoutFieldImpl;
+import example.model.StudentImpl;
+import example.model.StudentWithoutFieldImpl;
 /**
  * These example services aims at illustrate our solution behaviour
  * with different rest methods and different kind of arguments.
@@ -38,7 +40,7 @@ public interface Service {
 	@POST
 	@Path("/post_personimpl")
 	@Produces(MediaType.TEXT_PLAIN)
-	public int post_PersonImpl(PersonImpl p);
+	public int post_PersonImpl(StudentImpl p);
 	
 	/**
 	 * Restful: a resource needs to be created,
@@ -51,7 +53,7 @@ public interface Service {
 	@POST
 	@Path("/post_person")
 	@Produces(MediaType.TEXT_PLAIN)
-	public int post_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
+	public int post_Person(StudentImpl p);
 	/**
 	 * Restful: a resource needs to be created,
 	 * we create it then reply with its id.
@@ -63,7 +65,7 @@ public interface Service {
 	@POST
 	@Path("/post_personwithoutfieldimpl")
 	@Produces(MediaType.TEXT_PLAIN)
-	public int post_PersonWithoutFieldImpl(PersonWithoutFieldImpl p);
+	public int post_PersonWithoutFieldImpl(StudentWithoutFieldImpl p);
 	
 //	@POST
 //	@Path("/post_2_personimpl")

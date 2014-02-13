@@ -11,28 +11,17 @@ import example.model.TeacherImpl;
 public class ServiceImpl implements Service{
 	@Override
 	public int post_PersonImpl(PersonImpl p) {
-		Enumeration<String> it = Resources.getSession().getAttributeNames();
-		int max=0;
-		while(it.hasMoreElements()){
-			int current=Integer.parseInt(it.nextElement());
-			if(current>max) max=current+1;
-		}
-		Resources.getSession().setAttribute(max+"",p);
-		System.out.println(max);
-		System.out.println(Resources.getSession().getAttribute(max+""));
-		return max;
+		return post_Person(p);
 	}
 
 	@Override
 	public int post_Person(Person p) {
-		// TODO Auto-generated method stub
-		return 0;
+		return Resources.postPerson(p);
 	}
 
 	@Override
 	public int post_PersonWithoutFieldImpl(PersonWithoutFieldImpl p) {
-		// TODO Auto-generated method stub
-		return 0;
+		return post_Person(p);
 	}
 //	
 //	@Override
@@ -73,7 +62,8 @@ public class ServiceImpl implements Service{
 //
 	@Override
 	public Person get_Person(int id) {
-		return (Person) Resources.getSession().getAttribute(id+"");
+		//return (Person) Resources.getSession().getAttribute(id+"");
+		return Resources.getPerson(id);
 	}
 //
 //	@Override

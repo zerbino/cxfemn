@@ -45,36 +45,11 @@ import javax.xml.bind.annotation.XmlType;
 //})
 @XmlRootElement(name="personimpl")
 public class PersonImpl implements Person {
-	protected int id;
     protected String lastName;
     protected String firstName;
     
     /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public int getId(){
-    	return id;
-    }
-
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    public void setId(int value){
-    	id = value;
-    }
-	
-    /**
-     * Gets the value of the nom property.
+     * Gets the value of the lastname property.
      * 
      * @return
      *     possible object is
@@ -86,7 +61,7 @@ public class PersonImpl implements Person {
     }
 
     /**
-     * Sets the value of the nom property.
+     * Sets the value of the lastname property.
      * 
      * @param value
      *     allowed object is
@@ -98,7 +73,7 @@ public class PersonImpl implements Person {
     }
 
     /**
-     * Gets the value of the prenom property.
+     * Gets the value of the firstname property.
      * 
      * @return
      *     possible object is
@@ -110,7 +85,7 @@ public class PersonImpl implements Person {
     }
 
     /**
-     * Sets the value of the prenom property.
+     * Sets the value of the firstname property.
      * 
      * @param value
      *     allowed object is

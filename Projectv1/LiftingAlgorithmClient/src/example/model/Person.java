@@ -44,35 +44,7 @@ import com.sun.xml.bind.AnyTypeAdapter;
 //@XmlSeeAlso({PersonImpl.class})
 //@XmlJavaTypeAdapter(PersonAdapter.class)
 public interface Person {
-	/**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
-     */
-    public int getId();
-
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
-     */
-    
-    public void setId(int value);
-    /**
-     * Gets the value of the nom property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    
+	
     public String getLastName();
 
     /**
