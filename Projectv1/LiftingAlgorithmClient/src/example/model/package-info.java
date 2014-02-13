@@ -3,8 +3,7 @@
  *
  */
 @XmlJavaTypeAdapters({ 
-	@XmlJavaTypeAdapter(PersonAdapter.class),
-	@XmlJavaTypeAdapter(EtudiantAdapter.class)
+	@XmlJavaTypeAdapter(PersonAdapter.class)
 })
 package example.model;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;

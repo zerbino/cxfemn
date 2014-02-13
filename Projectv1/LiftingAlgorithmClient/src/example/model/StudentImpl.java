@@ -38,7 +38,7 @@ import javax.xml.bind.annotation.XmlType;
 //    "specialField"
 //})
 @XmlRootElement(name="studentimpl")
-public class StudentImpl extends PersonImpl implements Student
+public class StudentImpl extends PersonImpl
 {
 
     protected String specialField;

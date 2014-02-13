@@ -27,58 +27,57 @@ public class ServiceImpl implements Service{
 		// TODO Auto-generated method stub
 		return 0;
 	}
-/*
-	@Override
-	public List<Integer> post_2_PersonImpl(PersonImpl p1, PersonImpl p2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Integer> post_2_Person(Person p1, Person p2) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void put_PersonImpl(int id, PersonImpl p) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public TeacherImpl post_PromotePerson(Person p) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Person delete_Person(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public PersonImpl get_PersonImpl(int id) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+//	
+//	@Override
+//	public List<Integer> post_2_PersonImpl(PersonImpl p1, PersonImpl p2) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public List<Integer> post_2_Person(Person p1, Person p2) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public void put_PersonImpl(int id, PersonImpl p) {
+//		// TODO Auto-generated method stub
+//		
+//	}
+//
+//	@Override
+//	public TeacherImpl post_PromotePerson(Person p) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public Person delete_Person(int id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public PersonImpl get_PersonImpl(int id) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
 	@Override
 	public Person get_Person(int id) {
 		return (Person) Resources.getSession().getAttribute(id+"");
 	}
-
-	@Override
-	public List<PersonImpl> getAll_PersonImpl() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Person> getAll_Person() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	*/
+//
+//	@Override
+//	public List<PersonImpl> getAll_PersonImpl() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+//
+//	@Override
+//	public List<Person> getAll_Person() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 }

@@ -52,7 +52,7 @@ public class ObjectFactory {
      * Create an instance of {@link Student }
      * 
      */
-    public Student createStudent() {
+    public StudentImpl createStudent() {
         return new StudentImpl();
     }
 

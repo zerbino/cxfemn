@@ -13,76 +13,109 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import example.model.EtudiantAdapter;
 import example.model.Person;
 import example.model.PersonImpl;
 import example.model.PersonAdapter;
 import example.model.PersonWithoutFieldImpl;
-import example.model.Student;
-import example.model.StudentImpl;
 /**
- * These example services aims at illustrate the different rest 
- * methods used with different kind of arguments.
+ * These example services aims at illustrate our solution behaviour
+ * with different rest methods and different kind of arguments.
  *
  */
 @Path("/rest")
 public interface Service {
-	
-	
+	/*
+	 * Algorithm test server-side.
+	 * In the following cases, we'll receive subtypes
+	 * of the expected types from client.
+	 */
+	/**
+	 * Restful: a resource needs to be created,
+	 * we create it then reply with its id.
+	 * @param PersonImpl
+	 * @return int
+	 */
 	@POST
 	@Path("/post_personimpl")
 	@Produces(MediaType.APPLICATION_XML)
 	public int post_PersonImpl(PersonImpl p);
 	
-	
+	/**
+	 * Restful: a resource needs to be created,
+	 * we create it then reply with its id.
+	 * This case show the need for a specific annotation when
+	 * parameters are interfaces.
+	 * @param Person
+	 * @return int
+	 */
 	@POST
 	@Path("/post_person")
 	@Produces(MediaType.APPLICATION_XML)
 	public int post_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
-
-	
+	/**
+	 * Restful: a resource needs to be created,
+	 * we create it then reply with its id.
+	 * Algorithm used to fail checking parameters fields
+	 * when expected objects only have inherited fields.
+	 * @param Person
+	 * @return int
+	 */
 	@POST
-	@Path("/post_2_personimpl")
+	@Path("/post_personwithoutfieldimpl")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<Integer> post_2_PersonImpl(PersonImpl p1, 
-			PersonImpl p2);
+	public int post_PersonWithoutFieldImpl(PersonWithoutFieldImpl p);
 	
-	
-	@POST
-	@Path("/post_2_person")
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Integer> post_2_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p1, 
-			@XmlJavaTypeAdapter(PersonAdapter.class)Person p2);
-	
-	@PUT
-	@Path("/putlastname_person/{id}")
-	@Produces(MediaType.APPLICATION_XML)
-	public void putLastName_Person(@PathParam("id") int id, String lastName);
-	
-	@DELETE
-	@Path("/delete_person/{id}")
-	@Produces(MediaType.APPLICATION_XML)
-	public Person delete_Person(@PathParam("id") int id);
-
-	@GET
-	@Path("/getpersonimpl/{id}")
-	@Produces(MediaType.APPLICATION_XML)
-	public PersonImpl get_PersonImpl(@PathParam("id") int id);
+//	@POST
+//	@Path("/post_2_personimpl")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public List<Integer> post_2_PersonImpl(PersonImpl p1, 
+//			PersonImpl p2);
+//	
+//	
+//	@POST
+//	@Path("/post_2_person")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public List<Integer> post_2_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p1, 
+//			@XmlJavaTypeAdapter(PersonAdapter.class)Person p2);
+//
+//	@PUT
+//	@Path("/put_personimpl/{id}")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public void put_PersonImpl(@PathParam("id") int id, PersonImpl p);
+//	
+//	/*
+//	 * Algorithm test client-side
+//	 */
+//	
+//	@POST
+//	@Path("/post_person")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public TeacherImpl post_PromotePerson(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
+//	
+//	@DELETE
+//	@Path("/delete_person/{id}")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public Person delete_Person(@PathParam("id") int id);
+//
+//	@GET
+//	@Path("/getpersonimpl/{id}")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public PersonImpl get_PersonImpl(@PathParam("id") int id);
 
 	@GET
 	@Path("/getperson/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public @XmlJavaTypeAdapter(PersonAdapter.class)Person get_Person(@PathParam("id") int id);
 	
-	@GET
-	@Path("/getall_personimpl")
-	@Produces(MediaType.APPLICATION_XML)
-	public List<PersonImpl> getAll_PersonImpl();
-	
-	@GET
-	@Path("/getall_person")
-	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(PersonAdapter.class)List<Person> getAll_Person();
-
+//	@GET
+//	@Path("/getall_personimpl")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public List<PersonImpl> getAll_PersonImpl();
+//	
+//	@GET
+//	@Path("/getall_person")
+//	@Produces(MediaType.APPLICATION_XML)
+//	public @XmlJavaTypeAdapter(PersonAdapter.class)List<Person> getAll_Person();
+//	
 }
 

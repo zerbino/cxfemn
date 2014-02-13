@@ -32,7 +32,7 @@ public interface Service {
 	 * of the expected types from client.
 	 */
 	/**
-	 * Restful: a ressource needs to be created,
+	 * Restful: a resource needs to be created,
 	 * we create it then reply with its id.
 	 * @param PersonImpl
 	 * @return int
@@ -44,7 +44,7 @@ public interface Service {
 	public int post_PersonImpl(PersonImpl p);
 	
 	/**
-	 * Restful: a ressource needs to be created,
+	 * Restful: a resource needs to be created,
 	 * we create it then reply with its id.
 	 * This case show the need for a specific annotation when
 	 * parameters are interfaces.
@@ -56,7 +56,14 @@ public interface Service {
 	@Path("/post_person")
 	@Produces(MediaType.APPLICATION_XML)
 	public int post_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
-	
+	/**
+	 * Restful: a resource needs to be created,
+	 * we create it then reply with its id.
+	 * Algorithm used to fail checking parameters fields
+	 * when expected objects only have inherited fields.
+	 * @param Person
+	 * @return int
+	 */
 	@AllowSubstitution
 	@POST
 	@Path("/post_personwithoutfieldimpl")
@@ -101,10 +108,10 @@ public interface Service {
 //	@Produces(MediaType.APPLICATION_XML)
 //	public PersonImpl get_PersonImpl(@PathParam("id") int id);
 //
-//	@GET
-//	@Path("/getperson/{id}")
-//	@Produces(MediaType.APPLICATION_XML)
-//	public @XmlJavaTypeAdapter(PersonAdapter.class)Person get_Person(@PathParam("id") int id);
+	@GET
+	@Path("/getperson/{id}")
+	@Produces(MediaType.APPLICATION_XML)
+	public @XmlJavaTypeAdapter(PersonAdapter.class)Person get_Person(@PathParam("id") int id);
 //	
 //	@GET
 //	@Path("/getall_personimpl")
