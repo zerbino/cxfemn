@@ -1,5 +1,6 @@
 package example.services;
 
+import java.util.Enumeration;
 import java.util.List;
 
 import example.model.Person;
@@ -8,12 +9,18 @@ import example.model.PersonWithoutFieldImpl;
 import example.model.TeacherImpl;
 
 public class ServiceImpl implements Service{
-	private Resources resources;
-
 	@Override
 	public int post_PersonImpl(PersonImpl p) {
-		// TODO Auto-generated method stub
-		return 0;
+		Enumeration<String> it = Resources.getSession().getAttributeNames();
+		int max=0;
+		while(it.hasMoreElements()){
+			int current=Integer.parseInt(it.nextElement());
+			if(current>max) max=current+1;
+		}
+		Resources.getSession().setAttribute(max+"",p);
+		System.out.println(max);
+		System.out.println(Resources.getSession().getAttribute(max+""));
+		return max;
 	}
 
 	@Override

@@ -30,8 +30,8 @@ public class FullTest {
 		System.out.println(sId);
 		
 		Person sbis = service.get_Person(sId);
-		System.out.println(sbis.getClass().getSimpleName());
-		System.out.println(UniformementRepresentable.toString(
-				new StringBuilder(), sbis));
+		//System.out.println(sbis.getClass().getSimpleName());
+		//System.out.println(UniformementRepresentable.toString(
+		//		new StringBuilder(), sbis));
 	}
 }

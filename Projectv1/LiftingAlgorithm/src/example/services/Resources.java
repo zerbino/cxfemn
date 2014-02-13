@@ -27,6 +27,7 @@ public class Resources implements Filter {
     public static HttpSession getSession() {
         HttpServletRequest request = localRequest.get();
         if(request !=null && request.getSession() !=null && !request.getSession().getAttributeNames().hasMoreElements()){
+        	System.out.println("init db");
 			PersonImpl p=new PersonImpl();
 			p.setFirstName("Luke");
 			p.setLastName("Lucky");

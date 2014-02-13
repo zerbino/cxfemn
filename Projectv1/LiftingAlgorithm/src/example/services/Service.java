@@ -40,7 +40,7 @@ public interface Service {
 	@AllowSubstitution
 	@POST
 	@Path("/post_personimpl")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
 	public int post_PersonImpl(PersonImpl p);
 	
 	/**
@@ -54,7 +54,7 @@ public interface Service {
 	@AllowSubstitution
 	@POST
 	@Path("/post_person")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
 	public int post_Person(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
 	/**
 	 * Restful: a resource needs to be created,
@@ -67,7 +67,7 @@ public interface Service {
 	@AllowSubstitution
 	@POST
 	@Path("/post_personwithoutfieldimpl")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.TEXT_PLAIN)
 	public int post_PersonWithoutFieldImpl(PersonWithoutFieldImpl p);
 	
 //	@AllowSubstitution
