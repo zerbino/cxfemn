@@ -3,6 +3,8 @@ Participants : Hervé Grall, Grégoire Séguin-Henry, Kévin Llopart, Raphaël M
 
 Objectif : séance atelier de rédaction de rapport
 
+durée : 1h30
+
 * Point sur l'avancement :
 
 - Grégoire a bien avancé sur le traitement de plusieurs arguments (via une liste). Il a rencontré un bug sur une autre partie
@@ -18,7 +20,7 @@ Ces résultats sont visibles sur github dans le dossier "Documents/sprint4/retou
 - L'annotation pour permettre l'utilisation de notre solution : elle a été créée par Hao, pour les requêtes au serveur. Voir comment
 faire pour le côté client, comment la configurer. Revoir le nom, quelque chose de plus parlant. Proposition évoquée : @AllowSubstitution
 
-* TODOS
+* TODOS pour cette semaine :
 Grégoire : Terminer la gestion des listes, formaliser les tests effectués. Pour ce dernier point, consiste à décrire les modèles utilisés
 ( comme Personne, PersonneImpl...). On décrit le test : le type de la requête (GET...), l'objet passé. On donne le résultat sans la solution
 puis avec la solution.
