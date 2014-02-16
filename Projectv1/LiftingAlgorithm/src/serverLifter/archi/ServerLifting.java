@@ -2,7 +2,7 @@ package serverLifter.archi;
 
 
 import org.jdom2.Document;
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 
 
 /**
@@ -16,7 +16,7 @@ import adapters.AdapterTackle;
 
 public class ServerLifting extends AbstractLifting<Class<?>[]> {
 
-	public ServerLifting(Document doc, Class<?>[] clazz, AdapterTackle adpt) {
+	public ServerLifting(Document doc, Class<?>[] clazz, InterfaceToClass adpt) {
 		super(doc, clazz, adpt);
 	}
 

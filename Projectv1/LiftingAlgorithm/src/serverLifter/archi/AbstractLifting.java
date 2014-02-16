@@ -7,7 +7,7 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 
 /**
  * The abstract class containing the methods to lift a schema. It's extended by two classes :
@@ -25,9 +25,9 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
 	protected E clazz;
-	protected AdapterTackle adpt;
+	protected InterfaceToClass adpt;
 
-	public AbstractLifting(Document doc, E clazz, AdapterTackle adpt) {
+	public AbstractLifting(Document doc, E clazz, InterfaceToClass adpt) {
 		super();
 		this.doc = doc;
 		this.clazz = clazz;

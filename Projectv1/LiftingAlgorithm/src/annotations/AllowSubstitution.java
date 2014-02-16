@@ -14,6 +14,7 @@ import javax.ws.rs.NameBinding;
  * @author Hao ZHANG
  *
  */
+
 @NameBinding
 @Target({ ElementType.TYPE, ElementType.METHOD })
 @Retention(value = RetentionPolicy.RUNTIME)
