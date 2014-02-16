@@ -4,7 +4,7 @@ import java.io.InputStream;
 
 import org.jdom2.Document;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 import factories.Factory;
 import factories.FactoryImp;
 
@@ -30,7 +30,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	protected Document doc;
 	protected E clazz;
 	protected Lifting<E> lifting;
-	protected AdapterTackle adpt = null;
+	protected InterfaceToClass adpt = null;
 	
 	protected Factory factory = new FactoryImp();
 	
@@ -40,7 +40,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 		this.clazz = clazz;
 	}
 	
-	protected AbstractLifterCaller(InputStream entity, E clazz, AdapterTackle adpt){
+	protected AbstractLifterCaller(InputStream entity, E clazz, InterfaceToClass adpt){
 		this(entity, clazz);
 		this.adpt = adpt;
 	}

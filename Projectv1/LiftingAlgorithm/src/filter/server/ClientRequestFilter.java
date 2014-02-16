@@ -10,7 +10,7 @@ import javax.ws.rs.container.ResourceInfo;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.ext.Provider;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 import annotations.AllowSubstitution;
 import serverLifter.archi.LifterCaller;
 import serverLifter.archi.ServerLifterCaller;
@@ -32,7 +32,7 @@ public class ClientRequestFilter implements ContainerRequestFilter {
 		Class<?>[] classes = info.getResourceMethod().getParameterTypes();
 		if (classes.length > 0) {
 			System.out.println(classes[0].getName());
-			AdapterTackle adpt = new AdapterTackle(info.getResourceMethod()
+			InterfaceToClass adpt = new InterfaceToClass(info.getResourceMethod()
 					.getDeclaringClass().getPackage());
 			LifterCaller lifterCaller = new ServerLifterCaller(input, classes,
 					adpt);
