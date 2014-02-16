@@ -22,7 +22,7 @@ import javax.xml.validation.SchemaFactory;
 import org.jdom2.transform.JDOMSource;
 
 import filter.server.Tools;
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 public class Lifter {
 	// for sandbox tests

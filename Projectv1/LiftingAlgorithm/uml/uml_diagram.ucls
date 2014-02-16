@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <package id="1" language="java" name="adapters" project="LiftingAlgorithm" file="/LiftingAlgorithm/src/adapters" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="120" y="76"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="annotations" project="LiftingAlgorithm" file="/LiftingAlgorithm/src/annotations" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="253" y="76"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="lifting.conversion" project="LiftingAlgorithm" 
+    file="/LiftingAlgorithm/src/lifting/conversion" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="391" y="76"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="model" project="LiftingAlgorithm" file="/LiftingAlgorithm/src/model" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="118" y="165"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="serverLifter.archi" project="LiftingAlgorithm" 
+    file="/LiftingAlgorithm/src/serverLifter/archi" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="274" y="166"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="tools" project="LiftingAlgorithm" file="/LiftingAlgorithm/src/tools" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="407" y="166"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="false" package="true" protected="false" private="false" static="false"/>    
+    <operations public="false" package="true" protected="false" private="false" static="false"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

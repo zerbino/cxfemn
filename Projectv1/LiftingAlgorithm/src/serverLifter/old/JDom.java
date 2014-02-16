@@ -8,7 +8,7 @@ import org.jdom2.*;
 import org.jdom2.input.*;
 import org.jdom2.output.*;
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -12,7 +12,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 //@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
 public class ServiceImpl implements Service {
