@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 
 import org.jdom2.Document;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 
 /**
  * Subclass of AbstractLifterCaller
@@ -18,7 +18,7 @@ import adapters.AdapterTackle;
 public class ClientLifterCaller extends AbstractLifterCaller<Type> {
 
 
-	public ClientLifterCaller(InputStream entity, Type type, AdapterTackle adpt) {
+	public ClientLifterCaller(InputStream entity, Type type, InterfaceToClass adpt) {
 		super(entity, type, adpt);
 		this.lifting = new ClientLifting(doc, type, adpt);
 	}

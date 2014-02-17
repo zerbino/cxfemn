@@ -18,7 +18,7 @@ import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
  * @author hao
  *
  */
-public class TestOpInt {
+public class TestGetInterface {
 	
 	public static void main(String[] args) {
 		List<Object> filtres = new LinkedList<>();
@@ -34,7 +34,7 @@ public class TestOpInt {
 			//String resu = service.opInt(e);
 			//System.out.println(resu);
 			
-			Personne p = service.opInt();
+			Personne p = service.getPersonneInt();
 			System.out.println(p.getNom() + " " + p.getPrenom());
 	}
 }

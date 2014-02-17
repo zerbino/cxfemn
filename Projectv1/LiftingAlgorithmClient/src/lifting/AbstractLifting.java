@@ -9,7 +9,7 @@ import java.util.List;
 import org.jdom2.Document;
 import org.jdom2.Element;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 
 /**
  * The abstract class containing the methods to lift a schema. It's extended by two classes :
@@ -27,10 +27,10 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
 	protected E type;
-	protected AdapterTackle adpt;
+	protected InterfaceToClass adpt;
 
 
-	public AbstractLifting(Document doc, E type, AdapterTackle adpt) {
+	public AbstractLifting(Document doc, E type, InterfaceToClass adpt) {
 		super();
 		this.doc = doc;
 		this.type = type;
@@ -97,6 +97,13 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 */
 	
 	protected void indivLifting(Element element, Type type) {
+		System.out.println("BeforeAlgo:  \n<"+element.getName()+">");
+		List<Element> l2 = element.getChildren();
+		Iterator<Element> i2 = l2.iterator();
+		while( i2.hasNext()){
+			Element courant = i2.next();
+			System.out.println("<"+courant.getName()+">");
+		}	
 		if(type instanceof ParameterizedType){
 			ParameterizedType typeP=(ParameterizedType) type;
 			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
@@ -108,7 +115,13 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 				this.rename(element, (Class<?>) type);
 			}
 		}
-
+		System.out.println("AfterAlgo:  \n<"+element.getName()+">");
+		List<Element> l = element.getChildren();
+		Iterator<Element> i = l.iterator();
+		while( i.hasNext()){
+			Element courant2 = i.next();
+			System.out.println("<"+courant2.getName()+">");
+		}
 	}
 
 	/**

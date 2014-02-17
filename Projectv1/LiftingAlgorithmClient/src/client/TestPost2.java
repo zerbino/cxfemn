@@ -7,7 +7,7 @@ import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
 import utile.UniformementRepresentable;
 
-public class TestClientKevin {
+public class TestPost2 {
 	
 	public static void main(String[] args) {
 
@@ -20,7 +20,7 @@ public class TestClientKevin {
 		System.out.println(etudiant.getClass().getSimpleName());
 		System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), etudiant));
-		String ret = service.op(etudiant);
+		String ret = service.postPersonne(etudiant);
 		System.out.println("after lifting : "+ret);
 	}
 

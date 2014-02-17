@@ -20,97 +20,52 @@ public class ServiceImpl implements Service {
 	private ArrayList<PersonneImpl> listePersonneImpl=new ArrayList<>();
 	private ArrayList<Personne> listePersonne = new ArrayList<>();
 	
-	@Override
-	@GET
-	@Path("/opget")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String opGet(@QueryParam("")PersonneImpl personne){
-		listePersonneImpl.add(personne);
-		return personne.getNom();
-	}
 	
+	public List<PersonneImpl> getPersonnesMemoire(){
+		return listePersonneImpl;
+	}
+	public List<Personne> getPersonnesIntMemoire(){
+		return listePersonne;
+	}
+	/////////////////////////////////  POST
 	@Override
 	public String opWithoutFields(PersonneWithoutFields p) {
-		PrintWriter writer;
 		try {
-			//path correspond au répertoire d'installation de tomcat
-			String path = getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/FAKEdatabase.txt";
-			File f = new File(path);
-			if(!f.exists()) {
-				f.getParentFile().mkdirs();
-			}
-			writer = new PrintWriter(path, "UTF-8");
-			writer.append("Incoming request for: ");
-			writer.append(UniformementRepresentable.toString(new StringBuilder(), p));
-			writer.close();
-			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
-			System.out.println("Chemin vers la base de donnée: ");
-			System.out.println(path);
-			
+			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));			
 			listePersonneImpl.add(p);
-			System.out.println(p.getId());
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-
-		return p.getPrenom();
-	}
-	@Override
-	public String op(PersonneImpl p) {
-		PrintWriter writer;
-		try {
-			//path correspond au répertoire d'installation de tomcat
-			//String path = getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/FAKEdatabase.txt";
-			//File f = new File(path);
-//			if(!f.exists()) {
-//				f.getParentFile().mkdirs();
-//			}
-//			writer = new PrintWriter(path, "UTF-8");
-//			writer.append("Incoming request for: ");
-//			writer.append(UniformementRepresentable.toString(new StringBuilder(), p));
-//			writer.close();
-			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
-//			System.out.println("Chemin vers la base de donnée: ");
-//			System.out.println(path);
-			
-			listePersonneImpl.add(p);
-//			System.out.println(p.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
 		return UniformementRepresentable.toString(new StringBuilder(), p);
 	}
+	@Override
+	public String postPersonne(PersonneImpl p) {
+		try {
+			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));		
+			listePersonneImpl.add(p);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return UniformementRepresentable.toString(new StringBuilder(), p);
+	}
 	
 	@Override
-	public String opInt(Personne p) {
+	public String postPersonneInt(Personne p) {
 		PrintWriter writer;
 		try {
-			//path correspond au répertoire d'installation de tomcat
-			String path = getClass().getClassLoader().getResource(".").getPath()+"FAKEDocuments/FAKEdatabase.txt";
-			File f = new File(path);
-			if(!f.exists()) {
-				f.getParentFile().mkdirs();
-			}
-			writer = new PrintWriter(path, "UTF-8");
-			writer.append("Incoming request for: ");
-			writer.append(UniformementRepresentable.toString(new StringBuilder(), p));
-			writer.close();
 			System.out.println("Objet reçu: "+UniformementRepresentable.toString(new StringBuilder(), p));
-			System.out.println("Chemin vers la base de donnée: ");
-			System.out.println(path);
-			
 			listePersonne.add(p);
-			System.out.println(p.getId());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return p.getPrenom();
+		return UniformementRepresentable.toString(new StringBuilder(), p);
 	}
 
+	//////////////////////////////////////// GET
 	@Override
-	public EtudiantImpl op() {
+	public EtudiantImpl getPersonne() {
 		EtudiantImpl etudiant = new EtudiantImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
@@ -119,7 +74,7 @@ public class ServiceImpl implements Service {
 	}
 	
 	@Override
-	public Etudiant opInt() {
+	public Etudiant getPersonneInt() {
 		Etudiant etudiant = new EtudiantImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
@@ -127,8 +82,53 @@ public class ServiceImpl implements Service {
 		return etudiant;
 	}
 	
+	///////////////////////////// GET LIST
+	@Override
+	public List<EtudiantImpl> getPersonnes() {
+		EtudiantImpl etudiant = new EtudiantImpl();
+		etudiant.setNom("Bon");
+		etudiant.setPrenom("Jean");
+		etudiant.setPromo("gsi");
+		EtudiantImpl etudiant1 = new EtudiantImpl();
+		etudiant1.setNom("Bon1");
+		etudiant1.setPrenom("Jean1");
+		etudiant1.setPromo("gsi1");
+		ArrayList<EtudiantImpl> listeEtudiant = new ArrayList<>();
+		listeEtudiant.add(etudiant);
+		listeEtudiant.add(etudiant1);
+		return listeEtudiant;
+	}
+
+	@Override
+	public List<Etudiant> getPersonnesInt() {
+		Etudiant etudiant = new EtudiantImpl();
+		etudiant.setNom("Bon");
+		etudiant.setPrenom("Jean");
+		etudiant.setPromo("gsi");
+		Etudiant etudiant1 = new EtudiantImpl();
+		etudiant1.setNom("Bon1");
+		etudiant1.setPrenom("Jean1");
+		etudiant1.setPromo("gsi1");
+		ArrayList<Etudiant> listeEtudiant = new ArrayList<>();
+		listeEtudiant.add(etudiant);
+		listeEtudiant.add(etudiant1);
+		return listeEtudiant;
+	}
+	////////////////////// POST LIST
+	@Override
+	public String postPersonnes(List<PersonneImpl> liste) {
+		listePersonneImpl.addAll(liste);
+		return "Ok";
+	}
+
+	@Override
+	public String postPersonnesInt(List<Personne> liste) {
+		listePersonne.addAll(liste);
+		return "ok";
+	}
 	
 	
+	/*
 	@Override
 	public List<PersonneImpl> op(PersonneImpl p1, PersonneImpl p2) {
 		listePersonneImpl.add(p2);
@@ -199,8 +199,27 @@ public class ServiceImpl implements Service {
 		}
 		listePersonneImpl.remove(i);
 		return "La personne avec l'id:"+id+" a été supprimé";
+	}	
+	@Override
+	public List<Personne> opInt(Personne p1, Personne p2) {
+		listePersonne.add(p2);
+		listePersonne.add(p1);
+		return listePersonne;
 	}
+
+	@Override
+	public String ajouterPersonneInt(Personne p) {
+		int i=trouverPersonne(listePersonne,p.getId());
+		if(i!=-1){
+			return "Une personne possède déjà cet identifiant:"+p.getId();
+		}
+		listePersonne.add(p);
+		return "La personne suivante à été ajouté à la liste: \n"+UniformementRepresentable.toString(new StringBuilder(), p);
 	
+	}
+	*/
+
+
 	private  <E extends Personne> int trouverPersonne  (List<E> liste,int id){
 		int size=liste.size();
 		if(size==0) return -1;
@@ -220,35 +239,5 @@ public class ServiceImpl implements Service {
 		}
 		return i;
 	}
-
-	@Override
-	public List<PersonneImpl> getPersonnes() {
-		return this.listePersonneImpl;
-	}
-
-	@Override
-	public List<Personne> opInt(Personne p1, Personne p2) {
-		listePersonne.add(p2);
-		listePersonne.add(p1);
-		return listePersonne;
-	}
-
-	@Override
-	public String ajouterPersonneInt(Personne p) {
-		int i=trouverPersonne(listePersonne,p.getId());
-		if(i!=-1){
-			return "Une personne possède déjà cet identifiant:"+p.getId();
-		}
-		listePersonne.add(p);
-		return "La personne suivante à été ajouté à la liste: \n"+UniformementRepresentable.toString(new StringBuilder(), p);
-	
-	}
-
-	@Override
-	public List<Personne> getPersonnesInt() {
-		return this.listePersonne;
-	}
-
-
 }
 

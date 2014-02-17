@@ -41,7 +41,7 @@ import model.Etudiant;
 import model.Personne;
 
 
-public class TestOp {
+public class TestOpMarshall {
 	public static String marshall(
 			Object o) {
 		try {

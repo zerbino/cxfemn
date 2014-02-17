@@ -16,31 +16,63 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 //CLIENT
 @Path("/rest")
 public interface Service {
+	//////////////// ACCES MEMOIRE
+	@GET
+	@Path("/getPersonnesMemoire")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<PersonneImpl> getPersonnesMemoire();
 	
 	@GET
-	@Path("/get")
+	@Path("/getPersonnesIntMemoire")
 	@Produces(MediaType.APPLICATION_XML)
-	public PersonneImpl op();
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnesIntMemoire();
+	
+	/////////////////////////////////////// GET
+	@GET
+	@Path("/getPersonne")
+	@Produces(MediaType.APPLICATION_XML)
+	public PersonneImpl getPersonne();
+		
+	@GET
+	@Path("/getPersonnes")
+	@Produces(MediaType.APPLICATION_XML)
+	public List<PersonneImpl> getPersonnes();
 	
 	@GET
-	@Path("/getInt")
+	@Path("/getPersonneInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne opInt();
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne getPersonneInt();
 
+	@GET
+	@Path("/getPersonnesInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnesInt();
+
+	//////////////////////////////////////////POST
+	@POST
+	@Path("/postPersonne")
+	@Produces(MediaType.APPLICATION_XML)
+	public String postPersonne(EtudiantImpl p);
+	
+	@POST
+	@Path("/postPersonnes")
+	@Produces(MediaType.APPLICATION_XML)
+	public String postPersonnes(List<EtudiantImpl> p);
+	
+	@POST
+	@Path("/postPersonneInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public String postPersonneInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Etudiant p);
+	
+	@POST
+	@Path("/postPersonnesInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public String postPersonnesInt(@XmlJavaTypeAdapter(PersonneAdapter.class)List<Etudiant> p);
+	
 	@POST
 	@Path("/opWithoutFields")
 	@Produces(MediaType.APPLICATION_XML)
 	public String opWithoutFields(EtudiantWithoutFields p);
-	
-	@POST
-	@Path("/op")
-	@Produces(MediaType.APPLICATION_XML)
-	public String op(EtudiantImpl p);
-	
-	@POST
-	@Path("/opInt")
-	@Produces(MediaType.APPLICATION_XML)
-	public String opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 	
 	/*
 	@POST
@@ -94,17 +126,9 @@ public interface Service {
 	@Path("/effacerPersonne/{id}")
 	@Produces(MediaType.APPLICATION_XML)
 	public String effacerPersonne(@PathParam("id") int id);
-	
-	@GET
-	@Path("/getPersonne")
-	@Produces(MediaType.APPLICATION_XML)
-	public List<PersonneImpl> getPersonnes();
-	
-	@GET
-	@Path("/getPersonneInt")
-	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnesInt();
 	*/
+
+	
 
 }
 

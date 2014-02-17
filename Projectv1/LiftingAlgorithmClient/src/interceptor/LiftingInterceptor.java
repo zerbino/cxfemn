@@ -1,6 +1,7 @@
 package interceptor;
 
 import java.io.IOException;
+import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
 import javax.ws.rs.WebApplicationException;
@@ -8,7 +9,7 @@ import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
-import adapters.AdapterTackle;
+import adapters.InterfaceToClass;
 import lifting.ClientLifterCaller;
 
 /**
@@ -33,7 +34,16 @@ public class LiftingInterceptor implements ReaderInterceptor{
 			throws IOException, WebApplicationException {
 		System.out.println("Debut intercepteur de la réponse");
 		Type expectedType = context.getGenericType();
-		AdapterTackle adpt = new AdapterTackle(((Class<?>)expectedType).getPackage());
+		InterfaceToClass adpt;
+		if(expectedType instanceof ParameterizedType){
+			ParameterizedType typeP=(ParameterizedType) expectedType;
+			adpt = new InterfaceToClass(((Class<?>)typeP.getActualTypeArguments()[0]).getPackage());
+		}
+		else{
+			if(true){
+				adpt = new InterfaceToClass(((Class<?>)expectedType).getPackage());
+			}
+		}
 		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedType, adpt);
 		context.setInputStream(lifterCaller.callStream());
 		System.out.println("Fin intercepteur de la réponse");

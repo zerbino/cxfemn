@@ -19,21 +19,21 @@ import utile.UniformementRepresentable;
  * @author hao
  * 
  */
-public class TestClient5 extends Client<Service>{
+public class TestPost3 extends Client<Service>{
 
-	public TestClient5(String serverURI, Class<?> serverInterface) {
+	public TestPost3(String serverURI, Class<?> serverInterface) {
 		super(serverURI, serverInterface);
 	}
 
 	public static void main(String[] args) {
-		TestClient5 tc = new TestClient5("http://localhost:8080/LiftingAlgorithm", Service.class);
+		TestPost3 tc = new TestPost3("http://localhost:8080/LiftingAlgorithm", Service.class);
 		Service service = tc.getService();
 		EtudiantImpl e = new EtudiantImpl();
 		e.setId(1);
 		e.setNom("ZHANG");
 		e.setPrenom("Hao");
 		e.setPromo("GSI");
-		String resu = service.op(e);
+		String resu = service.postPersonne(e);
 		System.out.println(resu);
 	}
 
