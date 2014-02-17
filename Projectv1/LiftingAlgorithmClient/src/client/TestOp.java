@@ -41,7 +41,7 @@ import model.Etudiant;
 import model.Personne;
 
 
-public class TestClient {
+public class TestOp {
 	public static String marshall(
 			Object o) {
 		try {
@@ -112,6 +112,5 @@ public class TestClient {
 			result.append(line);
 		}
 		System.out.println(result.toString());
-
 	}
 }

@@ -30,12 +30,14 @@ public interface Service {
 	@Produces(MediaType.APPLICATION_XML)
 	public String opWithoutFields(PersonneWithoutFields p);
 
+	//TestOp, TestClient5... Identique ? Virer TestOp ou le marshalling est fait a la main? //TestKevin
 	@AllowSubstitution
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
 	public String op(PersonneImpl p);
 	
+	//TestClient5 non user pour l'instant
 	@AllowSubstitution
 	@POST
 	@Path("/opInt")
@@ -56,11 +58,13 @@ public interface Service {
 	public List<Personne> opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p1, 
 			@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p2);
 	
+	//testGet: PersonneImpl-->EtudiantImpl
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
 	public EtudiantImpl op();
 	
+	//TestCleint5
 	@GET
 	@Path("/getInt")
 	@Produces(MediaType.APPLICATION_XML)

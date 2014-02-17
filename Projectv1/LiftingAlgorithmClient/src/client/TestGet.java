@@ -24,7 +24,7 @@ import utile.UniformementRepresentable;
  * @author raphael
  * 
  */
-public class TestClient2 {
+public class TestGet {
 
 	public static void main(String[] args) {
 		List<Object> filtres = new LinkedList<>();

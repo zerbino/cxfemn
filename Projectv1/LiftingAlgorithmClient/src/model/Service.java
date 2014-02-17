@@ -17,11 +17,15 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @Path("/rest")
 public interface Service {
 	
+	@GET
+	@Path("/get")
+	@Produces(MediaType.APPLICATION_XML)
+	public PersonneImpl op();
 	
 	@GET
-	@Path("/opget")
-	@Produces(MediaType.TEXT_PLAIN)
-	public String opGet(@QueryParam("")PersonneImpl personne);
+	@Path("/getInt")
+	@Produces(MediaType.APPLICATION_XML)
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne opInt();
 
 	@POST
 	@Path("/opWithoutFields")
@@ -38,7 +42,7 @@ public interface Service {
 	@Produces(MediaType.APPLICATION_XML)
 	public String opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
 	
-	
+	/*
 	@POST
 	@Path("/ops")
 	@Produces(MediaType.APPLICATION_XML)
@@ -52,15 +56,9 @@ public interface Service {
 			@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p2);
 	
 	@GET
-	@Path("/get")
-	@Produces(MediaType.APPLICATION_XML)
-	public PersonneImpl op();
-	
-	@GET
-	@Path("/getInt")
-	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(PersonneAdapter.class)Personne opInt();
-	
+	@Path("/opget")
+	@Produces(MediaType.TEXT_PLAIN)
+	public String opGet(@QueryParam("")PersonneImpl personne);
 	
 	@GET
 	@Path("/getPersonne/{id}")
@@ -106,7 +104,7 @@ public interface Service {
 	@Path("/getPersonneInt")
 	@Produces(MediaType.APPLICATION_XML)
 	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Personne> getPersonnesInt();
-	
+	*/
 
 }
 
