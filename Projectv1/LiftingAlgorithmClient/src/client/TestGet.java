@@ -32,7 +32,7 @@ public class TestGet {
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class,
 				filtres);
-		PersonneImpl etudiant = service.op();
+		PersonneImpl etudiant = service.getPersonne();
 		System.out.println(etudiant.getClass().getSimpleName());
 		System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), etudiant));

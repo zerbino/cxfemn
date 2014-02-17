@@ -1,7 +1,10 @@
 package serverLifter.archi;
 
 
+import java.lang.reflect.Type;
+
 import org.jdom2.Document;
+
 import adapters.InterfaceToClass;
 
 
@@ -14,19 +17,17 @@ import adapters.InterfaceToClass;
  *
  */
 
-public class ServerLifting extends AbstractLifting<Class<?>[]> {
+public class ServerLifting extends AbstractLifting<Type> {
 
-	public ServerLifting(Document doc, Class<?>[] clazz, InterfaceToClass adpt) {
-		super(doc, clazz, adpt);
+	public ServerLifting(Document doc, Type type, InterfaceToClass adpt) {
+		super(doc, type, adpt);
 	}
 
 	@Override
 	public Document lifting() {
 		
-		if(this.clazz.length>0){
-		Class<?> oneClass = this.clazz[0];
-		this.indivLifting(doc.getRootElement(), oneClass);
-		}
+
+		this.indivLifting(doc.getRootElement(), type);
 		return this.doc;
 		
 	}

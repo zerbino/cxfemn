@@ -20,14 +20,14 @@ import javax.xml.bind.annotation.adapters.XmlAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapters;
 
-public class AdapterTackle {
+public class InterfaceToClass {
 	/**
 	 * the hashmap for saving the relation between interfaces and classes. the
 	 * key is the interface, the value is the class.
 	 */
 	protected Map<Class<?>, Class<?>> adapters = new HashMap<>();
 
-	public AdapterTackle(Package pkg) {
+	public InterfaceToClass(Package pkg) {
 		addFromPkg(adapters, pkg);
 		System.out.println(adapters);
 	}
