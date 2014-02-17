@@ -241,11 +241,15 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 		}
 		if(type instanceof ParameterizedType){
 			ParameterizedType typeP=(ParameterizedType) type;
+			System.out.println("parameterized type contenant: "+
+			((Class<?>) typeP.getActualTypeArguments()[0]).getName());
 			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
 			this.renames(element, (Class<?>) typeP.getActualTypeArguments()[0]);
 		}
 		else{
 			if(true){
+				System.out.println("non parameterized type contenant: "+
+						((Class<?>) type).getName());
 				this.removeExtraFields(element, (Class<?>) type);
 				this.rename(element, (Class<?>) type);
 			}

@@ -32,7 +32,7 @@ public class ClientRequestFilter implements ContainerRequestFilter {
 		// InputStream input =
 		// lifter.HTTPAdapter(requestContext.getEntityStream(),info.getResourceMethod());
 		InputStream input = requestContext.getEntityStream();
-		Type[] types = info.getResourceMethod().getParameterTypes();
+		Type[] types = info.getResourceMethod().getGenericParameterTypes();
 		InterfaceToClass adpt;
 		if (types.length > 0) {
 			Type expectedType =types[0];

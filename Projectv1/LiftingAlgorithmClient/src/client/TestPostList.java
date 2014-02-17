@@ -21,8 +21,7 @@ public class TestPostList {
 		List<Object> filtres = new LinkedList<>();
 		filtres.add(new LiftingInterceptor());
 		Service service = JAXRSClientFactory.create(
-				"http://localhost:8080/LiftingAlgorithm", Service.class,
-				filtres);
+				"http://localhost:8080/LiftingAlgorithm", Service.class);
 
 
 		
