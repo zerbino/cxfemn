@@ -22,24 +22,24 @@ public interface Service {
 	@POST
 	@Path("/op")
 	@Produces(MediaType.APPLICATION_XML)
-	public String op(PersonneImpl p);
+	public String op(PersonImpl p);
 	
 	@AllowSubstitution
 	@POST
 	@Path("/opInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public String opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p);
+	public String opInt(@XmlJavaTypeAdapter(PersonAdapter.class)Person p);
 	
 	
 	@GET
 	@Path("/get")
 	@Produces(MediaType.APPLICATION_XML)
-	public EtudiantImpl op();
+	public StudentImpl op();
 	
 	@GET
 	@Path("/getInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant opInt();
+	public @XmlJavaTypeAdapter(StudentAdapter.class)Student opInt();
 
 }
 

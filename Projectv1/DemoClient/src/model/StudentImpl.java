@@ -8,10 +8,7 @@
 
 package model;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -33,15 +30,12 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "etudiant", propOrder = {
-//    "promo"
-//})
-@XmlRootElement(name="etudiantimpl")
-public class EtudiantImpl extends PersonneImpl implements Etudiant
+
+@XmlRootElement(name="studentimpl")
+public class StudentImpl extends PersonImpl implements Student
 {
 
-    protected String promo;
+    protected String major;
 
     /**
      * Gets the value of the promo property.
@@ -51,8 +45,8 @@ public class EtudiantImpl extends PersonneImpl implements Etudiant
      *     {@link String }
      *     
      */
-    public String getPromo() {
-        return promo;
+    public String getMajor() {
+        return major;
     }
 
     /**
@@ -63,11 +57,11 @@ public class EtudiantImpl extends PersonneImpl implements Etudiant
      *     {@link String }
      *     
      */
-    public void setPromo(String value) {
-        this.promo = value;
+    public void setMajor(String value) {
+        this.major = value;
     }
     
-    public Etudiant getRepresentation(){
+    public Student getRepresentation(){
     	return this;
     }
 

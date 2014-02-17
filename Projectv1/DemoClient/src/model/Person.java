@@ -11,11 +11,8 @@ package model;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 
 /**
@@ -38,18 +35,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "personne", propOrder = {
-//    "nom",
-//    "prenom"
-//})
-@XmlRootElement(name="personneimpl")
-public class PersonneImpl implements Personne {
-	protected int id;
-    protected String nom;
-    protected String prenom;
-    
-    /**
+//@XmlJavaTypeAdapter(AnyTypeAdapter.class)
+//@XmlSeeAlso({PersonneImpl.class})
+//@XmlJavaTypeAdapter(PersonneAdapter.class)
+public interface Person {
+	/**
      * Gets the value of the id property.
      * 
      * @return
@@ -57,9 +47,9 @@ public class PersonneImpl implements Personne {
      *     {@link Integer }
      *     
      */
-    public int getId(){
-    	return id;
-    }
+	@GET
+	@Path("id")
+    public int getId();
 
     /**
      * Sets the value of the id property.
@@ -69,21 +59,20 @@ public class PersonneImpl implements Personne {
      *     {@link Integer }
      *     
      */
-    public void setId(int value){
-    	id = value;
-    }
-	
+	@PUT
+	@Path("id")
+    public void setId(int value);
     /**
-     * Gets the value of the nom property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getNom() {
-        return nom;
-    }
+	@GET
+	@Path("lastname")
+    public String getLastname();
 
     /**
      * Sets the value of the nom property.
@@ -93,9 +82,9 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public void setNom(String value) {
-        this.nom = value;
-    }
+	@PUT
+	@Path("lastname")
+    public void setLastname(String value);
 
     /**
      * Gets the value of the prenom property.
@@ -105,9 +94,9 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public String getPrenom() {
-        return prenom;
-    }
+	@GET
+	@Path("firstname")
+    public String getFirstname();
 
     /**
      * Sets the value of the prenom property.
@@ -117,13 +106,13 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public void setPrenom(String value) {
-        this.prenom = value;
-    }
-
-	@Override
-	public Personne getRepresentation() {
-		return this;
-	}
+	@PUT
+	@Path("firstname")
+    public void setFirstname(String value);
+	
+	@GET
+	@Path("")
+	@Produces(MediaType.APPLICATION_XML)
+	public Person getRepresentation();
 
 }

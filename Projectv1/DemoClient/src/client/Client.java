@@ -5,10 +5,9 @@ import interceptor.LiftingInterceptor;
 import java.util.LinkedList;
 import java.util.List;
 
-import model.Personne;
-import model.Etudiant;
-import model.EtudiantImpl;
-import model.Service;
+
+
+import model.*;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
@@ -26,15 +25,15 @@ public class Client {
 			Service service = JAXRSClientFactory.create(
 					"http://localhost:8080/DemoServer", 
 					Service.class, filtres);
-			Etudiant e = new EtudiantImpl();
+			Student e = new StudentImpl();
 			e.setId(1);
-			e.setNom("ZHANG");
-			e.setPrenom("Hao");
-			e.setPromo("GSI");
-			String resu = service.opInt(e);
-			System.out.println(resu);
+			e.setLastname("ZHANG");
+			e.setFirstname("Hao");
+			e.setMajor("GSI");
+			//String resu = service.opInt(e);
+			//System.out.println(resu);
 			
-			Personne p = service.opInt();
-			System.out.println(p.getNom() + " " + p.getPrenom());
+			Person p = service.opInt();
+			System.out.println(p.getLastname() + " " + p.getFirstname());
 	}
 }

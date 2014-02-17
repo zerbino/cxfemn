@@ -43,7 +43,7 @@ import com.sun.xml.bind.AnyTypeAdapter;
 //@XmlJavaTypeAdapter(AnyTypeAdapter.class)
 //@XmlSeeAlso({PersonneImpl.class})
 //@XmlJavaTypeAdapter(PersonneAdapter.class)
-public interface Personne {
+public interface Person {
 	/**
      * Gets the value of the id property.
      * 
@@ -68,7 +68,7 @@ public interface Personne {
 	@Path("id")
     public void setId(int value);
     /**
-     * Gets the value of the nom property.
+     * Gets the value of the name property.
      * 
      * @return
      *     possible object is
@@ -76,8 +76,8 @@ public interface Personne {
      *     
      */
 	@GET
-	@Path("nom")
-    public String getNom();
+	@Path("lastname")
+    public String getLastname();
 
     /**
      * Sets the value of the nom property.
@@ -88,8 +88,8 @@ public interface Personne {
      *     
      */
 	@PUT
-	@Path("nom")
-    public void setNom(String value);
+	@Path("lastname")
+    public void setLastname(String value);
 
     /**
      * Gets the value of the prenom property.
@@ -100,8 +100,8 @@ public interface Personne {
      *     
      */
 	@GET
-	@Path("prenom")
-    public String getPrenom();
+	@Path("firstname")
+    public String getFirstname();
 
     /**
      * Sets the value of the prenom property.
@@ -112,12 +112,12 @@ public interface Personne {
      *     
      */
 	@PUT
-	@Path("prenom")
-    public void setPrenom(String value);
+	@Path("firstname")
+    public void setFirstname(String value);
 	
 	@GET
 	@Path("")
 	@Produces(MediaType.APPLICATION_XML)
-	public Personne getRepresentation();
+	public Person getRepresentation();
 
 }

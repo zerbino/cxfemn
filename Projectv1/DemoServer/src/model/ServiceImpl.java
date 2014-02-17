@@ -1,49 +1,35 @@
 package model;
 
-import java.io.File;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.MediaType;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
-
-import tools.UniformementRepresentable;
-
 //@InInterceptors(interceptors = {"interceptor.ClientRequestInterceptor"})
 public class ServiceImpl implements Service {
 
 	@Override
-	public String op(PersonneImpl p) {
-		return p.getPrenom();
+	public String op(PersonImpl p) {
+		return p.getFirstname();
 	}
 	
 	@Override
-	public String opInt(Personne p) {
+	public String opInt(Person p) {
 		
-		return p.getPrenom();
+		return p.getFirstname();
 	}
 
 	@Override
-	public EtudiantImpl op() {
-		EtudiantImpl etudiant = new EtudiantImpl();
-		etudiant.setNom("Bon");
-		etudiant.setPrenom("Jean");
-		etudiant.setPromo("gsi");
-		return etudiant;
+	public StudentImpl op() {
+		StudentImpl student = new StudentImpl();
+		student.setLastname("Bon");
+		student.setFirstname("Jean");
+		student.setMajor("gsi");
+		return student;
 	}
 	
 	@Override
-	public Etudiant opInt() {
-		Etudiant etudiant = new EtudiantImpl();
-		etudiant.setNom("Bon");
-		etudiant.setPrenom("Jean");
-		etudiant.setPromo("gsi");
-		return etudiant;
+	public Student opInt() {
+		Student student = new StudentImpl();
+		student.setLastname("Bon");
+		student.setFirstname("Jean");
+		student.setMajor("gsi");
+		return student;
 	}
 	
 }

@@ -8,14 +8,7 @@
 
 package model;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlSeeAlso;
-import javax.xml.bind.annotation.XmlType;
 
 
 /**
@@ -43,11 +36,11 @@ import javax.xml.bind.annotation.XmlType;
 //    "nom",
 //    "prenom"
 //})
-@XmlRootElement(name="personneimpl")
-public class PersonneImpl implements Personne {
+@XmlRootElement(name="personimpl")
+public class PersonImpl implements Person {
 	protected int id;
-    protected String nom;
-    protected String prenom;
+    protected String lastname;
+    protected String firstname;
     
     /**
      * Gets the value of the id property.
@@ -81,8 +74,8 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public String getNom() {
-        return nom;
+    public String getLastname() {
+        return lastname;
     }
 
     /**
@@ -93,8 +86,8 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public void setNom(String value) {
-        this.nom = value;
+    public void setLastname(String value) {
+        this.lastname = value;
     }
 
     /**
@@ -105,8 +98,8 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public String getPrenom() {
-        return prenom;
+    public String getFirstname() {
+        return firstname;
     }
 
     /**
@@ -117,12 +110,12 @@ public class PersonneImpl implements Personne {
      *     {@link String }
      *     
      */
-    public void setPrenom(String value) {
-        this.prenom = value;
+    public void setFirstname(String value) {
+        this.firstname = value;
     }
 
 	@Override
-	public Personne getRepresentation() {
+	public Person getRepresentation() {
 		return this;
 	}
 

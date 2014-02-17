@@ -41,28 +41,28 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Personne }
+     * Create an instance of {@link Person }
      * 
      */
-    public Personne createPersonne() {
-        return new PersonneImpl();
+    public Person createPersonne() {
+        return new PersonImpl();
     }
 
     /**
-     * Create an instance of {@link Etudiant }
+     * Create an instance of {@link Student }
      * 
      */
-    public Etudiant createEtudiant() {
-        return new EtudiantImpl();
+    public Student createEtudiant() {
+        return new StudentImpl();
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Personne }{@code >}}
+     * Create an instance of {@link JAXBElement }{@code <}{@link Person }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "", name = "personne")
-    public JAXBElement<Personne> createPersonne(Personne value) {
-        return new JAXBElement<Personne>(_Personne_QNAME, Personne.class, null, value);
+    public JAXBElement<Person> createPersonne(Person value) {
+        return new JAXBElement<Person>(_Personne_QNAME, Person.class, null, value);
     }
 
 }
