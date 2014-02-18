@@ -86,11 +86,15 @@ public interface Service {
 	@Produces(MediaType.APPLICATION_XML)
 	public List<Personne> opInt(@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p1, 
 			@XmlJavaTypeAdapter(PersonneAdapter.class)Personne p2);
+			
+	*/
 	
 	@GET
 	@Path("/opget")
 	@Produces(MediaType.TEXT_PLAIN)
 	public String opGet(@QueryParam("")PersonneImpl personne);
+	
+	/*
 	
 	@GET
 	@Path("/getPersonne/{id}")

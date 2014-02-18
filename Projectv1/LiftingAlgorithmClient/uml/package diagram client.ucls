@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.4" icons="true" automaticImage="PNG" always-add-relationships="false" generalizations="true" 
+  realizations="true" associations="true" dependencies="false" nesting-relationships="true">  
+  <package id="1" language="java" name="adapters" project="LiftingAlgorithmClient" 
+    file="/LiftingAlgorithmClient/src/adapters" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="48" width="100" x="114" y="73"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="2" language="java" name="client" project="LiftingAlgorithmClient" 
+    file="/LiftingAlgorithmClient/src/client" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="290" y="99"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="3" language="java" name="interceptor" project="LiftingAlgorithmClient" 
+    file="/LiftingAlgorithmClient/src/interceptor" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="408" y="99"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="4" language="java" name="lifting" project="LiftingAlgorithmClient" 
+    file="/LiftingAlgorithmClient/src/lifting" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="161" y="171"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="5" language="java" name="model" project="LiftingAlgorithmClient" file="/LiftingAlgorithmClient/src/model" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="292" y="171"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="6" language="java" name="user" project="LiftingAlgorithmClient" file="/LiftingAlgorithmClient/src/user" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="410" y="172"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="7" language="java" name="utile" project="LiftingAlgorithmClient" file="/LiftingAlgorithmClient/src/utile" 
+    binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="160" y="236"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <package id="8" language="java" name="lifting.conversion" project="LiftingAlgorithmClient" 
+    file="/LiftingAlgorithmClient/src/lifting/conversion" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="304" y="235"/>    
+    <display autosize="true" stereotype="true" accessors="true"/>  
+  </package>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>
