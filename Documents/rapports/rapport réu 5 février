@@ -24,6 +24,7 @@ Priorité 1 :
 - Permettre l'utilisation de notre solution, dans le cas d'un service avec plusieurs arguments ou une liste en argument
 Priorité 2 :
 - Réécriture des algorithmes en Groovy (à faire quand tout est fini)
+- Problème du bug lié au cas où l'entité est une String et non un XML
 
 * Rapports
 

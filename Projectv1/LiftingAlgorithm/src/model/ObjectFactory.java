@@ -49,11 +49,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link Etudiant }
+     * Create an instance of {@link Teacher }
      * 
      */
-    public Etudiant createEtudiant() {
-        return new EtudiantImpl();
+    public Teacher createEtudiant() {
+        return new TeacherImpl();
     }
 
     /**

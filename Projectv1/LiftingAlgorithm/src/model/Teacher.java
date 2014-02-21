@@ -24,12 +24,12 @@ import com.sun.xml.bind.AnyTypeAdapter;
 
 
 /**
- * <p>Java class for etudiant complex type.
+ * <p>Java class for teacher complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="etudiant">
+ * &lt;complexType name="teacher">
  *   &lt;complexContent>
  *     &lt;extension base="{}personne">
  *       &lt;sequence>
@@ -44,7 +44,7 @@ import com.sun.xml.bind.AnyTypeAdapter;
  */
 //@XmlJavaTypeAdapter(AnyTypeAdapter.class)
 //@XmlSeeAlso({EtudiantImpl.class})
-public interface Etudiant
+public interface Teacher
     extends Personne
 {
 
@@ -77,6 +77,6 @@ public interface Etudiant
 	@GET
 	@Path("")
 	@Produces(MediaType.APPLICATION_XML)
-	public Etudiant getRepresentation();
+	public Teacher getRepresentation();
 
 }

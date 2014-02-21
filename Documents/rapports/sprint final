@@ -9,5 +9,6 @@
 Priorité 1 :
 - Permettre de passer des objets éclatés dans une requête GET/PUT
 - Permettre l'utilisation de notre solution, dans le cas d'un service avec plusieurs arguments ou une liste en argument
+- Problème du bug lié au cas où l'entité est une String et non un XML
 Priorité 2 :
 - Réécriture des algorithmes en Groovy (à faire quand tout est fini)

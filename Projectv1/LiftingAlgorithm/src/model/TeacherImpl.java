@@ -15,12 +15,12 @@ import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for etudiant complex type.
+ * <p>Java class for teacher complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="etudiant">
+ * &lt;complexType name="teacher">
  *   &lt;complexContent>
  *     &lt;extension base="{}personne">
  *       &lt;sequence>
@@ -34,11 +34,11 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 //@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(name = "etudiant", propOrder = {
+//@XmlType(name = "teacher", propOrder = {
 //    "promo"
 //})
-@XmlRootElement(name="etudiantimpl")
-public class EtudiantImpl extends PersonneImpl implements Etudiant
+@XmlRootElement(name="teacherimpl")
+public class TeacherImpl extends PersonneImpl implements Teacher
 {
 
     protected String promo;
@@ -67,7 +67,7 @@ public class EtudiantImpl extends PersonneImpl implements Etudiant
         this.promo = value;
     }
     
-    public Etudiant getRepresentation(){
+    public Teacher getRepresentation(){
     	return this;
     }
 

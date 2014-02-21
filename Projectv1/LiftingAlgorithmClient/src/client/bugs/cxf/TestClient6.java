@@ -23,7 +23,7 @@ public class TestClient6 {
 		clientModel.setId(1);
 		clientModel.setNom("Bon");
 		clientModel.setPrenom("Jean");
-		String returnedString = service.op(clientModel);
+		String returnedString = service.postPersonne(p)
 		System.out.println(returnedString);
 	}
 

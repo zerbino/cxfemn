@@ -26,16 +26,43 @@ import tools.UniformementRepresentable;
  */
 public class TestGet {
 
-	public static void main(String[] args) {
+	public static void testWithFilter() {
 		List<Object> filtres = new LinkedList<>();
 		filtres.add(new LiftingInterceptor());
 		Service service = JAXRSClientFactory.create(
 				"http://localhost:8080/LiftingAlgorithm", Service.class,
 				filtres);
+
 		PersonneImpl etudiant = service.getPersonne();
 		System.out.println(etudiant.getClass().getSimpleName());
 		System.out.println(UniformementRepresentable.toString(
 				new StringBuilder(), etudiant));
+	}
+
+	public static void testWithoutFilter() {
+		List<Object> filtres = new LinkedList<>();
+		filtres.add(new LiftingInterceptor());
+		Service service = JAXRSClientFactory.create(
+				"http://localhost:8080/LiftingAlgorithm", Service.class);
+
+		PersonneImpl etudiant = service.getPersonne();
+		System.out.println(etudiant.getClass().getSimpleName());
+		System.out.println(UniformementRepresentable.toString(
+				new StringBuilder(), etudiant));
+	}
+
+	public static void main(String[] args) {
+
+		System.out.println("Test for a response to the client without filter:");
+
+		try {
+			testWithoutFilter();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		System.out.println("Test for a response to the client with the filter");
+		testWithFilter();
+
 	}
 
 }

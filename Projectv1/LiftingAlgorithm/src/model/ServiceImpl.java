@@ -65,8 +65,8 @@ public class ServiceImpl implements Service {
 
 	//////////////////////////////////////// GET
 	@Override
-	public EtudiantImpl getPersonne() {
-		EtudiantImpl etudiant = new EtudiantImpl();
+	public TeacherImpl getPersonne() {
+		TeacherImpl etudiant = new TeacherImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
@@ -74,8 +74,8 @@ public class ServiceImpl implements Service {
 	}
 	
 	@Override
-	public Etudiant getPersonneInt() {
-		Etudiant etudiant = new EtudiantImpl();
+	public Teacher getPersonneInt() {
+		Teacher etudiant = new TeacherImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
@@ -84,32 +84,32 @@ public class ServiceImpl implements Service {
 	
 	///////////////////////////// GET LIST
 	@Override
-	public List<EtudiantImpl> getPersonnes() {
-		EtudiantImpl etudiant = new EtudiantImpl();
+	public List<TeacherImpl> getPersonnes() {
+		TeacherImpl etudiant = new TeacherImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
-		EtudiantImpl etudiant1 = new EtudiantImpl();
+		TeacherImpl etudiant1 = new TeacherImpl();
 		etudiant1.setNom("Bon1");
 		etudiant1.setPrenom("Jean1");
 		etudiant1.setPromo("gsi1");
-		ArrayList<EtudiantImpl> listeEtudiant = new ArrayList<>();
+		ArrayList<TeacherImpl> listeEtudiant = new ArrayList<>();
 		listeEtudiant.add(etudiant);
 		listeEtudiant.add(etudiant1);
 		return listeEtudiant;
 	}
 
 	@Override
-	public List<Etudiant> getPersonnesInt() {
-		Etudiant etudiant = new EtudiantImpl();
+	public List<Teacher> getPersonnesInt() {
+		Teacher etudiant = new TeacherImpl();
 		etudiant.setNom("Bon");
 		etudiant.setPrenom("Jean");
 		etudiant.setPromo("gsi");
-		Etudiant etudiant1 = new EtudiantImpl();
+		Teacher etudiant1 = new TeacherImpl();
 		etudiant1.setNom("Bon1");
 		etudiant1.setPrenom("Jean1");
 		etudiant1.setPromo("gsi1");
-		ArrayList<Etudiant> listeEtudiant = new ArrayList<>();
+		ArrayList<Teacher> listeEtudiant = new ArrayList<>();
 		listeEtudiant.add(etudiant);
 		listeEtudiant.add(etudiant1);
 		return listeEtudiant;

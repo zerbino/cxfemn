@@ -33,22 +33,22 @@ public interface Service {
 	@GET
 	@Path("/getPersonne")
 	@Produces(MediaType.APPLICATION_XML)
-	public EtudiantImpl getPersonne();
+	public TeacherImpl getPersonne();
 	
 	@GET
 	@Path("/getPersonneInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Etudiant getPersonneInt();
+	public @XmlJavaTypeAdapter(EtudiantAdapter.class)Teacher getPersonneInt();
 	
 	@GET
 	@Path("/getPersonnes")
 	@Produces(MediaType.APPLICATION_XML)
-	public List<EtudiantImpl> getPersonnes();
+	public List<TeacherImpl> getPersonnes();
 	
 	@GET
 	@Path("/getPersonnesInt")
 	@Produces(MediaType.APPLICATION_XML)
-	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Etudiant> getPersonnesInt();
+	public @XmlJavaTypeAdapter(PersonneAdapter.class)List<Teacher> getPersonnesInt();
 	
 	
 	////////////////////////////////////// POST
@@ -58,6 +58,7 @@ public interface Service {
 	@Path("/postPersonne")
 	@Produces(MediaType.APPLICATION_XML)
 	public String postPersonne(PersonneImpl p);
+
 
 	@AllowSubstitution
 	@POST
