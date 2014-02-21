@@ -13,7 +13,7 @@ import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 public class TestPost {
 	

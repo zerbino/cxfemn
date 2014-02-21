@@ -174,8 +174,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	/**
 	 * Removes the fields from element which are not present in class1
-	 * 
-	 * TODO : solve the problem mentionned in the report.
+	 *	
 	 */
 	@Override
 	protected boolean removeExtraFieldsFromList(Element e, Class<?> class1){
@@ -278,6 +277,7 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 		}
 		element.setName(dstClass.getSimpleName().toLowerCase());
 	}
+	
 	@Override
 	protected void renames(Element element, Class<?> clazz) {
 		element.setName(clazz.getSimpleName().toLowerCase()+"s");

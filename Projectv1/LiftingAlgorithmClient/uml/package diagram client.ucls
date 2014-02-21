@@ -31,7 +31,7 @@
     <position height="-1" width="-1" x="410" y="172"/>    
     <display autosize="true" stereotype="true" accessors="true"/>  
   </package>  
-  <package id="7" language="java" name="utile" project="LiftingAlgorithmClient" file="/LiftingAlgorithmClient/src/utile" 
+  <package id="7" language="java" name="tools" project="LiftingAlgorithmClient" file="/LiftingAlgorithmClient/src/tools" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="160" y="236"/>    
     <display autosize="true" stereotype="true" accessors="true"/>  

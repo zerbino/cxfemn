@@ -10,7 +10,7 @@ import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 /**
  * Test client to check the behavior of the solution client-side, i.e. when the

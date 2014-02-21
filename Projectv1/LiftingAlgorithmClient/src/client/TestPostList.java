@@ -13,7 +13,7 @@ import model.Service;
 
 import org.apache.cxf.jaxrs.client.JAXRSClientFactory;
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 public class TestPostList {
 	public static void main(String[] args) {
@@ -41,6 +41,7 @@ public class TestPostList {
 		List<PersonneImpl> l=service.getPersonnesMemoire();
 		for(int i=0,k=l.size(); i<k; i++){
 			PersonneImpl courant=l.get(i);
+			System.out.println(courant.getClass());
 			System.out.println(UniformementRepresentable.toString(new StringBuilder(), courant));
 		}
 	}

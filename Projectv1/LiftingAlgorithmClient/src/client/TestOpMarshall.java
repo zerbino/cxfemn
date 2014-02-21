@@ -22,7 +22,7 @@ import model.Service;
 
 
 
-import utile.UniformementRepresentable;
+import tools.UniformementRepresentable;
 
 import java.io.BufferedReader;
 import java.io.File;

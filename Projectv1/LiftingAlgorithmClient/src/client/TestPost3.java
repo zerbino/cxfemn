@@ -4,8 +4,8 @@ import model.Etudiant;
 import model.EtudiantImpl;
 import model.Personne;
 import model.Service;
+import tools.UniformementRepresentable;
 import user.Client;
-import utile.UniformementRepresentable;
 
 /**
  * Test client to check the behavior of the solution client-side, i.e. when the
