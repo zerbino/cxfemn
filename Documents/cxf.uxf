@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="12.2">
+  <zoom_level>10</zoom_level>
+  <element>
+    <type>com.umlet.element.Interface</type>
+    <coordinates>
+      <x>30</x>
+      <y>70</y>
+      <w>200</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>Personne
+--
+getNom() : String
+setNom(value: String): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>20</x>
+      <y>210</y>
+      <w>220</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>PersonneImpl
+--
+-id: Long
+-nom: String
+--
++ getNom() : String
++ setNom(value: String): void</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>100</x>
+      <y>120</y>
+      <w>50</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>30;30;30;90</additional_attributes>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>380</x>
+      <y>60</y>
+      <w>320</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>XmlAdapter&lt;PersonneImpl, Personne&gt;
+--
+
+--
++ marshal(Personne arg0): PersonneImpl
++ unmarshal(PersonneImpl arg0): Personne</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Class</type>
+    <coordinates>
+      <x>380</x>
+      <y>200</y>
+      <w>320</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>PersonneAdapter
+--
+
+--
++ marshal(Personne arg0): PersonneImpl
++ unmarshal(PersonneImpl arg0): Personne</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <type>com.umlet.element.Relation</type>
+    <coordinates>
+      <x>490</x>
+      <y>100</y>
+      <w>50</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>30;30;30;100</additional_attributes>
+  </element>
+</diagram>
