@@ -64,9 +64,8 @@ import org.jdom2.Element;
  */
 public abstract class Lifting<E> {
 
-	protected abstract boolean removeExtraFields(Element e, Class<?> class1);
+	protected abstract void removeExtraFields(Element e, Class<?> class1);
 	
-	protected abstract boolean removeExtraFieldsFromList(Element e, Class<?> class1);
 	/**
 	 * This method is the heart of the lifting algorithm : it consists in
 	 * comparing an xml element, representing a class schema, to the
@@ -76,16 +75,13 @@ public abstract class Lifting<E> {
 	 * 
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
-	protected abstract void indivLifting(Element element, Type type);
+	protected abstract void indivLifting(Element element, Class<?> clazz);
 	
 	/**
 	 * Renames the root element with the lower case name of the class
 	 */
 	protected abstract void rename(Element element, Class<?> clazz);
-	/**
-	 * Renames the root element with the lower case name of the class pour les listes
-	 */
-	protected abstract void renames(Element element, Class<?> clazz);
+
 	/**
 	 * The only public method of the class. Performs the lifting by calling the other methods implemented
 	 * in the class (rename and indivLifting).
