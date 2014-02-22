@@ -35,7 +35,7 @@ public class LiftingInterceptor implements ReaderInterceptor{
 			throws IOException, WebApplicationException {
 		System.out.println("Debut intercepteur de la réponse");
 		Class<?> expectedType = (Class<?>)context.getGenericType();
-		if (UniformementRepresentable.getWrapperTypes().contains(expectedType)){
+		if (UniformementRepresentable.isWrapperType(expectedType)){
 			System.out.println("It's a general type, don't need lifting.");
 		}
 		else{

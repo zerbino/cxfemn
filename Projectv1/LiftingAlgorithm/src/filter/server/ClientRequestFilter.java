@@ -16,6 +16,7 @@ import javax.ws.rs.ext.Provider;
 import serverLifter.archi.LifterCaller;
 import serverLifter.archi.ServerLifterCaller;
 import serverLifter.archi.list.ServerLifterCallerList;
+import tools.UniformementRepresentable;
 import adapters.InterfaceToClass;
 import annotations.AllowSubstitution;
 
@@ -29,29 +30,39 @@ public class ClientRequestFilter implements ContainerRequestFilter {
 	public void filter(ContainerRequestContext requestContext)
 			throws IOException {
 		System.out.println("Debut du filtre de la requête :");
-		
+
 		InputStream input = requestContext.getEntityStream();
 		Type[] classes = info.getResourceMethod().getGenericParameterTypes();
-		
+
 		if (classes.length > 0) {
-			if(classes[0] instanceof Class<?>){
+			if (classes[0] instanceof Class<?>) {
 				System.out.println("Filter : treating General case");
-			InterfaceToClass adpt = new InterfaceToClass(info.getResourceMethod()
-					.getDeclaringClass().getPackage());
-			
-			Class<?>[] toClassTab = Tools.toClassTab(classes);
-			LifterCaller lifterCaller = new ServerLifterCaller(input, toClassTab, adpt);
-			InputStream output = lifterCaller.callStream();
-			requestContext.setEntityStream(output);
-			}
-			else{
-				if(classes[0] instanceof ParameterizedType){
+				if (UniformementRepresentable.isWrapperType((Class)classes[0])){
+					System.out.println("General type!");
+					requestContext.setEntityStream(input);
+				}
+				else{
+					InterfaceToClass adpt = new InterfaceToClass(info
+							.getResourceMethod().getDeclaringClass().getPackage());
+
+					Class<?>[] toClassTab = Tools.toClassTab(classes);
+					LifterCaller lifterCaller = new ServerLifterCaller(input,
+							toClassTab, adpt);
+					InputStream output = lifterCaller.callStream();
+					requestContext.setEntityStream(output);
+				}
+				
+			} else {
+				if (classes[0] instanceof ParameterizedType) {
 					System.out.println("Filter : treating a List");
 					ParameterizedType expectedType = (ParameterizedType) classes[0];
-					Class<?> genericType = (Class<?>)(expectedType.getActualTypeArguments()[0]);
-					InterfaceToClass adpt = new InterfaceToClass(genericType.getPackage());
-					LifterCaller lifterCaller = new ServerLifterCallerList(input,expectedType,adpt);
-					InputStream output=lifterCaller.callStream();
+					Class<?> genericType = (Class<?>) (expectedType
+							.getActualTypeArguments()[0]);
+					InterfaceToClass adpt = new InterfaceToClass(
+							genericType.getPackage());
+					LifterCaller lifterCaller = new ServerLifterCallerList(
+							input, expectedType, adpt);
+					InputStream output = lifterCaller.callStream();
 					requestContext.setEntityStream(output);
 				}
 			}
