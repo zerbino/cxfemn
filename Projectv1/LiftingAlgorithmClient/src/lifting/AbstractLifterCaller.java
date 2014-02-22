@@ -5,8 +5,9 @@ import java.io.InputStream;
 import org.jdom2.Document;
 
 import adapters.InterfaceToClass;
-import factories.Factory;
-import factories.FactoryImp;
+import factory.Factory;
+import factory.FactoryImp;
+
 
 /**
  * This class is extended by two other classes. It contains an abstract method : call(), which

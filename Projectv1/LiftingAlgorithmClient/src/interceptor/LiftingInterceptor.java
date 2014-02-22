@@ -32,7 +32,7 @@ public class LiftingInterceptor implements ReaderInterceptor{
 	public Object aroundReadFrom(ReaderInterceptorContext context)
 			throws IOException, WebApplicationException {
 		System.out.println("Debut intercepteur de la réponse");
-		Type expectedType = context.getGenericType();
+		Class<?> expectedType = (Class<?>)context.getGenericType();
 		InterfaceToClass adpt = new InterfaceToClass(((Class<?>)expectedType).getPackage());
 		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedType, adpt);
 		context.setInputStream(lifterCaller.callStream());

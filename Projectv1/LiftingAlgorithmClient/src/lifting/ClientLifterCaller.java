@@ -20,11 +20,12 @@ public class ClientLifterCaller extends AbstractLifterCaller<Class<?>> {
 
 	public ClientLifterCaller(InputStream entity, Class<?> type, InterfaceToClass adpt) {
 		super(entity, type, adpt);
+		initLifting();
 	}
 
 	@Override
 	protected void initLifting() {
-		this.lifting = new ClientLifting(doc, type, adpt);
+		this.lifting = new ClientLifting(doc, clazz, adpt);
 
 	}
 
