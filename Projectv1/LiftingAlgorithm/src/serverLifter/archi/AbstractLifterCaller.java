@@ -34,7 +34,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	
 	protected Factory factory = new FactoryImp();
 	
-	protected AbstractLifterCaller(InputStream entity, E clazz){
+	private AbstractLifterCaller(InputStream entity, E clazz){
 		this.doc = factory.createConverter().stream2Doc(entity);
 		System.out.println("After stream2doc rootelement="+this.doc.getRootElement());
 		this.clazz = clazz;
@@ -43,7 +43,10 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	protected AbstractLifterCaller(InputStream entity, E clazz, InterfaceToClass adpt){
 		this(entity, clazz);
 		this.adpt = adpt;
+
 	}
+	
+	protected abstract void initLifting();
 
 	@Override
 	public Document call() {
@@ -54,6 +57,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	public InputStream callStream(){
 		return factory.createConverter().doc2Stream(call());
 	}
+	
 	
 	
 
