@@ -1,7 +1,6 @@
 package lifting;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Iterator;
 import java.util.List;
@@ -26,64 +25,62 @@ import adapters.InterfaceToClass;
 public abstract class AbstractLifting<E> extends Lifting<E> {
 
 	protected Document doc;
-	protected E type;
+	protected E clazz;
 	protected InterfaceToClass adpt;
 
-
-	public AbstractLifting(Document doc, E type, InterfaceToClass adpt) {
+	public AbstractLifting(Document doc, E clazz, InterfaceToClass adpt) {
 		super();
 		this.doc = doc;
-		this.type = type;
+		this.clazz = clazz;
 		this.adpt = adpt;
 	}
 
 	/**
 	 * Removes the fields from element which are not present in class1
-	 * 
-	 * TODO : solve the problem mentionned in the report.
+	 * @return 
 	 */
-	@Override
-	protected boolean removeExtraFieldsFromList(Element e, Class<?> class1){
-		List<Element> l = e.getChildren();
-		Iterator<Element> i = l.iterator();
-		while( i.hasNext()){
-			Element courant = i.next();
-			this.removeExtraFields(courant, class1);
-			this.rename(courant, class1);
-		}
-		return true;
-	}
 	
 	@Override
-	protected boolean removeExtraFields(Element e, Class<?> class1) {
+	protected void removeExtraFields(Element e, Class<?> class1) {
 		// dstClass the class used by marshalling, instead of the interface.
 		Class<?> dstClass = class1;
-		if (null != adpt) {
+		if (null != adpt){
 			dstClass = adpt.getClassByInterface(class1);
-			if (null == dstClass) {
+			if (null == dstClass){
 				dstClass = class1;
 			}
 		}
-		Field[] fields = dstClass.getDeclaredFields();
-		boolean isNotInSuperClass;
 		List<Element> l = e.getChildren();
 		Iterator<Element> i = l.iterator();
 		while (i.hasNext()) {
 			Element courant = i.next();
-			isNotInSuperClass = true;
-			for (int j = fields.length - 1; j >= 0; j--) {
-				if (fields[j].getName().equals(courant.getName())) {
-					isNotInSuperClass = false;
+
+			Class<?> class2 = dstClass;
+			while(class2 != null && !fieldIsInClass(courant, class2)) {
+				/**Checks if the name of "courant" matches a field in the super-classes
+				 * of dstClass.
+				 */
+				if(class2==Object.class){
+					System.out.println("suppression"+courant.getName());
+					i.remove();
 					break;
 				}
-			}
-			if (isNotInSuperClass) {
-				i.remove();
+				class2=dstClass.getSuperclass();
 			}
 		}
-		return true;
 	}
-	
+	/**Checks if the name of e matches a field in dstClass
+	 */
+	private final boolean fieldIsInClass(Element e, Class<?> dstClass) {
+		System.out.println("classe de parametre de fieldisinclass :"+dstClass.getSimpleName());
+		Field[] fields = dstClass.getDeclaredFields();
+		for (int j = fields.length - 1; j >= 0; j--) {
+			if (fields[j].getName().equals(e.getName())) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 
 	/**
@@ -95,33 +92,11 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 	 * 
 	 * It calls to methods : removeExtraFields(@@@) and rename(@@@)
 	 */
-	
-	protected void indivLifting(Element element, Type type) {
-		System.out.println("BeforeAlgo:  \n<"+element.getName()+">");
-		List<Element> l2 = element.getChildren();
-		Iterator<Element> i2 = l2.iterator();
-		while( i2.hasNext()){
-			Element courant = i2.next();
-			System.out.println("<"+courant.getName()+">");
-		}	
-		if(type instanceof ParameterizedType){
-			ParameterizedType typeP=(ParameterizedType) type;
-			this.removeExtraFieldsFromList(element, (Class<?>) typeP.getActualTypeArguments()[0]);
-			this.renames(element, (Class<?>) typeP.getActualTypeArguments()[0]);
-		}
-		else{
-			if(true){
-				this.removeExtraFields(element, (Class<?>) type);
-				this.rename(element, (Class<?>) type);
-			}
-		}
-		System.out.println("AfterAlgo:  \n<"+element.getName()+">");
-		List<Element> l = element.getChildren();
-		Iterator<Element> i = l.iterator();
-		while( i.hasNext()){
-			Element courant2 = i.next();
-			System.out.println("<"+courant2.getName()+">");
-		}
+	@Override
+	protected void indivLifting(Element element, Class<?> clazz) {
+		System.out.println("classe attendue:"+clazz.getSimpleName());
+		this.removeExtraFields(element, clazz);
+		this.rename(element, clazz);
 	}
 
 	/**
@@ -138,11 +113,9 @@ public abstract class AbstractLifting<E> extends Lifting<E> {
 			}
 		}
 		element.setName(dstClass.getSimpleName().toLowerCase());
+		System.out.println("After rename:" + element.getName());
 	}
-	@Override
-	protected void renames(Element element, Class<?> clazz) {
-		element.setName(clazz.getSimpleName().toLowerCase()+"s");
-	}	
+	
 
 
 }

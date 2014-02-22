@@ -15,12 +15,17 @@ import adapters.InterfaceToClass;
  * @see AbstractLifterCaller for more details.
  *
  */
-public class ClientLifterCaller extends AbstractLifterCaller<Type> {
+public class ClientLifterCaller extends AbstractLifterCaller<Class<?>> {
 
 
-	public ClientLifterCaller(InputStream entity, Type type, InterfaceToClass adpt) {
+	public ClientLifterCaller(InputStream entity, Class<?> type, InterfaceToClass adpt) {
 		super(entity, type, adpt);
+	}
+
+	@Override
+	protected void initLifting() {
 		this.lifting = new ClientLifting(doc, type, adpt);
+
 	}
 
 	

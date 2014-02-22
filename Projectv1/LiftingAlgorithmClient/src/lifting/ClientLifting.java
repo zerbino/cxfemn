@@ -13,16 +13,16 @@ import adapters.InterfaceToClass;
  *
  * @ see AbstractLifting<E> for more details
  */
-public class ClientLifting extends AbstractLifting<Type> {
+public class ClientLifting extends AbstractLifting<Class<?>> {
 
-	public ClientLifting(Document doc, Type type, InterfaceToClass adpt) {
+	public ClientLifting(Document doc, Class<?> type, InterfaceToClass adpt) {
 		super(doc, type, adpt);
 
 	}
 
 	@Override
 	public Document lifting() {
-		this.indivLifting(doc.getRootElement(), type);
+		this.indivLifting(doc.getRootElement(), clazz);
 		return doc;
 	}
 

@@ -5,8 +5,8 @@ import java.io.InputStream;
 import org.jdom2.Document;
 
 import adapters.InterfaceToClass;
-import factory.Factory;
-import factory.FactoryImp;
+import factories.Factory;
+import factories.FactoryImp;
 
 /**
  * This class is extended by two other classes. It contains an abstract method : call(), which
@@ -30,15 +30,23 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	protected Document doc;
 	protected E clazz;
 	protected Lifting<E> lifting;
-	protected InterfaceToClass adpt;
+	protected InterfaceToClass adpt = null;
 	
 	protected Factory factory = new FactoryImp();
 	
-	protected AbstractLifterCaller(InputStream entity, E clazz, InterfaceToClass adpt){
+	private AbstractLifterCaller(InputStream entity, E clazz){
 		this.doc = factory.createConverter().stream2Doc(entity);
+		System.out.println("After stream2doc rootelement="+this.doc.getRootElement());
 		this.clazz = clazz;
-		this.adpt = adpt;
 	}
+	
+	protected AbstractLifterCaller(InputStream entity, E clazz, InterfaceToClass adpt){
+		this(entity, clazz);
+		this.adpt = adpt;
+
+	}
+	
+	protected abstract void initLifting();
 
 	@Override
 	public Document call() {
@@ -49,6 +57,7 @@ public abstract class AbstractLifterCaller<E> implements LifterCaller {
 	public InputStream callStream(){
 		return factory.createConverter().doc2Stream(call());
 	}
+	
 	
 	
 
