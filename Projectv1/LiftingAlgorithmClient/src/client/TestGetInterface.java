@@ -31,8 +31,8 @@ public class TestGetInterface {
 			e.setNom("ZHANG");
 			e.setPrenom("Hao");
 			e.setPromo("GSI");
-			//String resu = service.opInt(e);
-			//System.out.println(resu);
+			String resu = service.postPersonneInt(e);
+			System.out.println(resu);
 			
 			Personne p = service.getPersonneInt();
 			System.out.println(p.getNom() + " " + p.getPrenom());

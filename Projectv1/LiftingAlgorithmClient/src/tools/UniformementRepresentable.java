@@ -108,7 +108,7 @@ public class UniformementRepresentable {
 		return WRAPPER_TYPES.contains(clazz);
 	}
 
-	private static Set<Class<?>> getWrapperTypes() {
+	public static Set<Class<?>> getWrapperTypes() {
 		Set<Class<?>> ret = new HashSet<Class<?>>();
 		ret.add(Boolean.class);
 		ret.add(Character.class);

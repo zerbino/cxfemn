@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 
 import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.ext.Provider;
 import javax.ws.rs.ext.ReaderInterceptor;
 import javax.ws.rs.ext.ReaderInterceptorContext;
 
+import tools.UniformementRepresentable;
 import adapters.InterfaceToClass;
 import lifting.ClientLifterCaller;
 
@@ -33,9 +35,14 @@ public class LiftingInterceptor implements ReaderInterceptor{
 			throws IOException, WebApplicationException {
 		System.out.println("Debut intercepteur de la réponse");
 		Class<?> expectedType = (Class<?>)context.getGenericType();
-		InterfaceToClass adpt = new InterfaceToClass(((Class<?>)expectedType).getPackage());
-		ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedType, adpt);
-		context.setInputStream(lifterCaller.callStream());
+		if (UniformementRepresentable.getWrapperTypes().contains(expectedType)){
+			System.out.println("It's a general type, don't need lifting.");
+		}
+		else{
+			InterfaceToClass adpt = new InterfaceToClass(((Class<?>)expectedType).getPackage());
+			ClientLifterCaller lifterCaller = new ClientLifterCaller(context.getInputStream(),expectedType, adpt);
+			context.setInputStream(lifterCaller.callStream());
+		}
 		System.out.println("Fin intercepteur de la réponse");
 		return context.proceed();
 	}
